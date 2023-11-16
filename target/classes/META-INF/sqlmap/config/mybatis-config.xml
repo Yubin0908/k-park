@@ -1,1 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+    
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.project.knpark.vo. " alias=""/>
+		<typeAlias type="com.project.knpark.vo.member " alias="Member"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/"/>
+		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
+	</mappers>
+</configuration>
