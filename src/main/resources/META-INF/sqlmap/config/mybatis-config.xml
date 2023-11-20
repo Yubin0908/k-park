@@ -6,18 +6,10 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.project.knpark.vo.Member" alias="Member"/>
-<<<<<<< HEAD
 		<typeAlias type="com.project.knpark.vo.Notice" alias="Notice"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/notice.xml"/>
-=======
-		<typeAlias type="com.project.knpark.vo.Qna" alias="Qna"/>
-	</typeAliases>
-	<mappers>
-		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
-		<mapper resource="META-INF/sqlmap/mappers/qna.xml"/>
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
 	</mappers>
 </configuration>
