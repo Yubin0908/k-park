@@ -25,11 +25,11 @@
 		});
 		$('#id').keyup(function(){
 			var id = $(this).val();
-			var patternMid = /^[a-zA-Z0-9_]+$/; // macth함수 사용
+			var patternId = /^[a-zA-Z0-9_]+$/; // macth함수 사용
 			if(id.length<2){
 				$('#idConfirmMsg').text('아이디는 2글자 이상 입력 하세요.');
-			}else if(!mid.match(patternMid)){
-				$('#idConfirmMsg').text('아아디는 영문자와 숫자 _만 들어갈 수 있습니다.');
+			}else if(!id.match(patternId)){
+				$('#idConfirmMsg').text('아이디는 영문자와 숫자 _만 들어갈 수 있습니다.');
 			}else {
 				$.ajax({
 					url : '${conPath}/member/idConfirm.do',
@@ -61,9 +61,20 @@
 		});
 	});
 	</script>
+	<style>
+		#content table{ border: pink solid 2px; margin: 10px auto 0;}
+		#content tr {background-color: #FFE271; }
+		#content tr:HOVER { background-color: orange; cursor: pointer; }
+		#content td, #content th { text-align: center; padding: 5px;}
+		#content caption { font-size: 1.3em; text-align: center;}
+		#content h2 {text-align: center; color:red;}
+		#content div { text-align: center; }
+		#content .left { text-align: left; }
+		#content .curr{color:red;}
+	</style>
 </head>
 <body>
-	<%-- <jsp:include page="../main/header.jsp"/> --%>
+	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 		<form action="${conPath }/member/join.do" method="post">
 		<table>
@@ -78,17 +89,30 @@
 			<tr><td>비밀번호</td><td><input type="password" name="pw"></td></tr>
 			<tr><td>이름</td><td><input type="text" name="name"></td></tr>
 			<tr>
+				<td>우편번호</td>
+				<td>
+					<input type="text" id="sample4_postcode" name="mpost" 
+							class="text_box"  placeholder="우편번호" required="required">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+				</td>
+			</tr>
+			<tr>
 				<td>주소</td>
 				<td>
 					<input type="text" id="sample4_roadAddress" name="address"  placeholder="도로명주소">
 					<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
 				</td>
 			</tr>
-			<tr><td>전화번호</td><td><input type="text" name="phone"></td></tr>
-			<tr><td>메일</td><td><input type="text" name="email"></td></tr>
-			<tr><td>성별</td><td><input type="text" name="gender"></td></tr>
-			<tr><td>생일</td><td><input type="date" name="birth"></td></tr>
-			<tr><td>가입일</td><td><input type="date" name="mRdate"></td></tr>
+			<tr><td>전화번호</td><td><input type="text" name="phone" required="required"></td></tr>
+			<tr><td>메일</td><td><input type="text" name="email" required="required"></td></tr>
+			<tr>
+				<td>성별</td>
+				<td>
+					<input type="radio" name="gender" value="m" required="required">남
+					<input type="radio" name="gender" value="f">여
+				</td>
+			</tr>
+			<tr><td>생일</td><td><input type="date" name="birth" required="required"></td></tr>
 			<tr><td colspan="2">
 				<p>
 					<input type="submit" value="회원가입">

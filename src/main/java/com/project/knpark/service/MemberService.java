@@ -7,4 +7,6 @@ public interface MemberService {
 	public String loginCheck(String id, String pw, HttpSession httpSession);
 	public Member getMember(String id);
 	public int modifyMember(Member member, HttpSession httpSession);
+	public int deleteMember(String id);
+	public int pwConfirm(String id);
 }

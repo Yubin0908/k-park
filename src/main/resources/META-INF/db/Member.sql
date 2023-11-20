@@ -1,9 +1,10 @@
 -- Member query
+SELECT * FROM MEMBER;
 -- 1. 회원가입시 : Member.xml id=idConfirm (resultType=int)
 SELECT COUNT(*) FROM MEMBER WHERE ID='aaa';
 
 -- 2. 회원가입 Member.xml id=insertMember
-INSERT INTO MEMBER VALUES('aaa', '1', '홍길동', '부산시', '010-9999-9999', 'hong@gildong.com', 'm','2020-12-12', SYSDATE);
+INSERT INTO MEMBER VALUES('fff', '1', '차길동', '오산시', '010-5555-5555', 'cha@gildong.com', 'm','2023-12-12', SYSDATE);
 
 -- dummy data
 INSERT INTO MEMBER VALUES('bbb', '1', '신길동', '마산시', '010-8888-8888', 'shin@gildong.com', 'm','2010-11-11', SYSDATE);
@@ -26,23 +27,14 @@ UPDATE MEMBER
     WHERE ID = 'aaa';
 COMMIT;
 
--- 5. id찾기 : Member.xml id=findAccount
+-- 5. id찾기 : Member.xml id=findIDAccount
 SELECT ID FROM MEMBER WHERE NAME='홍길동' AND EMAIL='hong@naver.com';
 
--- 6. pw찾기 : Member.xml id=findAccount
+-- 6. pw찾기 : Member.xml id=findPWAccount
 SELECT PW FROM MEMBER WHERE ID='aaa' AND NAME='홍길동' AND EMAIL='hong@naver.com';
 
--- 7. 회원리스트(top-N구문) : Member.xml id=memberList
-SELECT * FROM MEMBER ORDER BY MRDATE DESC;
-SELECT ROWNUM RN, A.*
-    FROM(SELECT * FROM MEMBER ORDER BY MRDATE DESC) A; -- TOP-N 구문의 INLINE VIEW에 들어갈 QUERY
-SELECT *
-    FROM(SELECT ROWNUM RN, A.*
-        FROM(SELECT * FROM MEMBER ORDER BY MRDATE DESC) A)
-    WHERE RN BETWEEN 2 AND 4;
-
--- 8. 회원탈퇴 : Member.xml id=deleteMember
-DELETE FROM MEMBER WHERE ID='eee';
+-- 7. 회원탈퇴 : Member.xml id=deleteMember
+DELETE FROM MEMBER WHERE ID='kim';
 ROLLBACK;
 COMMIT;
 SELECT * FROM MEMBER;

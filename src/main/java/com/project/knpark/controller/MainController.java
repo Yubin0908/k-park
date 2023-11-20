@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("main")
 public class MainController {
 	
-	@RequestMapping(value="main", method=RequestMethod.GET)
+	@RequestMapping(value="main", method= {RequestMethod.GET, RequestMethod.POST})
 	public String main() {
 		return "main/main";
 	}

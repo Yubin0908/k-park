@@ -136,22 +136,7 @@ CREATE TABLE INFOMATION ( -- 11/17 MODIFY
     IRDATE DATE DEFAULT SYSDATE NOT NULL
 );
  
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+COMMIT;
  
  
  

@@ -61,6 +61,12 @@
   </script>
 </head>
 <body>
+	<c:if test="${modifyResult eq 1 }">
+		<script>alert('정보 수정이 완료되었습니다.');</script>
+	</c:if>
+	<c:if test="${withdrawal eq 1 }">
+		<script>alert('회원 탈퇴가 되었습니다.')</script>
+	</c:if>
 	<jsp:include page="header.jsp"/>
 	<div id="main_wrap">
     <div class="swiper-container">
