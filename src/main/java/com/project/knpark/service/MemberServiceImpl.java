@@ -20,12 +20,15 @@ public class MemberServiceImpl implements MemberService {
 	private JavaMailSender mailSender;
 	@Override
 	public int idConfirm(String id) {
+		System.out.println("전달받은 " + id);
 		return memberRepository.idConfirm(id);
+//		int result = memberRepository.idConfirm(id);
+//		return result;
 	}
 
 	@Override
 	public int insertMember(final Member member, HttpSession httpSession) {
-		int result = memberRepository.insertMember(member); // DB에 저장 
+		int result = memberRepository.insertMember(member);//memberRepository.insertMember(member); // DB에 저장 
 		if(result == 1) { // DB에 회원가입 성공시에만 세션에 데이터 넣고 메일 보냄
 			httpSession.setAttribute("id", member.getId());
 			// 메일 전송
@@ -40,13 +43,14 @@ public class MemberServiceImpl implements MemberService {
 					// 받을 메일
 					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getEmail()));
 					// 보낼 메일
-					mimeMessage.setFrom(new InternetAddress("beretk@naver.com"));
+					mimeMessage.setFrom(new InternetAddress("beretk@gmail.com"));
 					// 메일 제목
 					mimeMessage.setSubject(member.getName() + "님 회원가입 감사합니다");
 					// 메일 본문
 					mimeMessage.setText(content, "utf-8", "html");
 				}
 			}; // message 객체 생성
+			mailSender.send(message); // 메일 전송
 		}
 		return result;
 	}
@@ -54,7 +58,7 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public String loginCheck(String id, String pw, HttpSession httpSession) {
 		String result = "로그인 성공";
-		Member member = memberRepository.getDetailMember(id);
+		Member member = memberRepository.getMember(id);
 		if(member == null) {
 			result = "유효하지 않은 아이디입니다";
 		}else if(! member.getPw().equals(pw)) {
@@ -67,13 +71,22 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public Member getMember(String id) {
-		return memberRepository.getDetailMember(id);
+		return memberRepository.getMember(id);
 	}
 
 	@Override
 	public int modifyMember(Member member, HttpSession httpSession) {
 		httpSession.setAttribute("member", member);
-		return memberRepository.modifyMember(member);
+		return 1;//memberRepository.modifyMember(member);
+	}
+	@Override
+	public int deleteMember(String id) {
+		return memberRepository.deleteMember(id);
+	}
+	
+	@Override
+	public int pwConfirm(String id) {
+		return memberRepository.pwConfirm(id);
 	}
 }
 

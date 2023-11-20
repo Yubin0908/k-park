@@ -10,10 +10,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/main.css" rel="stylesheet">
+	<style>
+		#content table{ border: pink solid 2px; margin: 10px auto 0;}
+		#content tr {background-color: #FFE271; }
+		#content tr:HOVER { background-color: orange; cursor: pointer; }
+		#content td, #content th { text-align: center; padding: 5px;}
+		#content caption { font-size: 1.3em; text-align: center;}
+		#content h2 {text-align: center; color:red;}
+		#content div { text-align: center; }
+		#content .left { text-align: left; }
+		#content .curr{color:red;}
+	</style>
 </head>
 <body>
 	<c:if test="${joinResult eq 1 }">
-		<script>alert('${mDto} 회원가입 감사합니다.');</script>
+		<!-- <script>alert('${mDto} 회원가입 감사합니다.');</script> -->
+		<script>alert('회원 가입을 진심으로 축하 드립니다.');</script>
 	</c:if>
 	<c:if test="${not empty loginResult}">
 		<script>alert('${loginResult}');</script>
@@ -33,7 +45,7 @@
 		<c:set var="after" value="${param.after }"/>
 	</c:if>
 	
-	<%-- <jsp:include page="../main/header.jsp"/> --%>
+	<jsp:include page="../main/header.jsp"/>
 	<div id="content">
 	<form action="${conPath }/member/login.do" method="post">
 		<input type="hidden" name="after" value="${after}">

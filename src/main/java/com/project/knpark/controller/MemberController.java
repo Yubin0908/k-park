@@ -1,5 +1,6 @@
 package com.project.knpark.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,17 @@ public class MemberController {
 		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession));
 		return "forward:../main.do";
 	}
+	@RequestMapping(value = "withdrawal", method = RequestMethod.GET)
+	public String delete(Model model, String id, HttpSession session) {
+		model.addAttribute("withdrawal" , memberService.deleteMember(id));
+		session.invalidate();
+		return "main/main";
+	}
+	@RequestMapping(value="pwConfirm", method=RequestMethod.GET)
+	public String pwConfirm() {
+		return "member/modify";
+	}
+
 }
 
 

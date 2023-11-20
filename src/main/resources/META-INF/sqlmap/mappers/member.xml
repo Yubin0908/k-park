@@ -4,10 +4,12 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.knpark.repogitory.MemberRepository">
+
 	<resultMap type="Member" id="MemberResult">
 		<result property="id" column="id"/>
 		<result property="pw" column="pw"/>
 		<result property="name" column="name"/>
+		<result property="mpost" column="mpost"/>
 		<result property="address" column="address"/>
 		<result property="phone" column="phone"/>
 		<result property="email" column="email"/>
@@ -17,11 +19,11 @@
 	</resultMap>
 
 	<select id="idConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id, jdbcType=VARCHAR}
+		SELECT COUNT(*) FROM MEMBER WHERE ID=#{id}
 	</select>
 	<insert id="insertMember" parameterType="Member">
 		INSERT INTO MEMBER VALUES(#{id}, #{pw}, #{name}, #{address}, #{phone}, #{email}, 
-									#{gender}, #{birth}, #{mRdate})
+									#{gender}, #{birth}, SYSDATE)
 	</insert>
 	<select id="getMember" parameterType="String" resultType="Member">
 		SELECT * FROM MEMBER WHERE ID=#{id}
@@ -37,37 +39,16 @@
 		        BIRTH = #{birth}
 		    WHERE ID = #{id, jdbcType=VARCHAR}
 	</update>
-<!-- 	<select id="findAccount" parameterType="String" resultType="Member">
+	<!-- <select id="findIDAccount" parameterType="String" resultType="Member">
 		SELECT ID FROM MEMBER WHERE NAME=#{name} AND EMAIL=#{email}
-	</select> -->
-	<select id="findAccount" parameterType="String" resultType="Member">
+	</select>
+	<select id="findPWAccount" parameterType="String" resultType="Member">
 		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND EMAIL=#{email}
-	</select>
-	<select id="memberList" parameterType="String" resultType="Member">
-		SELECT *
-		    FROM(SELECT ROWNUM RN, A.*
-		        FROM(SELECT * FROM MEMBER ORDER BY MRDATE DESC) A)
-		    WHERE RN BETWEEN ${startRow} AND ${endRow}
-	</select>
+	</select>-->
 	<delete id="deleteMember" parameterType="String">
-		DELETE FROM MEMBER WHERE ID='#{id}
+		DELETE FROM MEMBER WHERE ID=#{id}
 	</delete>
+	<select id="pwConfirm" parameterType="String">
+		SELECT PW FROM MEMBER WHERE ID = #{id}
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
