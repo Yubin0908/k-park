@@ -61,6 +61,7 @@
   </script>
 </head>
 <body>
+	<jsp:include page="header.jsp"/>
 	<div id="main_wrap">
     <div class="swiper-container">
       <div class="notice_title">주요공지</div>
