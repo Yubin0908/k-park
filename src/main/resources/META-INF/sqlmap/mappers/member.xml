@@ -2,7 +2,11 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 <mapper namespace="com.project.knpark.repogitory.MemberRepository">
+=======
+<mapper namespace="com.project.knpark.repoditory.MemberRepository">
+>>>>>>> f045c15d976159145e5e91822847b863f9973e24
 	<resultMap type="Member" id="MemberResult">
 		<result property="id" column="id"/>
 		<result property="pw" column="pw"/>
