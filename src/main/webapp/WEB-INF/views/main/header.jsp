@@ -10,12 +10,13 @@
 <title>Insert title here</title>
 <style>
     * { margin: 0; padding: 0;}
-    li {list-style: none;}
-    a { text-decoration: none; font-size: 1.2em; color: #fff;}
+    #header_wrap li {list-style: none;}
+    nav a, .user a { text-decoration: none; font-size: 1.2em; color: ##1e1e1e;}
     #header_wrap {
       width: 100%;
-      background-color: #1e1e1e;
+      background-color: #FFFF;
       height: 100px;
+      border-bottom: groove;
     }
     #header_wrap nav > a{
     	float: left;
@@ -35,20 +36,21 @@
     }
     .menu > li {
     	width: 20%;
+    	height:50px;
     	float: left;
     	text-align: center;
     	line-height: 5;
-    	background-color: #1e1e1e;
+    	background-color: #FFFF;
     }
     .menu a {
-    	color: #fff;
+    	color: #1e1e1e;
     }
     .submenu {
   		height: 0; /*ul의 높이를 안보이게 처리*/
  	 	overflow: hidden;
 	}
 	.menu > li:hover  {
-  		background-color: #1e1e1e;
+  		background-color: #FFFF;
   		transition-duration: 0.5s;
 	}
 	.menu > li:hover .submenu {
@@ -67,18 +69,19 @@
   		display: block;
   		line-height: 50px;
   	}
-  	img {
+  	nav img {
   		display: inline-block;
   		width: 200px;
   		height: 92px;
   		padding: 5px;
+  		margin-left: 46px;
   	}
 </style>
 </head>
 <body>
 	<div id="header_wrap">
 	    <nav>
-	    	<a href="${conPath }/main.do"><img src="../img/k.n.park.png" alt="logo" width="50"></a>
+	    	<a href="${conPath }/main.do"><img src="${conPath }/img/k.n.park.png" alt="logo" width="50"></a>
 			<ul class="menu">
 				<li>
 	        		<a href="">이용안내</a>
