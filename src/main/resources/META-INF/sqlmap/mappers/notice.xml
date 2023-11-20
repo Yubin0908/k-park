@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.knpark.repository.NoticeRepository">
+	<resultMap type="Notice" id="NoticeResult">
+		<result property="nno" column="nno"/>
+		<result property="aid" column="aid"/>
+		<result property="parkname" column="parkname"/>
+		<result property="ntitle" column="ntitle"/>
+		<result property="ntext" column="ntext"/>
+		<result property="ndate" column="ndate"/>
+		<result property="nhit" column="nhit"/>
+		<result property="ntop" column="ntop"/>
+		<result property="nip" column="nip"/>
+	</resultMap>
+	
+	<select id="noticeList" parameterType="Notice" resultMap="NoticeResult">
+		<if test="option == null or option == ''">
+			SELECT * FROM
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE ORDER BY NTOP DESC, NNO DESC) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'all'">
+			SELECT * FROM
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NTITLE LIKE '%'||#{search}||'%' OR NTEXT LIKE '%'||#{search}||'%' ORDER BY NTOP DESC, NNO DESC) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'ntitle'">
+			SELECT * FROM
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NTITLE LIKE '%'||#{search}||'%' ORDER BY NTOP DESC, NNO DESC) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'ntext'">
+			SELECT * FROM
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM NOTICE WHERE NTEXT LIKE '%'||#{search}||'%' ORDER BY NTOP DESC, NNO DESC) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+	</select>
+	
+	<select id="getNoticeTotCnt" parameterType="Notice" resultType="int">
+		<if test="option == null or option == ''">
+			SELECT COUNT(*) FROM NOTICE
+		</if>
+		<if test="option == 'all'">
+			SELECT COUNT(*) FROM NOTICE WHERE NTITLE LIKE '%'||#{search}||'%' OR NTEXT LIKE '%'||#{search}||'%'
+		</if>
+		<if test="option == 'ntitle'">
+			SELECT COUNT(*) FROM NOTICE WHERE NTITLE LIKE '%'||#{search}||'%'
+		</if>
+		<if test="option == 'ntext'">
+			SELECT COUNT(*) FROM NOTICE WHERE NTEXT LIKE '%'||#{search}||'%'
+		</if>
+	</select>
+	
+	<select id="getNotice" parameterType="int" resultType="Notice">
+		SELECT * FROM NOTICE WHERE NNO = #{nno}
+	</select>
+	
+	<insert id="noticeInsert" parameterType="Notice">
+		INSERT INTO NOTICE VALUES (NOTICE_SQ.NEXTVAL, #{aid}, #{parkname}, #{ntitle}, #{ntext}, SYSDATE, 0, #{ntop}, #{nip})
+	</insert>
+	
+	<update id="noticeModify" parameterType="Notice">
+		UPDATE NOTICE SET
+		  PARKNAME = #{parkname},
+		  NTITLE = #{ntitle},
+		  NTEXT = #{ntext},
+		  NDATE = SYSDATE,
+		  NTOP = #{ntop},
+		  NIP = #{nip}
+		  WHERE NNO = #{nno}
+	</update>
+	
+	<delete id="noticeDelete" parameterType="int">
+		DELETE FROM NOTICE WHERE NNO = #{nno}
+	</delete>
+	
+	<update id="noticeHitUp" parameterType="int">
+		UPDATE NOTICE SET NHIT = NHIT + 1 WHERE NNO = #{nno}
+	</update>
+</mapper>
