@@ -2,7 +2,7 @@
 -- 1. 회원가입시 : Member.xml id=idConfirm (resultType=int)
 SELECT COUNT(*) FROM MEMBER WHERE ID='aaa';
 
--- 2. 회원가입 Member.xml id=joinMember
+-- 2. 회원가입 Member.xml id=insertMember
 INSERT INTO MEMBER VALUES('aaa', '1', '홍길동', '부산시', '010-9999-9999', 'hong@gildong.com', 'm','2020-12-12', SYSDATE);
 
 -- dummy data
@@ -11,7 +11,7 @@ INSERT INTO MEMBER VALUES('ccc', '1', '박길동', '수원시', '010-7777-7777',
 INSERT INTO MEMBER VALUES('ddd', '1', '최길동', '인천시', '010-6666-6666', 'choi@gildong.com', 'm','1990-09-09', SYSDATE);
 INSERT INTO MEMBER VALUES('eee', '1', '김제니', '서울시', '010-5555-5555', 'kim@naver.com', 'f','1980-08-08', SYSDATE);
 
--- 3. 로그인 : Member.xml id=getDetailMember
+-- 3. 로그인 : Member.xml id=getMember
 SELECT * FROM MEMBER WHERE ID='aaa';
 
 -- 4. 회원정보 수정 : Member.xml id=modifyMember
@@ -32,7 +32,7 @@ SELECT ID FROM MEMBER WHERE NAME='홍길동' AND EMAIL='hong@naver.com';
 -- 6. pw찾기 : Member.xml id=findAccount
 SELECT PW FROM MEMBER WHERE ID='aaa' AND NAME='홍길동' AND EMAIL='hong@naver.com';
 
--- 7. 회원리스트(top-N구문)
+-- 7. 회원리스트(top-N구문) : Member.xml id=memberList
 SELECT * FROM MEMBER ORDER BY MRDATE DESC;
 SELECT ROWNUM RN, A.*
     FROM(SELECT * FROM MEMBER ORDER BY MRDATE DESC) A; -- TOP-N 구문의 INLINE VIEW에 들어갈 QUERY
