@@ -61,7 +61,10 @@
   </script>
 </head>
 <body>
+<<<<<<< HEAD
 	<jsp:include page="header.jsp"/>
+=======
+>>>>>>> 56a92885f28a1c1389a4c3d9733e1064377846fb
 	<div id="main_wrap">
     <div class="swiper-container">
       <div class="notice_title">주요공지</div>
@@ -105,6 +108,9 @@
       },
     });
   </script>
+<<<<<<< HEAD
   <jsp:include page="footer.jsp"/>
+=======
+>>>>>>> 56a92885f28a1c1389a4c3d9733e1064377846fb
 </body>
 </html>
