@@ -20,36 +20,30 @@
     <br>
     <hr>
     <br>
-    <form action="${conPath }/board/noticeModify.do?after=u" method="post" id="reviewForm">
-    	<input type="hidden" name="option" value="${param.option }"/>
-    	<input type="hidden" name="search" value="${param.search }" />
-    	<input type="hidden" name="nno" value="${param.nno }"/>
+    <form action="${conPath }/board/reviewModify.do?after=u" method="post" id="reviewForm">
+    	<input type="hidden" name="rno" value="${param.rno }"/>
     	<input type="hidden" name="pageNum" value="${param.pageNum }" />
       <table class="writeTable">
         <tr class="RH_title">
           <td>제목</td>
-          <td><input type="text" name="ntitle" value="${notice.ntitle }"></td>
+          <td><input type="text" name="rtitle" value="${review.rtitle }"></td>
         </tr>
         <tr class="RH_writer">
           <td>작성자</td>
-          <td><input type="text" name="aid" value="${admin.aid }" disabled></td>
+          <td><input type="text" name="id" value="${member.id }"></td>
         </tr>
         <tr class="RH_text">
           <td>내용</td>
           <td>
-						<input type="hidden" name="ntext" id="ntext"/>
+						<input type="hidden" name="rtext" id="rtext"/>
 						<div id="editor">
-							${review.ntext }
+							${review.rtext }
   					</div>
 					</td>
         </tr>
         <tr>
-          <td>소속</td>
-          <td><input type="text" name="parkname" value="${admin.parkname }"></td>
-        </tr>
-        <tr>
           <td class="submit_btn" colspan="2">
-            <input type="submit" value="글수정">
+            <input type="button" value="후기작성" onclick="submitForm()">
           </td>
         </tr>
       </table>
@@ -67,11 +61,10 @@
   <script>
   	function submitForm() {
       const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-      document.getElementById("ntext").value = markdown;
+      document.getElementById("rtext").value = markdown;
       document.getElementById("reviewForm").submit();
     }
   </script>
-  
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

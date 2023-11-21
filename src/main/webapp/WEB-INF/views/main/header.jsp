@@ -127,10 +127,15 @@
 	    		<li><a href="${conPath }/member/login.do"><span>로그인</span></a></li>
 	      	</ul>
 	    </c:if>
-	    <c:if test="${not empty member or not empty admin }">
+	    <c:if test="${not empty member and empty admin }">
 	    	<li><a href="${conPath }/member/pwConfirm.do">정보수정</a></li>	      	
 	    	<li><a href="${conPath }/member/logout.do">로그아웃</a></li>
-	    	<li><a> ${member.name }님</a></li>
+	    	<li><a href="">님</a></li>
+	    </c:if>
+	    <c:if test="${empty member and not empty admin }">
+	    	<li><a href="${conPath }/member/modify.do">정보수정</a></li>	      	
+	    	<li><a href="${conPath }/member/logout.do">관리자 로그아웃</a></li>
+	    	<li><a href="">님</a></li>
 	    </c:if>
     	</div>
 	</div>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.knpark.repository.ReviewRepository">
+	<resultMap type="Review" id="ReviewResult">
+		<result property="rno" column="rno"/>
+		<result property="id" column="id"/>
+		<result property="rtitle" column="rtitle"/>
+		<result property="rtext" column="rtext"/>
+		<result property="rrdate" column="rrdate"/>
+		<result property="rhit" column="rhit"/>
+		<result property="rip" column="rip"/>
+	</resultMap>
+	<resultMap type="Review" id="ReviewCmtResult">
+		<result property="cno" column="cno"/>
+		<result property="rno" column="rno"/>
+		<result property="cname" column="cname"/>
+		<result property="cmemo" column="cmemo"/>
+		<result property="cgroup" column="cgroup"/>
+		<result property="cstep" column="cstep"/>
+		<result property="cindent" column="cindent"/>
+		<result property="cip" column="cip"/>
+		<result property="crdate" column="crdate"/>
+	</resultMap>
+	
+	<select id="reviewList" parameterType="Review" resultMap="ReviewResult">
+		SELECT * FROM
+	  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW ORDER BY RNO DESC) A)
+	  WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<select id="getReviewTotCnt" resultType="int">
+		SELECT COUNT(*) FROM REVIEW
+	</select>
+	
+	<select id="getReview" parameterType="int" resultType="Review">
+		SELECT * FROM REVIEW WHERE RNO = #{rno}
+	</select>
+	
+	<insert id="insertReview" parameterType="Review">
+		INSERT INTO REVIEW VALUES (REVIEW_SQ.NEXTVAL, #{id}, #{rtitle}, #{rtext}, SYSDATE, 0, #{rip})
+	</insert>
+	
+	<update id="modifyReview" parameterType="Review">
+		UPDATE REVIEW SET
+		  RTITLE = #{rtitle},
+		  RTEXT = #{rtext},
+		  RRDATE = SYSDATE,
+		  RIP = #{rip}
+		  WHERE RNO = #{rno}
+	</update>
+	
+	<delete id="deleteReview" parameterType="int">
+		DELETE FROM REVIEW WHERE RNO = #{rno}
+	</delete>
+	
+	<update id="reviewHitUp" parameterType="int">
+		UPDATE REVIEW SET RHIT = RHIT + 1 WHERE RNO = #{rno}
+	</update>
+	<!-- 여기서 부터 댓글 -->
+	<select id="getReviewCmt" parameterType="Review" resultMap="ReviewCmtResult">
+		SELECT * FROM
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT ORDER BY RNO) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow} AND RNO = #{rno}
+	</select>
+		
+	<select id="getReviewCmtCnt" resultType="int">
+		SELECT COUNT(*) FROM REVIEW_CMT WHERE RNO = #{rno}
+	</select>
+</mapper>
