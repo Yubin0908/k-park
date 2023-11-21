@@ -9,18 +9,8 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/main.css" rel="stylesheet">
-	<style>
-		#content table{ border: pink solid 2px; margin: 10px auto 0;}
-		#content tr {background-color: #FFE271; }
-		#content tr:HOVER { background-color: orange; cursor: pointer; }
-		#content td, #content th { text-align: center; padding: 5px;}
-		#content caption { font-size: 1.3em; text-align: center;}
-		#content h2 {text-align: center; color:red;}
-		#content div { text-align: center; }
-		#content .left { text-align: left; }
-		#content .curr{color:red;}
-	</style>
+	<link href="${conPath }/css/login.css" rel="stylesheet">
+	
 </head>
 <body>
 	<c:if test="${joinResult eq 1 }">
@@ -46,16 +36,32 @@
 	</c:if>
 	
 	<jsp:include page="../main/header.jsp"/>
-	<div id="content">
+	<div id="login_wrap">
 	<form action="${conPath }/member/login.do" method="post">
 		<input type="hidden" name="after" value="${after}">
-		<table>
-			<caption>로그인 화면</caption>
-			<tr><th>아이디</th><td><input type="text" name="id" required="required" value="${id }"></td></tr>
-			<tr><th>비밀번호</th><td><input type="password" name="pw" required="required" value="${pw }"></td></tr>
-			<tr><td colspan="2">
-				<input type="submit" value="로그인">
-			</td></tr>
+		<div id="title">
+	      <h2>로그인</h2>
+	      <br>
+	      <br>
+	      <hr>
+	      <br>
+	    </div>
+		<table class="login_table">
+			<tr>
+	          <td>아이디</td>
+	          <td>
+	            <input type="text" name="id" id="id" class="input" value="${id }">
+	          </td>
+	        </tr>
+	        <tr>
+	        	<td>비밀번호</td>
+	        	<td>
+	        		<input type="password" name="pw" class="input" value="${pw }">
+	        	</td>
+	        </tr>
+			<tr>
+				<td colspan="2" style="text-align:center;"><input type="submit" value="로그인"></td>
+			</tr>
 		</table>
 	</form>
 	</div>

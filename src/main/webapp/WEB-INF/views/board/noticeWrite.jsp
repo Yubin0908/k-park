@@ -8,6 +8,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="${conPath }/css/board.css" />
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -30,7 +32,11 @@
         </tr>
         <tr class="RH_text">
           <td>내용</td>
-          <td><textarea name="ntext" id="" cols="30" rows="10"></textarea></td>
+          <td>
+			<div id="editor">
+
+			</div>
+		</td>
         </tr>
         <tr>
           <td>소속</td>
@@ -44,6 +50,16 @@
       </table>
     </form>
   </div>
+  <script>
+    const Editor = toastui.Editor;
+    const editor = new Editor({
+      el: document.querySelector('#editor'),
+      height: '500px',
+      initialEditType: 'markdown',
+    });
+
+    editor.getMarkdown();
+  </script>
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

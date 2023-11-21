@@ -10,14 +10,6 @@
 <title>Insert title here</title>
 <style>
     * { margin: 0; padding: 0;}
-<<<<<<< HEAD
-    li {list-style: none;}
-    a { text-decoration: none; font-size: 1.2em; color: #fff;}
-    #header_wrap {
-      width: 100%;
-      background-color: #1e1e1e;
-      height: 100px;
-=======
     #header_wrap li {list-style: none;}
     nav a, .user a { text-decoration: none; font-size: 1.2em; color: ##1e1e1e;}
     #header_wrap {
@@ -25,7 +17,6 @@
       background-color: #FFFF;
       height: 100px;
       border-bottom: groove;
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
     }
     #header_wrap nav > a{
     	float: left;
@@ -45,15 +36,6 @@
     }
     .menu > li {
     	width: 20%;
-<<<<<<< HEAD
-    	float: left;
-    	text-align: center;
-    	line-height: 5;
-    	background-color: #1e1e1e;
-    }
-    .menu a {
-    	color: #fff;
-=======
     	height:50px;
     	float: left;
     	text-align: center;
@@ -62,18 +44,13 @@
     }
     .menu a {
     	color: #1e1e1e;
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
     }
     .submenu {
   		height: 0; /*ul의 높이를 안보이게 처리*/
  	 	overflow: hidden;
 	}
 	.menu > li:hover  {
-<<<<<<< HEAD
-  		background-color: #1e1e1e;
-=======
   		background-color: #FFFF;
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
   		transition-duration: 0.5s;
 	}
 	.menu > li:hover .submenu {
@@ -92,30 +69,19 @@
   		display: block;
   		line-height: 50px;
   	}
-<<<<<<< HEAD
-  	img {
-=======
   	nav img {
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
   		display: inline-block;
   		width: 200px;
   		height: 92px;
   		padding: 5px;
-<<<<<<< HEAD
-=======
   		margin-left: 46px;
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
   	}
 </style>
 </head>
 <body>
 	<div id="header_wrap">
 	    <nav>
-<<<<<<< HEAD
-	    	<a href="${conPath }/main.do"><img src="../img/k.n.park.png" alt="logo" width="50"></a>
-=======
 	    	<a href="${conPath }/main.do"><img src="${conPath }/img/k.n.park.png" alt="logo" width="50"></a>
->>>>>>> f045c15d976159145e5e91822847b863f9973e24
 			<ul class="menu">
 				<li>
 	        		<a href="">이용안내</a>
@@ -139,7 +105,7 @@
 	       	 		<a href="">고객마당</a>
 	       	 		<ul class="submenu">
 	       	 			<li><a href="${conPath }/board/noticeList.do">공지사항</a></li>
-				        <li><a href="${conPath }/board/fnqList.do">자주하는 질문</a></li>
+				        <li><a href="${conPath }/board/faqList.do">자주하는 질문</a></li>
 				        <li><a href="${conPath }/board/qnaList.do">묻고답하기</a></li>
 				        <li><a href="${conPath }/board/sugList.do">건의합니다</a></li>
 				        <li><a href="${conPath }/board/reviewList.do">탐방후기</a></li>

@@ -9,7 +9,7 @@
 <style>
 	*{margin: 0; padding: 0;}
 	footer {
-		width: 1400px;
+		width: 100%;
 		height:60px; background-color: white;
 		margin:0 auto;
  	}
@@ -19,7 +19,7 @@
 		height: 60px;		
 		font-size:0.8em;
 		text-align: center; 
-		border: 1px solid gray;
+		border-top: 2px solid gray;
 		margin-top: 20px;
 		padding:10px 50px 0;
 </style>
