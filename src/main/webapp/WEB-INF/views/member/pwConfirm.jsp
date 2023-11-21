@@ -17,7 +17,13 @@
 	</script>
 </head>
 <body>
-	<form action="${conPath }/pwConfirm.do" method="post">
+	<c:if test="${not empty pwConfirmResult }">
+		<script>
+			alert("${pwConfirmResult }");
+			history.back();
+		</script>
+	</c:if>
+	<form action="${conPath }/member/pwConfirm.do" method="post">
 		<input type="text" name="id" value="${member.id }">
 		<input type="text" name="pw">
 		<input type="submit" value="확인">

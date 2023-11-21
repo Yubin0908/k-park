@@ -3,6 +3,7 @@ package com.project.knpark.service;
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,9 +85,9 @@ public class MemberServiceImpl implements MemberService {
 		return memberRepository.deleteMember(id);
 	}
 	
-	@Override
-	public int pwConfirm(String id) {
-		return memberRepository.pwConfirm(id);
+	public String pwConfirm(String id) {
+	    String oldPw = memberRepository.pwConfirm(id);
+	    return (oldPw != null) ? "1" : "0";
 	}
 }
 

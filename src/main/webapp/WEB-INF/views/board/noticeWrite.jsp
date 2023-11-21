@@ -8,6 +8,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="${conPath }/css/board.css" />
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -18,7 +20,7 @@
     <br>
     <hr>
     <br>
-    <form action="${conPath }/board/noticeWrite.do" method="post">
+    <form action="${conPath }/board/noticeWrite.do" method="post" id="noticeForm">
       <table class="writeTable">
         <tr class="RH_title">
           <td>제목</td>
@@ -30,7 +32,12 @@
         </tr>
         <tr class="RH_text">
           <td>내용</td>
-          <td><textarea name="ntext" id="" cols="30" rows="10"></textarea></td>
+          <td>
+        	  <input type="hidden" name="ntext" id="ntext"/>
+						<div id="editor">
+							
+  					</div>
+					</td>
         </tr>
         <tr>
           <td>소속</td>
@@ -38,12 +45,29 @@
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">
-            <input type="submit" value="글쓰기">
+            <input type="button" value="글쓰기" onclick="submitForm()">
           </td>
         </tr>
       </table>
     </form>
   </div>
+  <script>
+    const Editor = toastui.Editor;
+    const editor = new Editor({
+      el: document.querySelector('#editor'),
+      height: '500px',
+      initialEditType: 'wysiwyg',
+    });
+
+    editor.getMarkdown();
+  </script>
+  <script>
+  	function submitForm() {
+      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+      document.getElementById("ntext").value = markdown;
+      document.getElementById("noticeForm").submit();
+    }
+  </script>
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

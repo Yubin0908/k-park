@@ -1,6 +1,5 @@
 package com.project.knpark.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,7 +72,18 @@ public class MemberController {
 	}
 	@RequestMapping(value="pwConfirm", method=RequestMethod.GET)
 	public String pwConfirm() {
-		return "member/modify";
+		return "member/pwConfirm";
+	}
+	@RequestMapping(value="pwConfirm", method=RequestMethod.POST)
+	public String pwConfirm(String id, String pw, Model model) {
+		String oldPw = memberService.pwConfirm(id);
+		if(oldPw != null && oldPw.equals(pw)) {
+			return "redirect:modify.do";
+		} else {
+			model.addAttribute("pwConfirmResult", "비밀번호가 올바르지 않습니다. 다시 입력해주세요.");
+			return "member/pwConfirm";
+		}
+		
 	}
 
 }

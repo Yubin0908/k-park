@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+#join_wrap {
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url('../img/kkomi.png');
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: 380px 550px;
+}
+#modify_wrap {
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-image: url('../img/kkomi.png');
+  background-repeat: no-repeat;
+  background-size: 45%;
+  background-position: 380px 530px;
+}
+
+
+#title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#title h2 {
+  font-size: 24px;
+  letter-spacing: 3px;
+}
+
+.join_table {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.join_table td {
+  padding: 10px 0;
+}
+
+.join_table .text_box {
+  width: 25%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.gender_radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gender_radio label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.gender_radio input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  margin-right: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.gender_radio input[type="radio"]::before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gender_radio input[type="radio"]:checked::before {
+  opacity: 1;
+}
+
+.gender_radio input[type="radio"]::after {
+  content: '\2713';
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #007bff;
+  text-align: center;
+  line-height: 12px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.gender_radio input[type="radio"]:checked::after {
+  opacity: 1;
+}
+
+.input{
+  width: 75%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+.join_table input[type="button"],
+.join_table input[type="submit"] {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff;
+  background-color: #007bff;
+  transition: background-color 0.3s ease;
+}
+
+.join_table input[type="button"]:hover,
+.join_table input[type="submit"]:hover {
+  background-color: #0056b3;
+}
