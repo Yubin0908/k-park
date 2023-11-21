@@ -105,7 +105,7 @@
 	       	 		<a href="">고객마당</a>
 	       	 		<ul class="submenu">
 	       	 			<li><a href="${conPath }/board/noticeList.do">공지사항</a></li>
-				        <li><a href="${conPath }/board/fnqList.do">자주하는 질문</a></li>
+				        <li><a href="${conPath }/board/faqList.do">자주하는 질문</a></li>
 				        <li><a href="${conPath }/board/qnaList.do">묻고답하기</a></li>
 				        <li><a href="${conPath }/board/sugList.do">건의합니다</a></li>
 				        <li><a href="${conPath }/board/reviewList.do">탐방후기</a></li>

@@ -106,12 +106,10 @@
           <td>성별</td>
           <td class="gender_radio">
             <label for="male">
-              <input type="radio" id="male" name="gender" value="m" required="required">
-           		  남
+              <input type="radio" id="male" name="gender" value="m" required="required">남
             </label>
             <label for="female">
-              <input type="radio" id="female" name="gender" value="f">
-           	   여
+              <input type="radio" id="female" name="gender" value="f">여
             </label>
           </td>
         </tr>
@@ -129,14 +127,3 @@
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

@@ -52,11 +52,15 @@
 				<tr><td>전화번호</td><td><input type="text" name="phone" value="${member.phone }" class="input"></td></tr>
 				<tr><td>메일</td><td><input type="text" name="email" value="${member.email }" class="input"></td></tr>
 				<tr>
-					<th>성별</th>
-					<td class="gender_radio">
-						<input type="radio" name="gender" value="m">남
-						<input type="radio" name="gender" value="f">여
-					</td>
+					<td>성별</td>
+		          	<td class="gender_radio">
+			        	<label for="male">
+			              <input type="radio" id="male" name="gender" value="m" required="required">남
+			            </label>
+			            <label for="female">
+			              <input type="radio" id="female" name="gender" value="f">여
+			            </label>
+		          	</td>
 				</tr>
 				<tr><td>생일</td><td><input type="date" name="birth" value="${member.birth }"></td></tr>
 				<tr><td colspan="2">
