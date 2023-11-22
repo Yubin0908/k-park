@@ -4,7 +4,7 @@ SELECT * FROM MEMBER;
 SELECT COUNT(*) FROM MEMBER WHERE ID='aaa';
 
 -- 2. 회원가입 Member.xml id=insertMember
-INSERT INTO MEMBER VALUES('fff', '1', '차길동', '오산시', '010-5555-5555', 'cha@gildong.com', 'm','2023-12-12', SYSDATE);
+INSERT INTO MEMBER VALUES('aaa', '1', '차길동', '오산시', '010-5555-5555', 'cha@gildong.com', 'm','2023-12-12', SYSDATE);
 
 -- dummy data
 INSERT INTO MEMBER VALUES('bbb', '1', '신길동', '마산시', '010-8888-8888', 'shin@gildong.com', 'm','2010-11-11', SYSDATE);
