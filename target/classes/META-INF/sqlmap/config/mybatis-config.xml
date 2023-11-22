@@ -8,11 +8,13 @@
 		<typeAlias type="com.project.knpark.vo.Notice" alias="Notice"/>
 		<typeAlias type="com.project.knpark.vo.Faq" alias="Faq"/>
 		<typeAlias type="com.project.knpark.vo.Review" alias="Review"/>
+		<typeAlias type="com.project.knpark.vo.Suggest" alias="Suggest"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/notice.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/faq.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/review.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/suggest.xml"/>
 	</mappers>
 </configuration>
