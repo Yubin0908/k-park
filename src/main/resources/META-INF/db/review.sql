@@ -60,8 +60,30 @@ DELETE FROM REVIEW WHERE RNO = 2;
 UPDATE REVIEW SET RHIT = RHIT + 1 WHERE RNO = 1;
 
 --=================================================댓글에 대한 쿼리=========================================================
+SELECT * FROM REVIEW_CMT WHERE RNO = 28;
 
 
+commit;
+-- 댓글 리스트 출력 ID = getReviewCmt
+SELECT * FROM
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT WHERE RNO = 27 ORDER BY CGROUP DESC, CSTEP) A)
+  WHERE RN BETWEEN 1 AND 10;
+-- 댓글 갯수 ID = getReviewCmtCnt
+SELECT COUNT(*) FROM REVIEW_CMT WHERE RNO = 1;
+-- 댓글 작성 ID = insertReviewCmt
+INSERT INTO REVIEW_CMT VALUES (REVIEW_CMT_SQ.NEXTVAL, 1, 'TESTER', '도움이 많이되었어여'||REVIEW_CMT_SQ.CURRVAL, REVIEW_CMT_SQ.CURRVAL, 0, 0, '192.168.0.1', SYSDATE);
+-- 댓글 수정 ID = modifyReviewCmt
+UPDATE REVIEW_CMT SET
+  CMEMO = '댓글 수정됨.',
+  CIP = '192.0.1.2',
+  CRDATE = SYSDATE
+  WHERE CNO = 1;
+  
+-- 댓글 삭제 ID= deleteReviewCmt
+DELETE FROM REVIEW_CMT WHERE CNO = 1;
 
+-- 답댓글 전처리 작업 ID = cstepUpdate
+UPDATE REVIEW_CMT SET CSTEP = CSTEP + 1 WHERE CGROUP = 1 AND CSTEP > 0;
 
-
+-- 답댓글 작성 ID = insertReviewMoreCmt
+INSERT INTO REVIEW_CMT VALUES (REVIEW_CMT_SQ.NEXTVAL, 1, 'TESTER2', '도움이 안되었어여.', 2, 1, 1, '190.81.0.92', SYSDATE);

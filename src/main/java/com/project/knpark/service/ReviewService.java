@@ -13,8 +13,14 @@ public interface ReviewService {
 	public int insertReview(Review review, HttpServletRequest request);
 	public int modifyReview(Review review, HttpServletRequest request);
 	public int deleteReview(int rno);
+	public int deleteReviewMoreCmt(int rno);
 	public int reviewHitUp(int rno);
 	// 댓글 부분
 	public List<Review> getReviewCmt(Review review, String pageNum);
 	public int getReviewCmtCnt(Review review);
+	public int insertReviewCmt(Review review, HttpServletRequest request);
+	public int modifyReviewCmt(Review review, HttpServletRequest request);
+	public int deleteReviewCmt(int cno);
+	public int cstepUpdate(Review review);
+	public int insertReviewMoreCmt(Review review, HttpServletRequest request);
 }

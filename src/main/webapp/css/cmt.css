@@ -1,21 +1,90 @@
-.cmt {
-  margin-top: 20px;
 
+.cmt {
+  width: 1400px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.cmt table {
-  border-spacing: 0;
-  width: 1400px;
-  text-align: left;
+.cmt_write {
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.cmt_write input[type="text"] {
+  width: 70%;
+  height: 40px;
+  border-radius: 20px;
+  padding: 0 15px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.cmt_write input[type="submit"] {
+  width: 15%;
+  height: 40px;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 50px;
+}
+
+.cmt_table {
+  width: 100%;
   border-collapse: collapse;
 }
 
-.cmt .cmt_tr {
-  border-bottom: 1px solid #bbb;
-  background-color: #eee;
+.cmt_tr {
+  border-bottom: 1px solid #ddd;
 }
 
-td {
-  padding: 10px 25px;
-  text-align: left;
+.cmt_tr:last-child {
+  border-bottom: none;
+}
+
+.cmt_tr td {
+  padding: 15px 10px;
+}
+
+.cmt_tr span {
+  font-weight: bold;
+  color: #555;
+}
+
+.cmt_tr h5 {
+  margin: 5px 0;
+  color: #333;
+}
+
+.cmt_tr a {
+	text-decoration: none;
+	background-color: #007bff;
+	color: #fff;
+	padding: 2px;
+  border-radius: 10px;
+}
+
+.answer_form input[type="text"] {
+  width: 800px;
+  height: 30px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  margin-right: 10px;
+}
+
+.answer_form input[type="submit"] {
+  width: 100px;
+  height: 30px;
+  border: none;
+  border-radius: 15px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
 }
