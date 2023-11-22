@@ -1,20 +1,15 @@
 package com.project.knpark.service;
 
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+import com.project.knpark.vo.Faq;
 
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.project.knpark.util.Paging;
-import com.project.knpark.vo.FAQ;
-
-public interface FAQService {
-	public List<FAQ> faqList(Paging paging);
-	public int getFaqTotCnt();
-	public int faqInsert(MultipartHttpServletRequest mRequest, HttpServletRequest request);
-	public int faqInsert(MultipartHttpServletRequest mRequest, FAQ faq, HttpServletRequest request);
-	public FAQ faqText(String aid, String after);
-		// 수정후 text.do?after=u
+public interface FaqService {
+	public List<Faq> faqList(String pageNum, Faq faq);
+	public int getFaqTotCnt(Faq faq);
+	public Faq getFaq(int fno, String after);
+	public int faqInsert(Faq faq);
+	public int faqModify(Faq faq);
+	public int faqDelete(int fno);
 
 }

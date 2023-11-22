@@ -132,6 +132,11 @@
   margin-top: 20px;
 }
 
+.paging a {
+	text-decoration: none;
+	color: #555;
+}
+
 .bbs_detail {
   width: 100%;
   border-top: 2px solid #aaa;
@@ -192,14 +197,14 @@
   border-collapse: collapse;
 }
 
-input[name="ntitle"] {
+input[name="ntitle"], input[name="rtitle"] {
   width: 95%;
   padding: 5px;
   border-radius: 5px;
   outline: none !important;
 }
 
-input[name="aid"], input[name="parkname"] {
+input[name="aid"], input[name="parkname"], input[name="id"] {
   width: 15%;
   padding: 5px;
   border-radius: 5px;
@@ -216,7 +221,7 @@ input[name="aid"], input[name="parkname"] {
 .submit_btn {
   text-align: center;
 }
-.submit_btn input {
+.submit_btn input, sub {
   padding: 5px 20px;
   background-color: #0042a2;
   color: #fff;

@@ -5,14 +5,15 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class FAQ {
+public class Faq {
 	private int fno;
 	private String aid;
 	private String parkname;
-	private String ftype;
 	private String ftitle;
 	private String ftext;
-	private Date fRdate;
+	private Date frdate;
 	private int startRow;
 	private int endRow;
+	private String option;
+	private String search;
 }

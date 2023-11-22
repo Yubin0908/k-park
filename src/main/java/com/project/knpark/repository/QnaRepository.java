@@ -10,7 +10,7 @@ import com.project.knpark.vo.Qna;
 public interface QnaRepository {
 	public List<Qna> qnaList(Qna qna);
 	public int getQnaTotCnt(Qna qna);
-	public int qnaInsert(Qna qna);
+	public int qnaWrite(Qna qna);
 	public Qna qnaDetail(int qno);
 	public int qnaModify(Qna qna);
 	public int qnaDelete(int qno);

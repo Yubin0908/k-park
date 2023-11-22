@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.priject.knpark.repository.QnaRepository">
+<mapper namespace="com.project.knpark.repository.QnaRepository">
 	<resultMap type="Qna" id="QnaResult">
 		<result property="qno" column="qno"/>
 		<result property="id" column="id"/>
@@ -20,35 +20,35 @@
 	<select id="qnaList" parameterType="Qna" resultMap="QnaResult">
 		<if test="option==null or option==''">
 			SELECT *
-			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QTITLE DESC) A)
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QNO DESC) A)
 			    WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==all">
+		<if test="option=='all'">
 			SELECT * 
    				FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
-		        	WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
+		        	WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==qtitle">
+		<if test="option=='qtitle'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
          			 FROM (SELECT * FROM QNA 
-		        	WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
+		        	WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==qtext">
+		<if test="option=='qtext'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
-		        	WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
+		        	WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==parkname">
+		<if test="option=='parkname'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
-		        	WHERE PARKNAME LIKE '%'||UPPER(#{search})||'%' ORDER BY QTITLE) A)
+		        	WHERE PARKNAME LIKE '%'||UPPER(#{search})||'%' ORDER BY QNO DESC) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 	</select>
@@ -58,28 +58,28 @@
 		<if test="option==null or option==''">
 			SELECT COUNT(*) FROM QNA
 		</if>
-		<if test="option==all">
+		<if test="option=='all'">
 			SELECT COUNT(*) FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%'
 		</if>
-		<if test="option==qtitle">
+		<if test="option=='qtitle'">
 			SELECT COUNT(*) FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%'
 		</if>
-		<if test="option==qtext">
-			SELECT COUNT(*) FROM QNA WHERE QTEXT LIKE '%'||'본'||'%'
+		<if test="option=='qtext'">
+			SELECT COUNT(*) FROM QNA WHERE QTEXT LIKE '%'||#{search}||'%'
 		</if>
-		<if test="option==parkname">
-			SELECT COUNT(*) FROM QNA WHERE PARKNAME LIKE '%'||'지'||'%'
+		<if test="option=='parkname'">
+			SELECT COUNT(*) FROM QNA WHERE PARKNAME LIKE '%'||#{search}||'%'
 		</if>
 	</select>
 	
 	<!-- 글 상세보기 qno로 DTO가져오기 -->
 	<select id="qnaDetail" parameterType="int" resultType="Qna">
-		SELECT * FROM QNA WHERE QNO=#{qno}
+		SELECT * FROM QNA WHERE QNO= #{qno}
 	</select>
 	<!-- 글 등록  -->
-	<insert id="qnaInsert" parameterType="Qna">
+	<insert id="qnaWrite" parameterType="Qna">
 		INSERT INTO QNA (QNO, ID, PARKNAME, QTYPE, QTITLE, QTEXT, QSTATUS, QGROUP, QIP)
-    		VALUES(QNA_SQ.NEXTVAL, #{id}, #{parkname}, #{qtype}, #{qtitle}, #{qtext}, 0, 0, #{ip})
+    		VALUES(QNA_SQ.NEXTVAL, #{id}, #{parkname}, #{qtype}, #{qtitle}, #{qtext	}, 0, 0, #{qip})
 	</insert>
 	<update id="qnaModify" parameterType="Qna">
 		UPDATE QNA 

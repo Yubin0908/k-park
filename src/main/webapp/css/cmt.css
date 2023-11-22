@@ -1,0 +1,21 @@
+.cmt {
+  margin-top: 20px;
+
+}
+
+.cmt table {
+  border-spacing: 0;
+  width: 1400px;
+  text-align: left;
+  border-collapse: collapse;
+}
+
+.cmt .cmt_tr {
+  border-bottom: 1px solid #bbb;
+  background-color: #eee;
+}
+
+td {
+  padding: 10px 25px;
+  text-align: left;
+}

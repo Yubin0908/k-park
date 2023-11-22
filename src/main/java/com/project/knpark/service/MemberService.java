@@ -1,4 +1,5 @@
 package com.project.knpark.service;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import com.project.knpark.vo.Member;
 public interface MemberService {
@@ -8,5 +9,5 @@ public interface MemberService {
 	public Member getMember(String id);
 	public int modifyMember(Member member, HttpSession httpSession);
 	public int deleteMember(String id);
-	public int pwConfirm(String id);
+	public String pwConfirm(String id);
 }

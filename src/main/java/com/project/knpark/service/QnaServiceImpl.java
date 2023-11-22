@@ -16,7 +16,7 @@ public class QnaServiceImpl implements QnaService {
 	private QnaRepository qnaRepository; 
 	@Override
 	public List<Qna> qnaList(String pageNum, Qna qna) {
-		Paging paging = new Paging(qnaRepository.getQnaTotCnt(qna), pageNum);
+		Paging paging = new Paging(qnaRepository.getQnaTotCnt(qna), pageNum, 10, 10);
 		qna.setStartRow(paging.getStartRow());
 		qna.setEndRow(paging.getEndRow());
 		return qnaRepository.qnaList(qna);
@@ -28,13 +28,13 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public int qnaInsert(Qna qna, HttpServletRequest request) {
+	public int qnaWrite(Qna qna, HttpServletRequest request) {
 		qna.setQip(request.getRemoteAddr());
-		return qnaRepository.qnaInsert(qna);
+		return qnaRepository.qnaWrite(qna);
 	}
 
 	@Override
-	public Qna qnaDetail(int qno) {
+	public Qna qnaDetail(int qno, String after) {
 		return qnaRepository.qnaDetail(qno);
 	}
 
