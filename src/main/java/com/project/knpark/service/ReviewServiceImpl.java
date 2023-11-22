@@ -51,7 +51,13 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public int deleteReview(int rno) {
+		reviewRepository.deleteReviewMoreCmt(rno);
 		return reviewRepository.deleteReview(rno);
+	}
+	
+	@Override
+	public int deleteReviewMoreCmt(int rno) {
+		return reviewRepository.deleteReviewMoreCmt(rno);
 	}
 
 	@Override
@@ -70,5 +76,29 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int getReviewCmtCnt(Review review) {
 		return reviewRepository.getReviewCmtCnt(review);
+	}
+	@Override
+	public int insertReviewCmt(Review review, HttpServletRequest request) {
+		review.setCip(request.getRemoteAddr());
+		return reviewRepository.insertReviewCmt(review);
+	}
+	@Override
+	public int modifyReviewCmt(Review review, HttpServletRequest request) {
+		review.setCip(request.getRemoteAddr());
+		return reviewRepository.modifyReviewCmt(review);
+	}
+	@Override
+	public int deleteReviewCmt(int cno) {
+		return reviewRepository.deleteReviewCmt(cno);
+	}
+	@Override
+	public int cstepUpdate(Review review) {
+		return reviewRepository.cstepUpdate(review);
+	}
+	@Override
+	public int insertReviewMoreCmt(Review review, HttpServletRequest request) {
+		review.setCip(request.getRemoteAddr());
+		reviewRepository.cstepUpdate(review);
+		return reviewRepository.insertReviewMoreCmt(review);
 	}
 }

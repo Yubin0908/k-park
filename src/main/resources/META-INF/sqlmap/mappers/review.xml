@@ -56,17 +56,46 @@
 		DELETE FROM REVIEW WHERE RNO = #{rno}
 	</delete>
 	
+	<delete id="deleteReviewMoreCmt" parameterType="int">
+		DELETE FROM REVIEW_CMT WHERE RNO = #{rno}
+	</delete>
+	
 	<update id="reviewHitUp" parameterType="int">
 		UPDATE REVIEW SET RHIT = RHIT + 1 WHERE RNO = #{rno}
 	</update>
+	
 	<!-- 여기서 부터 댓글 -->
 	<select id="getReviewCmt" parameterType="Review" resultMap="ReviewCmtResult">
 		SELECT * FROM
-		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT ORDER BY RNO) A)
-		  WHERE RN BETWEEN #{startRow} AND #{endRow} AND RNO = #{rno}
+		  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT WHERE RNO = #{rno} ORDER BY CGROUP DESC, CSTEP) A)
+		  WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 		
 	<select id="getReviewCmtCnt" resultType="int">
 		SELECT COUNT(*) FROM REVIEW_CMT WHERE RNO = #{rno}
 	</select>
+	
+	<insert id="insertReviewCmt" parameterType="Review">
+		INSERT INTO REVIEW_CMT VALUES (REVIEW_CMT_SQ.NEXTVAL, #{rno}, #{cname}, #{cmemo}, REVIEW_CMT_SQ.CURRVAL, 0, 0, #{cip}, SYSDATE)
+	</insert>
+	
+	<update id="modifyReviewCmt" parameterType="Review">
+		UPDATE REVIEW_CMT SET
+		  CMEMO = #{cmemo},
+		  CIP = #{cip},
+		  CRDATE = SYSDATE
+		  WHERE CNO = #{cno}
+	</update>
+	
+	<delete id="deleteReviewCmt" parameterType="int">
+		DELETE FROM REVIEW_CMT WHERE CNO = #{cno}
+	</delete>
+	
+	<update id="cstepUpdate" parameterType="Review">
+		UPDATE REVIEW_CMT SET CSTEP = CSTEP + 1 WHERE CGROUP = #{cgroup} AND CSTEP > #{cstep}
+	</update>
+	
+	<insert id="insertReviewMoreCmt" parameterType="Review">
+		INSERT INTO REVIEW_CMT VALUES (REVIEW_CMT_SQ.NEXTVAL, #{rno}, #{cname}, #{cmemo}, #{cgroup}, #{cstep}+1, #{cindent}+1, #{cip}, SYSDATE)
+	</insert>
 </mapper>

@@ -64,4 +64,29 @@ public class ReviewController {
 		return "forward:reviewList.do";
 	}
 	
+	// 댓글 관련 호출
+	@RequestMapping(value="board/ReviewCmtInsert", method=RequestMethod.GET)
+	public String reviewCmtInsert(Review review, HttpServletRequest request, Model model, String after) {
+		model.addAttribute("cmtResult", reviewService.insertReviewCmt(review, request));
+		return "forward:reviewDetail.do";
+	}
+	
+	@RequestMapping(value="board/ReviewCmtModify", method=RequestMethod.GET)
+	public String reviewCmtModify(Review review, HttpServletRequest request, Model model, String after) {
+		model.addAttribute("cmtModifyResult", reviewService.modifyReviewCmt(review, request));
+		return "forward:reviewDetail.do";
+	}
+	
+	@RequestMapping(value="board/ReviewCmtMoreInsert", method=RequestMethod.GET)
+	public String reviewCmtMoreInsert(Review review, HttpServletRequest request, Model model, String after) {
+		model.addAttribute("cmtResult", reviewService.insertReviewMoreCmt(review, request));
+		return "forward:reviewDetail.do";
+	}
+	
+	@RequestMapping(value="board/ReviewCmtDelete", method=RequestMethod.GET)
+	public String reviewCmtDelete(int cno, Model model) {
+		model.addAttribute("cmtDeleteResult", reviewService.deleteReviewCmt(cno));
+		return "forward:reviewDetail.do";
+	}
+	
 }
