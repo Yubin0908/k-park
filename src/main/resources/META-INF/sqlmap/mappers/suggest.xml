@@ -21,9 +21,9 @@
 	
 	<select id="suggestList" parameterType="Suggest" resultMap="SuggestResult">
 		SELECT *
-		    FROM (SELECT ROWNUM RN, A.* FROM 
-		    		(SELECT SNO, NVL((SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID), '관리자') WRITER, STITLE, SHIT, SRDATE 
-		        		FROM SUGGEST ORDER BY SRDATE DESC) A)
+		    FROM (SELECT ROWNUM RN, A.* 
+		    	FROM (SELECT SNO, NVL((SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID), '관리자') WRITER, STITLE, SHIT, SRDATE, SINDENT, SSTEP 
+		    		FROM SUGGEST ORDER BY SGROUP DESC, SSTEP ) A)
 		    WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 	
@@ -44,7 +44,7 @@
 		SELECT * FROM SUGGEST WHERE SNO=#{sno}
 	</select>
 	
-	<update id="modifySuggest" parameterType="Suggest">
+	<update id="suggestModify" parameterType="Suggest">
 		UPDATE SUGGEST 
 		    SET ID = #{id},
 		        AID = #{aid},
@@ -54,7 +54,7 @@
 		    WHERE SNO = #{sno}
 	</update>
 	
-	<delete id="deleteSuggest" parameterType="int">
+	<delete id="suggestDelete" parameterType="int">
 		DELETE FROM SUGGEST WHERE SNO=#{sno}
 	</delete>
 	
@@ -62,7 +62,7 @@
 		UPDATE SUGGEST SET SSTEP = SSTEP+1 WHERE SGROUP=#{sgroup} AND SSTEP > #{sstep}
 	</update>
 	
-	<insert id="suggestReplyInsert">
+	<insert id="suggestReplyWrite">
 		INSERT INTO SUGGEST (SNO, AID, STITLE, STEXT, SRDATE, SGROUP, SSTEP, SINDENT, SIP)
   			VALUES (SUGGEST_SQ.NEXTVAL, #{aid}, #{stitle}, #{stext}, SYSDATE, 
   				#{sgroup}, #{sstep}+1, #{sindent}+1, #{sip})

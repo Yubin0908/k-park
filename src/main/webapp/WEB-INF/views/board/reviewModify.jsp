@@ -33,13 +33,11 @@
           <td><input type="text" name="id" value="${member.id }"></td>
         </tr>
         <tr class="RH_text">
-          <td>내용</td>
-          <td>
-						<input type="hidden" name="rtext" id="rtext"/>
-						<div id="editor">
-							${review.rtext }
-  					</div>
-					</td>
+		<td>내용</td>
+		<td>
+			<input type="hidden" name="rtext" id="rtext"/>
+			<div id="editor">${review.rtext }</div>
+		</td>
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">

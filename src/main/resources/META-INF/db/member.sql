@@ -10,7 +10,7 @@ INSERT INTO MEMBER VALUES('aaa', '1', '차길동', '오산시', '010-5555-5555',
 INSERT INTO MEMBER VALUES('bbb', '1', '신길동', '마산시', '010-8888-8888', 'shin@gildong.com', 'm','2010-11-11', SYSDATE);
 INSERT INTO MEMBER VALUES('ccc', '1', '박길동', '수원시', '010-7777-7777', 'park@gildong.com', 'm','2000-10-10', SYSDATE);
 INSERT INTO MEMBER VALUES('ddd', '1', '최길동', '인천시', '010-6666-6666', 'choi@gildong.com', 'm','1990-09-09', SYSDATE);
-INSERT INTO MEMBER VALUES('eee', '1', '김제니', '서울시', '010-5555-5555', 'kim@naver.com', 'f','1980-08-08', SYSDATE);
+INSERT INTO MEMBER VALUES('zzz', '1', '김제니', '서울시', '010-5555-5555', 'kim@naver.com', 'f','1980-08-08', SYSDATE);
 
 -- 3. 로그인 : Member.xml id=getMember
 SELECT * FROM MEMBER WHERE ID='aaa';
@@ -34,10 +34,12 @@ SELECT ID FROM MEMBER WHERE NAME='홍길동' AND EMAIL='hong@naver.com';
 SELECT PW FROM MEMBER WHERE ID='aaa' AND NAME='홍길동' AND EMAIL='hong@naver.com';
 
 -- 7. 회원탈퇴 : Member.xml id=deleteMember
-DELETE FROM MEMBER WHERE ID='fff';
+DELETE FROM MEMBER WHERE ID='ccc';
 ROLLBACK;
 COMMIT;
 SELECT * FROM MEMBER;
+
+
 
 
 

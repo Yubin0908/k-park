@@ -18,8 +18,8 @@ public interface SuggestService {
 	public Suggest suggestModifyReplyView(int sno);
 	public int suggestModify(Suggest suggest, HttpServletRequest request);
 	public int suggestDelete(int sno);
-	public int suggestReply(Suggest suggest, HttpServletRequest request);
-	public int suggestPreReplayStep(Suggest suggest);
+	public int suggestReplyWrite(Suggest suggest, HttpServletRequest request);
+	public int suggestPreReplyWriteStep(Suggest suggest);
 }
 
 

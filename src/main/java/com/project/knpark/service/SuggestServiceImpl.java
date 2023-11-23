@@ -30,10 +30,12 @@ public class SuggestServiceImpl implements SuggestService {
 
 	@Override
 	public int suggestInsert(Suggest suggest, HttpServletRequest request) {
-		suggest.setSearch(request.getRemoteAddr());
+		//suggest.setSearch(request.getRemoteAddr());
+		System.out.println("서비스의 suggest:" + suggest);
+		suggest.setSip(request.getRemoteAddr());
 		return suggestRepository.suggestInsert(suggest);
 	}
-
+	
 	@Override
 	public Suggest getSuggest(int sno, String after) {
 		if(after == null) {
@@ -59,14 +61,14 @@ public class SuggestServiceImpl implements SuggestService {
 	}
 
 	@Override
-	public int suggestReply(Suggest suggest, HttpServletRequest request) {
+	public int suggestReplyWrite(Suggest suggest, HttpServletRequest request) {
 		suggest.setSip(request.getRemoteAddr());
-		suggestRepository.suggestPreReplayStep(suggest);
-		return suggestRepository.suggestReplay(suggest);
+		suggestRepository.suggestPreReplyStep(suggest);
+		return suggestRepository.suggestReplyWrite(suggest);
 	}
 	@Override
-	public int suggestPreReplayStep(Suggest suggest) {
-		return suggestRepository.suggestPreReplayStep(suggest);
+	public int suggestPreReplyWriteStep(Suggest suggest) {
+		return suggestRepository.suggestPreReplyStep(suggest);
 	}
 	
 }
