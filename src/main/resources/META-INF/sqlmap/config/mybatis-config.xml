@@ -10,6 +10,8 @@
 		<typeAlias type="com.project.knpark.vo.Review" alias="Review"/>
 		<typeAlias type="com.project.knpark.vo.Suggest" alias="Suggest"/>
 		<typeAlias type="com.project.knpark.vo.Admin" alias="Admin"/>
+		<typeAlias type="com.project.knpark.vo.Qna" alias="Qna"/>
+		<typeAlias type="com.project.knpark.vo.Infomation" alias="Infomation"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
@@ -18,5 +20,7 @@
 		<mapper resource="META-INF/sqlmap/mappers/review.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/suggest.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/admin.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/qna.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/infomation.xml"/>
 	</mappers>
 </configuration>

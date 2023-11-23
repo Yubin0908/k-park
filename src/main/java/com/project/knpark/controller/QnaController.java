@@ -21,30 +21,33 @@ public class QnaController {
 	@RequestMapping(value = "qnaList", method= {RequestMethod.GET, RequestMethod.POST})
 	public String qnaList(String pageNum, Model model, Qna qna) {
 		model.addAttribute("qnaList", qnaService.qnaList(pageNum, qna));
-		model.addAttribute("paging", new Paging(qnaService.getQnaTotCnt(qna), pageNum));
+		model.addAttribute("paging", new Paging(qnaService.getQnaTotCnt(qna), pageNum, 10, 10));
+		model.addAttribute("qnaCnt", qnaService.getQnaTotCnt(qna));
 		return "board/qnaList";
 	}
-	@RequestMapping(value = "qnaInsert", method=RequestMethod.GET)
-	public String qnaInsert() {
-		return "board/qnaInsert";
+	@RequestMapping(value = "qnaWrite", method=RequestMethod.GET)
+	public String qnaWrite() {
+		return "board/qnaWrite";
 	}
-	@RequestMapping(value = "qnaInsert", method=RequestMethod.POST)
-	public String qnaInsert(Qna qna, HttpServletRequest request, Model model) {
-		model.addAttribute("insertResult", qnaService.qnaInsert(qna, request));
+
+	
+	@RequestMapping(value = "qnaWrite", method=RequestMethod.POST) 
+	public String qnaWrite(Qna qna, HttpServletRequest request, Model model) {
+		model.addAttribute("qnaWriteResult", qnaService.qnaInsert(qna, request));
 		return "forward:qnaList.do";
 	}
 	@RequestMapping(value = "qnaDetail", method= {RequestMethod.GET, RequestMethod.POST})
-	public String qnaDetail(int qno, Model model) {
-		model.addAttribute("qna", qnaService.qnaDetail(qno));
+	public String qnaDetail(int qno, Model model, String after) {
+		model.addAttribute("qna", qnaService.qnaDetail(qno, after));
 		return "board/qnaDetail";
 	}
 	@RequestMapping(value = "qnaModify", method=RequestMethod.GET)
-	public String qnaModify(int qno, Model model) {
-		model.addAttribute("qna", qnaService.qnaDetail(qno));
+	public String qnaModify(int qno, Model model, String after) {
+		model.addAttribute("qna", qnaService.qnaDetail(qno, after));
 		return "board/qnaModify";
 	}
 	@RequestMapping(value = "qnaModify", method=RequestMethod.POST)
-	public String qnaModify(HttpServletRequest request, @ModelAttribute("qDto") Qna qna, Model model, String pageNum) {
+	public String qnaModify(HttpServletRequest request, Qna qna, Model model, String pageNum) {
 		model.addAttribute("modifyResult", qnaService.qnaModify(qna, request));
 		return "forward:qnaList.do";
 	}

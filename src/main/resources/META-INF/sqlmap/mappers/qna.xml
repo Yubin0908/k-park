@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.priject.knpark.repository.QnaRepository">
+<mapper namespace="com.project.knpark.repository.QnaRepository">
 	<resultMap type="Qna" id="QnaResult">
 		<result property="qno" column="qno"/>
 		<result property="id" column="id"/>
@@ -20,31 +20,31 @@
 	<select id="qnaList" parameterType="Qna" resultMap="QnaResult">
 		<if test="option==null or option==''">
 			SELECT *
-			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QTITLE DESC) A)
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QNO DESC) A)
 			    WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==all">
+		<if test="option=='all'">
 			SELECT * 
    				FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
 		        	WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==qtitle">
+		<if test="option=='qtitle'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
          			 FROM (SELECT * FROM QNA 
 		        	WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==qtext">
+		<if test="option=='qtext'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
 		        	WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
 		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
-		<if test="option==parkname">
+		<if test="option=='parkname'">
 			SELECT * 
     			FROM (SELECT ROWNUM RN, A.* 
           			FROM (SELECT * FROM QNA 
@@ -58,16 +58,16 @@
 		<if test="option==null or option==''">
 			SELECT COUNT(*) FROM QNA
 		</if>
-		<if test="option==all">
+		<if test="option=='all'">
 			SELECT COUNT(*) FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%'
 		</if>
-		<if test="option==qtitle">
+		<if test="option=='qtitle'">
 			SELECT COUNT(*) FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%'
 		</if>
-		<if test="option==qtext">
+		<if test="option=='qtext'">
 			SELECT COUNT(*) FROM QNA WHERE QTEXT LIKE '%'||'본'||'%'
 		</if>
-		<if test="option==parkname">
+		<if test="option=='parkname'">
 			SELECT COUNT(*) FROM QNA WHERE PARKNAME LIKE '%'||'지'||'%'
 		</if>
 	</select>
@@ -91,5 +91,8 @@
 		        QIP = #{qip}
 		    WHERE QNO = #{qno}
 	</update>
+	<delete id="qnaDelete" parameterType="int">
+		DELETE FROM QNA WHERE QNO=#{qno}
+	</delete>
 </mapper>    
 
