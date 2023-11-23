@@ -17,12 +17,12 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${suggestInsertResult eq 1 }">
+	<c:if test="${suggestWriteResult eq 1 }">
 		<script>
 			alert('건의사항이 등록되었습니다.');
 		</script>
 	</c:if>
-	<c:if test="${deleteResult eq 1 }">
+	<c:if test="${suggestDeleteResult eq 1 }">
 		<script>
 			alert('건의사항이 삭제되었습니다.');
 		</script>
@@ -51,7 +51,7 @@
     <br>
     <br>
     <div class="bbs_content">
-      	<h5>총 <span>${cnt }</span> 건<button class="write" onclick="location.href='${conPath}/board/suggestInsert.do'">글쓰기</button></h5>
+      	<h5>총 <span>${cnt }</span> 건<button class="write" onclick="location.href='${conPath}/board/suggestWrite.do'">글쓰기</button></h5>
       
       	<table class="table">
 	      	<colgroup>
@@ -66,7 +66,17 @@
         	<tr class="bbs_content_list">
         		<td>${list.sno }</td>
 	          	<td>${list.writer }</td>
-	          	<td><a class="detail_a" href="${conPath }/board/sugDetail.do?sno=${list.sno}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}">${list.stitle }</a></td>
+	          	
+	          	<td>
+	          	<c:forEach var="i" begin="1" end="${list.sindent }">
+		          	<c:if test="${i eq list.sindent }">
+	      				&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
+	     			</c:if>
+	        		<c:if test="${i ne list.sindent }">
+	          			&nbsp; &nbsp; &nbsp;
+	          		</c:if>
+          		</c:forEach>
+	          	<a class="detail_a" href="${conPath }/board/sugDetail.do?sno=${list.sno}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}">${list.stitle }</a></td>
 	          	<td>${list.srdate }</td>
 	          	<td>${list.shit }</td>
         	</tr>

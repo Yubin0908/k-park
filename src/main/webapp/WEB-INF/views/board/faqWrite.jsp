@@ -12,6 +12,12 @@
   	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
+	<c:if test="${empty admin }">
+		<script>
+			alert('로그인 후 글쓰기가 가능합니다');
+			location.href = '${conPath}/admin/login.do?after=board/faqWrite.do?sno=${param.sno}&pageNum=${param.pageNum}&schItem=${param.schItem}&schWord=${param.schWord}';
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
     <div class="sub_title">
@@ -23,9 +29,9 @@
     <form action="${conPath }/board/faqWrite.do" method="post" id="reviewForm">
     	<table class="writeTable">
 	        <tr class="RH_title">
-		          <td>제목</td>
-		          <td><input type="text" name="ftitle"></td>
-	        </tr>
+          <td>제목</td>
+          <td><input type="text" name="ftitle"></td>
+        </tr>
 	        <tr class="RH_writer">
 		          <td>작성자</td>
 		          <td><input type="text" name="aid" value="${admin.aid }"></td>

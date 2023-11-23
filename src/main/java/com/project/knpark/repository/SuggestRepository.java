@@ -15,7 +15,7 @@ public interface SuggestRepository {
 	public Suggest getSuggest(int sno);
 	public int suggestModify(Suggest suggest);
 	public int suggestDelete(int sno);
-	public int suggestPreReplayStep(Suggest suggest);
-	public int suggestReplay(Suggest suggest);
+	public int suggestPreReplyStep(Suggest suggest);
+	public int suggestReplyWrite(Suggest suggest);
 	
 }

@@ -16,7 +16,7 @@
 			alert('자주하는 질문이 등록되었습니다.');
 		</script>
 	</c:if>
-	<c:if test="${deleteResult eq 1 }">
+	<c:if test="${fagDeleteResult eq 1 }">
 		<script>
 			alert('자주하는 질문이 삭제되었습니다.');
 		</script>
@@ -45,7 +45,7 @@
     <br>
     <br>
     <div class="bbs_content">
-      	<h5>총 <span>${cnt }</span> 건<button class="write" onclick="location.href='${conPath}/board/faqWrite.do'">글쓰기</button></h5>
+      	<h5>총 <span>${cnt }</span> 건<c:if test="${not empty admin}" ><button class="write" onclick="location.href='${conPath}/board/faqWrite.do'">글쓰기</button></c:if></h5>
       
       	<table class="table">
       	<colgroup>
