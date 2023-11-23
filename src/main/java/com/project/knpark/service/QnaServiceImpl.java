@@ -34,7 +34,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public Qna qnaDetail(int qno) {
+	public Qna qnaDetail(int qno, String after) {
 		return qnaRepository.qnaDetail(qno);
 	}
 

@@ -104,7 +104,7 @@
 			    	</ul>
 			    </li>
 	     		<li>
-	       	 		<a href="">알림마당</a>
+	       	 		<a href="">고객마당</a>
 	       	 		<ul class="submenu">
 				        <li><a href="${conPath }/board/qnaList.do">묻고답하기</a></li>
 				        <li><a href="${conPath }/board/sugList.do">건의합니다</a></li>
@@ -112,7 +112,7 @@
 	       	 		</ul>
 	      		</li>
 	      		<li>
-	       	 		<a href="">고객마당</a>
+	       	 		<a href="">알림마당</a>
 	       	 		<ul class="submenu">
 	       	 			<li><a href="${conPath }/board/noticeList.do">공지사항</a></li>
 				        <li><a href="${conPath }/board/faqList.do">자주하는 질문</a></li>
@@ -143,13 +143,12 @@
 	    	<ul>
 			    <li><a href="${conPath }/member/join.do">회원가입</a></li>	      	
 	    		<li><a href="${conPath }/member/login.do"><span>로그인</span></a></li>
-	    		
 	      	</ul>
 	    </c:if>
 	    <c:if test="${not empty member or not empty admin }">
 	    	<li><a href="${conPath }/member/modify.do">정보수정</a></li>	      	
 	    	<li><a href="${conPath }/member/logout.do">로그아웃</a></li>
-	    	<li><a>${member.name } ${admin.name }님 환영합니다.</a></li>
+	    	<li><a>${member.name } ${admin.aname }님 환영합니다.</a></li>
 	    </c:if>
     	</div>
 	</div>

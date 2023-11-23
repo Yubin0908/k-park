@@ -1,11 +1,11 @@
--- 예약 가능한 날짜 출력 ID = getCampDate
+-- 날짜 출력 ID = getCampDate
 SELECT RESDATE FROM RESERVED WHERE CAMPNO = 100;
 
--- 날짜 선택 시 예약 가능한지(REM > 0) ID = get CampDateRem
-SELECT RESDATE, REM FROM RESERVED WHERE CAMPNO = 100 AND REM > 0;
+-- 날짜 선택 시 예약 가능한지(REM > 0) ID = getCampDateRem
+SELECT RESDATE, REM FROM RESERVED WHERE CAMPNO = 100 AND REM > 0 AND RESDATE = '2023-11-24';
 
--- 예약가능하면 리스트 출력 ID = getCampDetail
-SELECT * FROM RESERVED WHERE CAMPNO = 100;
+-- 예약가능하면 테이블 데이터 반환 ID = getCampDetail
+SELECT * FROM RESERVED WHERE CAMPNO = 100 AND RESDATE = '2023-11-24';
 
 -- 예약 처리 ID = reservationCamp
 INSERT INTO BOOKING (BNO, ID, CAMPNO, STATUS, BDATE) VALUES (BOOKING_SQ.NEXTVAL, 'test', 100, 1, '2023-11-24');
