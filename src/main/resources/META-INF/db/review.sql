@@ -58,6 +58,9 @@ UPDATE REVIEW SET
 DELETE FROM REVIEW WHERE RNO = 2;
 -- 조회수 ID = reviewHitUp
 UPDATE REVIEW SET RHIT = RHIT + 1 WHERE RNO = 1;
+-- 글삭제를 위한 댓글 삭제처리 ID = deleteReviewMoreCmt
+DELETE FROM REVIEW_CMT WHERE RNO = 1;
+
 
 --=================================================댓글에 대한 쿼리=========================================================
 SELECT * FROM REVIEW_CMT WHERE RNO = 28;
@@ -66,7 +69,7 @@ SELECT * FROM REVIEW_CMT WHERE RNO = 28;
 commit;
 -- 댓글 리스트 출력 ID = getReviewCmt
 SELECT * FROM
-  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT WHERE RNO = 27 ORDER BY CGROUP DESC, CSTEP) A)
+  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM REVIEW_CMT WHERE RNO = 9 ORDER BY CGROUP DESC, CSTEP) A)
   WHERE RN BETWEEN 1 AND 10;
 -- 댓글 갯수 ID = getReviewCmtCnt
 SELECT COUNT(*) FROM REVIEW_CMT WHERE RNO = 1;

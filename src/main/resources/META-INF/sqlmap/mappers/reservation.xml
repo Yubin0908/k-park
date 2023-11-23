@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.project.knpark.repository.ReservationRepository" >
+	<resultMap type="Reservation" id="CampResult">
+		<result property="campno" column="campno"/>
+		<result property="campname" column="campname"/>
+		<result property="parkname" column="parkname"/>
+		<result property="campaddress" column="campaddress"/>
+		<result property="camptel" column="camptel"/>
+	</resultMap>
+	<resultMap type="Reservation" id="ReservedResult">
+		<result property="resno" column="resno"/>
+		<result property="campno" column="campno"/>
+		<result property="shelterno" column="shelterno"/>
+		<result property="exploreno" column="exploreno"/>
+		<result property="resdate" column="resdate"/>
+		<result property="rem" column="rem"/>
+	</resultMap>
+	<resultMap type="Reservation" id="BookingResult">
+		<result property="bno" column="bno"/>
+		<result property="id" column="id"/>
+		<result property="campno" column="campno"/>
+		<result property="shelterno" column="shelterno"/>
+		<result property="exploreno" column="exploreno"/>
+		<result property="status" column="status"/>
+		<result property="bdate" column="bdate"/>
+	</resultMap>
+	<!-- 날짜 출력 -->
+	<select id="getCampDate" parameterType="int" resultMap="CampResult">
+		SELECT RESDATE FROM RESERVED WHERE CAMPNO = #{campno}
+	</select>
+	<!-- 예약 가능 여부 반환 -->
+	<select id="getCampDateRem" parameterType="Reservation" resultType="int">
+		SELECT RESDATE, REM FROM RESERVED WHERE CAMPNO = #{campno} AND REM > 0 AND RESDATE = #{resdate}
+	</select>
+	<!-- 예약가능할 경우, 테이븡정보 출력 -->
+	<select id="getCampDetail" parameterType="Reservation" resultType="Reservation">
+		SELECT * FROM RESERVED WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
+	</select>
+	<!-- 예약 처리 -->
+	<insert id="reservationCamp" parameterType="Reservation">
+		INSERT INTO BOOKING (BNO, ID, CAMPNO, STATUS, BDATE) VALUES (BOOKING_SQ.NEXTVAL, #{id}, #{campno}, 1, #{bdate})
+	</insert>
+	<!-- 예약 성공 시, rem(잔여량) 감소 -->
+	<update id="remMinus" parameterType="Reservation">
+		UPDATE RESERVED SET REM = REM - 1 WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
+	</update>
+	<!-- 예약 내역 출력 -->
+	<select id="getBookingInfo" parameterType="String" resultMap="BookingResult">
+		SELECT * FROM BOOKING WHERE ID = #{id}
+	</select>
+	<!-- 예약 취소 -->
+	<update id="cancleReservation" parameterType="int">
+		UPDATE BOOKING SET STATUS = 0 WHERE BNO = #{bno}
+	</update>
+	
+	<update id="remPlus" parameterType="Reservation">
+		UPDATE RESERVED SET REM = REM + 1 WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
+	</update>
+</mapper>
