@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.knpark.repository.InfomationRepository">
+	<resultMap type="Infomation" id="InfomationResult">
+		<result property="ino" column="ino"/>
+		<result property="aid" column="aid"/>
+		<result property="iparkname" column="iparkname"/>
+		<result property="itype" column="itype"/>
+		<result property="ititle" column="ititle"/>
+		<result property="itext" column="itext"/>
+		<result property="irdate" column="irdate"/>
+	</resultMap>
+	<!-- 가나다순으로 startRow~endRow번째 까지  -->
+	<select id="infoList" parameterType="Infomation" resultMap="InfomationResult">
+		<if test="option == null or option == ''">
+			SELECT *
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT *FROM INFOMATION ORDER BY INO DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'all'">
+			SELECT *
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT *FROM INFOMATION WHERE ITITLE LIKE '%'||#{search}||'%' OR ITEXT LIKE '%'||#{search}||'%'  ORDER BY ITITLE DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'ititle'">
+			SELECT *
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT *FROM INFOMATION WHERE ITITLE LIKE '%'||#{search}||'%' ORDER BY ITITLE DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+		<if test="option == 'itext'">
+			SELECT *
+			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT *FROM INFOMATION WHERE ITEXT LIKE '%'||#{search}||'%' ORDER BY ITITLE DESC) A)
+			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+		</if>
+	</select>
+	<select id="getInfoTotCnt" parameterType="Infomation" resultType="int">
+		<if test="option == null or option == ''">
+			SELECT COUNT(*) FROM INFOMATION
+		</if>
+		<if test="option == 'all'">
+			SELECT COUNT(*) FROM INFOMATION WHERE ITITLE LIKE '%'||#{search}||'%' OR ITEXT LIKE '%'||#{search}||'%'
+		</if>
+		<if test="option == 'ititle'">
+			SELECT COUNT(*) FROM INFOMATION WHERE ITITLE LIKE '%'||#{search}||'%'
+		</if>
+		<if test="option == 'itext'">
+			SELECT COUNT(*) FROM INFOMATION WHERE ITEXT LIKE '%'||#{search}||'%'
+		</if>
+	</select>
+	<select id="getInfo" parameterType="int" resultType="Infomation">
+		SELECT * FROM INFOMATION WHERE INO = #{ino}
+	</select>
+	<insert id="infoInsert" parameterType="Infomation">
+		INSERT INTO INFOMATION (INO, AID, IPARKNAME, ITYPE, ITITLE, ITEXT)
+    		VALUES (INFOMATION_SQ.NEXTVAL, #{aid}, #{iparkname}, #{itype}, #{ititle}, #{itext})
+	</insert>
+	<update id="infoModify" parameterType="Infomation">
+		UPDATE INFOMATION
+		    SET IPARKNAME = #{iparkname},
+		        ITYPE = #{itype},
+		        ITITLE = #{ititle},
+		        ITEXT = #{itext}
+		    WHERE INO = #{ino}
+	</update>
+	<delete id="infoDelete" parameterType="int">
+		DELETE FROM INFOMATION WHERE INO = #{ino}
+	</delete>
+</mapper>
