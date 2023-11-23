@@ -53,7 +53,7 @@ DELETE FROM SUGGEST WHERE SNO=4;
 SELECT * FROM SUGGEST ORDER BY SGROUP DESC, SSTEP; -- 확인
 
 -- Suggest.xml에 들어갈 query
--- 1. 글목록(startRow부터 endRow) id=suggerList
+-- 1. 글목록(startRow부터 endRow) id=suggestList
 -- WRITER 타이틀에 작성자이름(사용자가 썼으면 사용자이름, 관리자가 썼으면 관리자 이름) 출력
 --SELECT SNO, (SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID)||
 --  (SELECT ANAME FROM ADMIN WHERE SUGGEST.AID=AID) WRITER, STITLE, SHIT, SRDATE 
@@ -63,44 +63,49 @@ SELECT * FROM SUGGEST ORDER BY SGROUP DESC, SSTEP; -- 확인
 --SELECT SNO, (SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID)||
 --  (SELECT '관리자' FROM ADMIN WHERE SUGGEST.AID=AID) WRITER, STITLE, SHIT, SRDATE 
 --  FROM SUGGEST ORDER BY SRDATE DESC;
+--SELECT SNO, NVL((SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID), '관리자') WRITER, STITLE, SHIT, SRDATE 
+--  FROM SUGGEST ORDER BY SRDATE DESC;
+
+SELECT *
+    FROM (SELECT ROWNUM RN, A.* FROM (SELECT SNO, NVL((SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID), '관리자') WRITER, STITLE, SHIT, SRDATE, SINDENT, SSTEP 
+        FROM SUGGEST ORDER BY SGROUP DESC, SSTEP) A)
+    WHERE RN BETWEEN 1 AND 20;
   
-SELECT SNO, NVL((SELECT NAME FROM MEMBER WHERE SUGGEST.ID=ID), '관리자') WRITER, STITLE, SHIT, SRDATE 
-  FROM SUGGEST ORDER BY SRDATE DESC;
-  
--- 2. 글갯수 id=getsuggerTotCnt
+-- 2. 글갯수 id=getSuggestTotCnt
 SELECT COUNT(*) CNT FROM SUGGEST;
 
--- 3. 원글쓰기 id=suggerInsert
+-- 3. 원글쓰기 id=suggestInsert
 INSERT INTO SUGGEST (SNO, ID, STITLE, STEXT, SRDATE, SGROUP, SSTEP, SINDENT, SIP)
   VALUES (SUGGEST_SQ.NEXTVAL, 'aaa', '난방', '개별난방을 해주세요', SYSDATE, SUGGEST_SQ.CURRVAL, 0,0, '192.168.0.254');--글1
   
--- 4. bid로 조회수 1 올리기 id=suggerHitUp
+-- 4. bid로 조회수 1 올리기 id=suggestHitUp
 UPDATE SUGGEST SET SHIT = SHIT+1 WHERE SNO=8;
 
--- 5. bid로 dto가져오기 id=getSugger
+-- 5. bid로 dto가져오기 id=getSuggest
 SELECT * FROM SUGGEST WHERE SNO=9;
 
--- 6. 글수정 id=modifySugger
+-- 6. 글수정 id=suggestModify
 UPDATE SUGGEST 
-    SET ID = 'aaa',
+    SET ID = 'bbb',
         AID = null,
         STITLE = '가까운',
         STEXT = '주차장',
         SIP = '192.168.0.190'
-    WHERE SNO = 3;
-        
--- 7. 글삭제 id=deleteSugger
-COMMIT;
+    WHERE SNO = 10;
+    
+COMMIT;        
+-- 7. 글삭제 id=suggestDelete
 DELETE FROM SUGGEST WHERE SNO=3;
 ROLLBACK;
+
 COMMIT;
 SELECT * FROM SUGGEST;
 
--- 8. 답변글 저장 전단계(엑셀 ⓐ단계) :  id=boardPreReplyStep
-SELECT * FROM SUGGEST WHERE SNO=8;
+-- 8. 답변글 저장 전단계(엑셀 ⓐ단계) :  id=suggestPreReplyStep
+SELECT * FROM SUGGEST WHERE SNO=5;
 UPDATE SUGGEST SET SSTEP = SSTEP+1 WHERE SGROUP=8 AND SSTEP > 1;
 
--- 9. 답변글 저장 (원글의 SGROUP=2, SSTEP=1, SINDENT=1) id=suggerReplyInsert
+-- 9. 답변글 저장 (원글의 SGROUP=2, SSTEP=1, SINDENT=1) id=uggestReplyInsert
 INSERT INTO SUGGEST (SNO, AID, STITLE, STEXT, SRDATE, SGROUP, SSTEP, SINDENT, SIP)
   VALUES (SUGGEST_SQ.NEXTVAL, 'admin', '난방을 ', '개별난방으로', SYSDATE, 8, 1, 1, '192.168.0.200');
 

@@ -44,7 +44,7 @@
 	</select>
 	<select id="findPWAccount" parameterType="String" resultType="Member">
 		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND EMAIL=#{email}
-	</select>-->
+	</select> -->
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM MEMBER WHERE ID=#{id}
 	</delete>

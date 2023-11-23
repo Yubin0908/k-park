@@ -143,6 +143,7 @@
 	    	<ul>
 			    <li><a href="${conPath }/member/join.do">회원가입</a></li>	      	
 	    		<li><a href="${conPath }/member/login.do"><span>로그인</span></a></li>
+	    		
 	      	</ul>
 	    </c:if>
 	    <c:if test="${not empty member or not empty admin }">

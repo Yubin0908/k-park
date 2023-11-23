@@ -39,6 +39,9 @@
 	        <a href="http://www.knps.or.kr/portal/main/contents.do?menuNo=7020135" class="btn" target="_blank" 
 	        	rel="noopener noreferrer" style="font-weight: bold; color: blue; background: lightgray;
 	        	text-decoration: none;">개인정보처리방침</a>
+	        <a href="${conPath }admin/login.do" class="btn" 
+				style="font-weight: bold; color: blue; background: yellow;
+	        	text-decoration: none;">관리자</a>
 	    </div>
 	</footer>
 </body>
