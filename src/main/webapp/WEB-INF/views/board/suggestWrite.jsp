@@ -50,7 +50,7 @@
         <tr>
 			<td class="submit_btn" colspan="2">
             	<input type="button" value="제출" onclick="submitForm()">
-            	<input type="submit" value="답변쓰기" class="btn">
+            	<!-- <input type="submit" value="답변쓰기" class="btn"> -->
 				<input type="reset" value="초기화" class="btn">
 			</td>
         </tr>
