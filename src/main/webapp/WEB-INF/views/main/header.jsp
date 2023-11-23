@@ -149,7 +149,7 @@
 	    <c:if test="${not empty member or not empty admin }">
 	    	<li><a href="${conPath }/member/modify.do">정보수정</a></li>	      	
 	    	<li><a href="${conPath }/member/logout.do">로그아웃</a></li>
-	    	<li><a>${member.name } ${admin.name }님 환영합니다.</a></li>
+	    	<li><a>${member.name } ${admin.aname }님 환영합니다.</a></li>
 	    </c:if>
     	</div>
 	</div>
