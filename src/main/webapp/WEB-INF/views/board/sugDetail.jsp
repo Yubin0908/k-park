@@ -11,9 +11,14 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
+	<c:if test="${suggestReplyModifyResult eq 1 }">
+		<script>
+			alert('답변글이 수정 되었습니다.');
+		</script>
+	</c:if>
 	<c:if test="${modifyResult eq 1 }">
 		<script>
-			alert('건의사항 수정이 완료되었습니다.');
+			alert('건의사항이 수정 되었습니다.');
 		</script>
 	</c:if>
 	<div id="bbs_wrap">
@@ -42,9 +47,9 @@
       </div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
-    	<button onclick="location.href='${conPath}/board/suggestReplyWrite.do?sno=${param.sno}&pageNum=${param.pageNum}'">답변</button>
-    	<button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'">글 삭제</button>
+    	<c:if test="${suggest.id eq member.id}" ><button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button></c:if>
+    	<c:if test="${suggest.id eq member.id}" ><button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'">글 삭제</button></c:if>
+    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/suggestReplyWrite.do?sno=${param.sno}&pageNum=${param.pageNum}'">답변</button></c:if>
 		<button onclick="location.href='${conPath}/board/sugList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   	</div>

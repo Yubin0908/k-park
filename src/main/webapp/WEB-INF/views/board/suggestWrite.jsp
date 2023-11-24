@@ -8,8 +8,16 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="${conPath }/css/board.css" />
-  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  	<style>
+  		input[name="stitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<c:if test="${empty member }">
@@ -29,11 +37,11 @@
     <form action="${conPath }/board/suggestWrite.do" method="post" id="suggestForm">
 	<table class="writeTable">
         <tr class="RH_title">
-		<td>제목</td>
-		<td><input type="text" name="stitle"></td>
+			<td>제목</td>
+			<td><input type="text" name="stitle"></td>
         </tr>
         <tr class="RH_writer">
-        <td>작성자</td>
+        	<td>작성자</td>
 			<td><input type="text" name="id" value="${member.id }"></td>
 			<%-- <td><input type="hidden" name="aid" value="${admin.id }"></td> --%>
         </tr>
@@ -49,8 +57,8 @@
 
         <tr>
 			<td class="submit_btn" colspan="2">
-            	<input type="button" value="제출" onclick="submitForm()">
-            	<!-- <input type="submit" value="답변쓰기" class="btn"> -->
+            	<input type="button" value="글쓰기" onclick="submitForm()">
+            	<c:if test="${not empty admin}" ><input type="submit" value="답변쓰기" class="btn"></c:if>
 				<input type="reset" value="초기화" class="btn">
 			</td>
         </tr>

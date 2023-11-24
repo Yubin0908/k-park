@@ -12,6 +12,12 @@
   <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 </head>
 <body>
+	<c:if test="${empty member }">
+		<script>
+			alert('로그인 하셔야 글쓰기가 가능합니다.');
+			location.href = '${conPath}/member/login.do';
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
     <div class="sub_title">
