@@ -1,9 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: ActionCow
-=======
-Built-By: KIMBYUNGHO
->>>>>>> 38b85a449c7b3e0a134f7514884aa357dffa5252
 Build-Jdk: 1.8.0_371
 Created-By: Maven Integration for Eclipse
 

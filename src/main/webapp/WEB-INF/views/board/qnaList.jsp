@@ -74,7 +74,13 @@
 			       	<td>${list.qno }</td>
 			       	<td>${list.parkname }</td>
 			       	<td>${list.qtype }</td>
-			        <td><a class="detail_a" href="${conPath }/board/qnaDetail.do?qno=${list.qno}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}">${list.qtitle }</a></td>
+			        <td>
+			        	<a class="detail_a" href="${conPath }/board/qnaDetail.do?qno=${list.qno}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}&qgroup=${list.qgroup}">
+		        			<c:if test="${list.qyn eq 'n' }">
+		        				<img alt="비공개" src="${conPath }/img/closekey.jpg" style="width:20px;" >
+		        			</c:if>${list.qtitle }
+			        	</a>
+			        </td>
 			        <td>${list.id }</td>
 			        <td>${list.qrdate }</td>
 			        <td>${list.qstatus }</td>

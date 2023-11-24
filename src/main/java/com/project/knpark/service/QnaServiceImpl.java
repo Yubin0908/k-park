@@ -48,5 +48,26 @@ public class QnaServiceImpl implements QnaService {
 	public int qnaDelete(int qno) {
 		return qnaRepository.qnaDelete(qno);
 	}
-
+	
+	@Override
+	public Qna qnaModifyReplyView(int qno) {
+		return qnaRepository.qnaDetail(qno);
+	}
+		
+	@Override
+	public int qnaPreReplyStep(Qna qna) {
+		return qnaRepository.qnaPreReplyStep(qna);
+	}
+	
+	@Override
+	public int qnaReplyInsert(Qna qna, HttpServletRequest request) {
+		qna.setQip(request.getRemoteAddr());
+		qnaRepository.qnaPreReplyStep(qna);
+		return qnaRepository.qnaReplyInsert(qna);
+	}
+	
+	@Override
+	public Qna qnaAdminReply(int qgroup) {
+		return qnaRepository.qnaAdminReply(qgroup);
+	}
 }

@@ -14,8 +14,11 @@ public class Qna {
 	private String qtitle;
 	private String qtext;
 	private Date qrdate;
+	private String qyn;
 	private int qstatus;
 	private int qgroup;
+	private int qstep;
+	private int qindent;
 	private String qip;
 	private int startRow;
 	private int endRow;

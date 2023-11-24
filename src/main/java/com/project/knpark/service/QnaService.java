@@ -13,4 +13,9 @@ public interface QnaService {
 	public Qna qnaDetail(int qno, String after);
 	public int qnaModify(Qna qna, HttpServletRequest request);
 	public int qnaDelete(int qno);
+	// 답변
+	public Qna qnaModifyReplyView(int qno);
+	public int qnaPreReplyStep(Qna qna);
+	public int qnaReplyInsert(Qna qna, HttpServletRequest request);
+	public Qna qnaAdminReply(int qgroup);
 }

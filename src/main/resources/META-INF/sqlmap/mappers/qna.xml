@@ -11,8 +11,11 @@
 		<result property="qtitle" column="qtitle"/>
 		<result property="qtext" column="qtext"/>
 		<result property="qrdate" column="qrdate"/>
+		<result property="qyn" column="qyn"/>
 		<result property="qstatus" column="qstatus"/>
 		<result property="qgroup" column="qgroup"/>
+		<result property="qstep" column="qstep"/>
+		<result property="qindent" column="qindent"/>
 		<result property="qip" column="qip"/>
 	</resultMap>
 	
@@ -20,32 +23,32 @@
 	<select id="qnaList" parameterType="Qna" resultMap="QnaResult">
 		<if test="option==null or option==''">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
-  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QNO DESC) A) M
- 				WHERE RN BETWEEN #{startRow} AND #{endRow}
+     , M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTATUS=0 ORDER BY QNO DESC) A) M
+ WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='all'">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
-  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QYN, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTATUS=0 AND QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
  				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='qtitle'">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-   					, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
-				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+   					, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QYN, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTATUS=0 AND QTITLE LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
  				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='qtext'">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
-  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QYN, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTATUS=0 AND QTEXT LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
  				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='parkname'">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
-				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QYN, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTATUS=0 AND PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
 				 WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 	</select>
@@ -73,11 +76,13 @@
 	<select id="qnaDetail" parameterType="int" resultType="Qna">
 		SELECT * FROM QNA WHERE QNO=#{qno}
 	</select>
+	
 	<!-- 글 등록  -->
 	<insert id="qnaInsert" parameterType="Qna">
-		INSERT INTO QNA (QNO, ID, PARKNAME, QTYPE, QTITLE, QTEXT, QSTATUS, QGROUP, QIP)
-    		VALUES(QNA_SQ.NEXTVAL, #{id}, #{parkname}, #{qtype}, #{qtitle}, #{qtext}, 0, 0, #{ip})
+		INSERT INTO QNA (QNO, ID, PARKNAME, QTYPE, QTITLE, QTEXT, QRDATE, QYN, QSTATUS, QGROUP, QSTEP, QINDENT, QIP)
+    VALUES(QNA_SQ.NEXTVAL, #{id}, #{parkname}, #{qtype}, #{qtitle}, #{qtext}, SYSDATE, #{qyn},  0, QNA_SQ.CURRVAL, 0, 0, #{qip})
 	</insert>
+	
 	<update id="qnaModify" parameterType="Qna">
 		UPDATE QNA 
     		SET PARKNAME = #{parkname},
@@ -85,11 +90,25 @@
 		        QTITLE = #{qtitle},
 		        QTEXT = #{qtext},
 		        QRDATE = SYSDATE,
+		        QYN = #{qyn},
 		        QIP = #{qip}
 		    WHERE QNO = #{qno}
 	</update>
+	
 	<delete id="qnaDelete" parameterType="int">
 		DELETE FROM QNA WHERE QNO=#{qno}
 	</delete>
+	
+	<update id="qnaPreReplyStep" parameterType="Qna">
+		UPDATE QNA SET QSTEP = QSTEP +1 WHERE QGROUP=#{qgroup} AND QSTEP > #{qstep}
+	</update>
+	
+	<insert id="qnaReplyInsert" parameterType="Qna">
+		INSERT INTO QNA (QNO, AID, PARKNAME, QTITLE, QTEXT, QRDATE, QYN, QSTATUS, QGROUP, QSTEP, QINDENT, QIP)
+  			VALUES (QNA_SQ.NEXTVAL, #{aid}, #{parkname}, #{qtitle}, #{qtext}, SYSDATE, #{qyn}, 1, #{qgroup}, #{qstep}+1, #{qindent}+1, #{qip})
+	</insert>
+	<select id="qnaAdminReply" parameterType="int" resultType="Qna">
+		SELECT * FROM QNA WHERE QSTATUS = 1 AND QGROUP = #{qgroup}
+	</select>
 </mapper>    
 

@@ -3,12 +3,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="conPath" value="${pageContext.request.contextPath }" />
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+	@font-face {
+	    font-family: 'GangwonEduHyeonokT_OTFMediumA';
+	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+	}
     * { margin: 0; padding: 0;}
     #header_wrap li {list-style: none;}
     nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
@@ -17,6 +24,8 @@
       background-color: #FFFF;
       height: 98px;
       border-bottom: groove;
+      font-family: 'GangwonEduHyeonokT_OTFMediumA'; 
+      font-size: 20px;
     }
     #header_wrap nav > a{
     	float: left;
@@ -98,9 +107,9 @@
 				<li>
 			    	<a href="">예약하기</a>
 			    	<ul class="submenu">
-			    		<li><a href="#">야영장</a></li>
-				        <li><a href="#">대피소</a></li>
-				        <li><a href="#">생태탐방원</a></li>
+			    		<li><a href="${conPath }/reservation/bookingCamp.do">야영장</a></li>
+				        <li><a href="${conPath }/reservation/bookingShelter.do">대피소</a></li>
+				        <li><a href="${conPath }/reservation/bookingExplore.do">생태탐방원</a></li>
 			    	</ul>
 			    </li>
 	     		<li>

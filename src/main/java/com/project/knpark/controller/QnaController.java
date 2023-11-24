@@ -37,8 +37,9 @@ public class QnaController {
 		return "forward:qnaList.do";
 	}
 	@RequestMapping(value = "qnaDetail", method= {RequestMethod.GET, RequestMethod.POST})
-	public String qnaDetail(int qno, Model model, String after) {
+	public String qnaDetail(int qno, Model model, String after, int qgroup) {
 		model.addAttribute("qna", qnaService.qnaDetail(qno, after));
+		model.addAttribute("reply", qnaService.qnaAdminReply(qgroup));
 		return "board/qnaDetail";
 	}
 	@RequestMapping(value = "qnaModify", method=RequestMethod.GET)
@@ -55,5 +56,15 @@ public class QnaController {
 	public String qnaDelete(int qno, Model model) {
 		model.addAttribute("deleteResult", qnaService.qnaDelete(qno));
 		return "forward:qnaList.do";
+	}
+	@RequestMapping(value = "qnaReplyWrite", method=RequestMethod.GET)
+	public String qnaReplyWrite(int qno, Model model) {
+		model.addAttribute("qna", qnaService.qnaModifyReplyView(qno));
+		return "board/qnaReplyWrite";
+	}
+	@RequestMapping(value = "qnaReplyWrite", method=RequestMethod.POST)
+	public String qnaReply(Qna qna, Model model, HttpServletRequest request) {
+		model.addAttribute("qnaReplyResult", qnaService.qnaReplyInsert(qna, request));
+		return "forward:qnaDetail.do";
 	}
 }
