@@ -16,7 +16,7 @@
 			alert('자주하는 질문이 등록되었습니다.');
 		</script>
 	</c:if>
-	<c:if test="${fagDeleteResult eq 1 }">
+	<c:if test="${faqDeleteResult eq 1 }">
 		<script>
 			alert('자주하는 질문이 삭제되었습니다.');
 		</script>

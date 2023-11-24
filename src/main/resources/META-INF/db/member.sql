@@ -13,7 +13,7 @@ INSERT INTO MEMBER VALUES('ddd', '1', '최길동', '인천시', '010-6666-6666',
 INSERT INTO MEMBER VALUES('zzz', '1', '김제니', '서울시', '010-5555-5555', 'kim@naver.com', 'f','1980-08-08', SYSDATE);
 
 -- 3. 로그인 : Member.xml id=getMember
-SELECT * FROM MEMBER WHERE ID='aaa';
+SELECT * FROM MEMBER , ADMIN WHERE ID='aaa' ;
 
 -- 4. 회원정보 수정 : Member.xml id=modifyMember
 UPDATE MEMBER
@@ -34,7 +34,7 @@ SELECT ID FROM MEMBER WHERE NAME='홍길동' AND EMAIL='hong@naver.com';
 SELECT PW FROM MEMBER WHERE ID='aaa' AND NAME='홍길동' AND EMAIL='hong@naver.com';
 
 -- 7. 회원탈퇴 : Member.xml id=deleteMember
-DELETE FROM MEMBER WHERE ID='ccc';
+DELETE FROM MEMBER WHERE ID='aaa';
 ROLLBACK;
 COMMIT;
 SELECT * FROM MEMBER;
