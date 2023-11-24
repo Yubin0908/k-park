@@ -54,9 +54,7 @@
   		<c:if test="${not empty member }">
   			<button class="write" onclick="location.href='${conPath}/board/qnaWrite.do'">글쓰기</button>
   		</c:if>
-  		<c:if test="${empty member }">
-  			<button class="write" onclick="location.href='${conPath}/board/login.do'">글쓰기</button>
-  		</c:if>
+  		
   		</h5>
 	  	<table class="table">
 	    	<colgroup>
