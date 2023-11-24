@@ -1,0 +1,177 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#res_wrap {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.campSelector, .campSelector {
+  margin-top: 50px;
+  width: 50%;
+  height: 130px;
+  background-color: #eee;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.campSelector h3, .campSelector h3 {
+  padding: 15px;
+}
+
+.campSelector select, .campSelector select {
+  width: 150px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.dateSelector {
+  margin-top: 50px;
+  width: 50%;
+  height: auto;
+  background-color: #eee;
+  border-radius: 25px;
+  text-align: center;
+}
+.dateSelector h3 {
+  padding-top: 15px;
+}
+
+.wrapper {
+  width: 400px;
+  height: auto;
+  background: #eee;
+  border-radius: 10px;
+  padding: 25px;
+  margin-left: 130px;
+}
+
+.wrapper .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.wrapper .nav .current_date {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.wrapper .nav button {
+  width: 38px;
+  height: 38px;
+  font-size: 30px;
+  color: #878787;
+}
+
+.calendar ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.calendar .weeks li {
+  font-weight: 500;
+}
+
+.calendar .days {
+  margin-bottom: 20px;
+}
+
+.calendar ul li {
+  width: calc(100% / 7);
+  position: relative;
+}
+
+.calendar .days li {
+  z-index: 1;
+  margin-top: 30px;
+  cursor: pointer;
+}
+
+.days li.active {
+  color: #fff;
+}
+
+.calendar .days li::before {
+  position: absolute;
+  content: '';
+  height: 40px;
+  width: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.days li:hover::before {
+  background: #f2f2f2;
+}
+
+.days li:active::before {
+  background: #008aff;
+}
+
+.prev-date, .next-date {
+  color: #aaa;
+}
+
+.selected {
+  background-color: #008aff;
+  border-radius: 15px;
+}
+
+.btn input {
+  margin-top: 20px;
+  padding: 5px 20px;
+  border: none;
+  background-color: #008aff;
+  border-radius: 15px;
+  cursor: pointer;
+}
+/* 모달 스타일 */
+.modal-content {
+  border-radius: 25px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+}
+
+.modal-header {
+  background-color: #ffcc00;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+
+.modal-body, .modal-footer {
+  background-color: #f5f5f5;
+}
+
+.modal-footer .btn-secondary {
+  color: white;
+  background-color: #aaa;
+  border-radius: 15px;
+}
+
+.btn input {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #ffcc00;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.btn input:hover {
+  background-color: #ffb300;
+}

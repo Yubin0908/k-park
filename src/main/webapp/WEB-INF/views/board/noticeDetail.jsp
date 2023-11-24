@@ -40,8 +40,10 @@
       </div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/noticeModify.do?nno=${param.nno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
-    	<button onclick="location.href='${conPath}/board/noticeDelete.do?nno=${param.nno }'">글 삭제</button>
+    	<c:if test="${not empty admin }">
+    		<button onclick="location.href='${conPath}/board/noticeModify.do?nno=${param.nno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
+    		<button onclick="location.href='${conPath}/board/noticeDelete.do?nno=${param.nno }'">글 삭제</button>
+    	</c:if>
       <button onclick="location.href='${conPath}/board/noticeList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   </div>

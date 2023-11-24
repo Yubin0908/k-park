@@ -1,8 +1,16 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'GangwonEduHyeonokT_OTFMediumA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'GangwonEduHyeonokT_OTFMediumA';
+  font-size: 18px;
 }
 
 #bbs_wrap {

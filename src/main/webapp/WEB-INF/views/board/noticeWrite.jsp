@@ -41,7 +41,7 @@
         </tr>
         <tr>
           <td>소속</td>
-          <td><input type="text" name="parkname" value="${admin.parkname }"></td>
+          <td><input type="text" name="parkname" value="${admin.agroup }"></td>
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">

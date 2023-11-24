@@ -10,7 +10,17 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/login.css" rel="stylesheet">
-	
+	<style>
+		.login_table input[type="reset"] {
+		  padding: 8px 15px;
+		  border: none;
+		  border-radius: 4px;
+		  cursor: pointer;
+		  color: #fff;
+		  background-color: #007bff;
+		  transition: background-color 0.3s ease;
+		}
+	</style>
 </head>
 <body>
 	<c:if test="${not empty member }">
@@ -19,33 +29,41 @@
 			location.href='${conPath}/main.do';
 		</script>
 	</c:if>
+	<c:if test="${insertResult eq 1 }">
+		<script>
+			alert('관리자 등록이 완료되었습니다.');
+		</script>
+	</c:if>
 	
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
-	<form action="${conPath }/admin/login.do" method="post">
+	<form action="${conPath }/admin/adminLogin.do" method="post">
 		<input type="hidden" name="after" value="${after}">
 		<div id="title">
-	      <h2>관리자 로그인</h2>
-	      <br>
-	      <br>
-	      <hr>
-	      <br>
-	    </div>
+	    <h2>관리자 로그인</h2>
+	    <br>
+	    <br>
+	    <hr>
+	    <br>
+	  </div>
 		<table class="login_table">
 			<tr>
-	          <td>아이디</td>
-	          <td>
-	            <input type="text" name="aid" id="aid" class="input" value="${aid }">
-	          </td>
-	        </tr>
-	        <tr>
-	        	<td>비밀번호</td>
-	        	<td>
-	        		<input type="password" name="apw" class="input" value="${apw }">
-	        	</td>
-	        </tr>
+       <td>아이디</td>
+       <td>
+         <input type="text" name="aid" id="aid" class="input" required>
+       </td>
+      </tr>
+      <tr>
+	     	<td>비밀번호</td>
+	     	<td>
+	     		<input type="password" name="apw" class="input" >
+	     	</td>
+      </tr>
 			<tr>
-				<td colspan="2" style="text-align:center;"><input type="submit" value="로그인"></td>
+				<td colspan="2" style="text-align:center;">
+					<input type="submit" value="로그인">
+					<input type="reset" value="회원가입" onclick="location.href='${conPath}/admin/insertAdmin.do'">
+				</td>
 			</tr>
 		</table>
 	</form>
