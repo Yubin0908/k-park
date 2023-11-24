@@ -10,6 +10,14 @@
 	<link href="${conPath }/css/board.css" rel="stylesheet">
 	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
   	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  	<style>
+  		input[name="ftitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<c:if test="${empty admin }">
@@ -33,8 +41,8 @@
           <td><input type="text" name="ftitle"></td>
         </tr>
 	        <tr class="RH_writer">
-		          <td>작성자</td>
-		          <td><input type="text" name="aid" value="${admin.aid }"></td>
+		          <!-- <td>작성자</td> -->
+		          <td><input type="hidden" name="aid" value="${admin.aid }"></td>
 	        </tr>
         <tr class="RH_text">
 			<td>내용</td>

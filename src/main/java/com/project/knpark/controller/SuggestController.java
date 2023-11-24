@@ -50,7 +50,7 @@ public class SuggestController {
 	public String suggestModify(HttpServletRequest request, Suggest suggest, 
 									Model model, String pageNum) {
 		System.out.println(suggest);
-		model.addAttribute("ModifyResult", suggestService.suggestModify(suggest, request));
+		model.addAttribute("modifyResult", suggestService.suggestModify(suggest, request));
 		return "forward:sugDetail.do";
 	}
 	@RequestMapping(value = "board/suggestDelete", method=RequestMethod.GET)
@@ -67,6 +67,18 @@ public class SuggestController {
 	public String suggestReply(Suggest suggest, Model model, HttpServletRequest request ) {
 		model.addAttribute("suggestReplyResult", suggestService.suggestReplyWrite(suggest, request));
 		return "forward:sugList.do";
+	}
+	@RequestMapping(value = "board/suggestReplyModify", method=RequestMethod.GET)
+	public String suggestReplyModify(int sno, Model model, String after) {
+		model.addAttribute("suggest", suggestService.getSuggest(sno, after));
+		return "board/suggestReplyModify";
+	}
+	@RequestMapping(value = "board/suggestReplyModify", method=RequestMethod.POST)
+	public String suggestReplyModify(HttpServletRequest request, Suggest suggest, 
+									Model model, String pageNum) {
+		System.out.println(suggest);
+		model.addAttribute("suggestReplyModifyResult", suggestService.suggestModify(suggest, request));
+		return "forward:sugDetail.do";
 	}
 }
 

@@ -8,7 +8,16 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/board.css" rel="stylesheet">
-	
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+	<style>
+  		input[name="ftitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -30,13 +39,18 @@
           <td><input type="text" name="ftitle" value="${faq.ftitle }"></td>
         </tr>
         <tr class="RH_writer">
-          <td>작성자</td>
-          <td><input type="text" name="aid" value="${faq.aid }"></td>
+          <!-- <td>작성자</td> -->
+          <td><input type="hidden" name="aid" value="${faq.aid }"></td>
         </tr>
         <tr class="RH_text">
-          <td>내용</td>
-          <td><textarea name="ftext" id="" cols="30" rows="10">${faq.ftext }</textarea></td>
-        </tr>
+				<td>내용</td>
+				<td>
+	          	<input type="hidden" name="ftext" id="ftext" value="${faq.ftext }"/>
+					<div id="editor">
+						${faq.ftext }	
+					</div>
+				</td>
+	        </tr>
         <tr>
           <td>공원명</td>
           <td><input type="text" name="parkname" value="${faq.parkname }"></td>
@@ -49,6 +63,22 @@
       </table>
     </form>
   </div>
+  <script>
+	    const Editor = toastui.Editor;
+	    const editor = new Editor({
+	      el: document.querySelector('#editor'),
+	      height: '500px',
+	      initialEditType: 'wysiwyg',
+	      language: 'ko',
+	    });
+	</script>
+	<script>
+	  	function submitForm() {
+	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      document.getElementById("stext").value = markdown;
+	      document.getElementById("suggestForm").submit();
+	    }
+	</script>
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

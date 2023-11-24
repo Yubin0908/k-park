@@ -35,7 +35,7 @@ public class FaqController {
 	}
 	@RequestMapping(value = "board/faqWrite", method=RequestMethod.POST)
 	public String faqInsert(Faq faq, Model model) {
-		model.addAttribute("faqWrite", faqService.faqInsert(faq));
+		model.addAttribute("faqWriteResult", faqService.faqInsert(faq));
 		return "forward:faqList.do";
 	}
 	@RequestMapping(value = "board/faqModify", method=RequestMethod.GET)
@@ -50,7 +50,7 @@ public class FaqController {
 	}
 	@RequestMapping(value = "board/faqDelete", method=RequestMethod.GET)
 	public String faqDelete(int fno, Model model) {
-		model.addAttribute("deleteResult", faqService.faqDelete(fno));
+		model.addAttribute("faqDeleteResult", faqService.faqDelete(fno));
 		return "forward:faqList.do";
 	}
 }

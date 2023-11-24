@@ -8,7 +8,16 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/board.css" rel="stylesheet">
-	
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+	<style>
+  		input[name="stitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<c:if test="${empty member and empty admin}">
@@ -20,45 +29,73 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
     <div class="sub_title">
-      <h2>건의합니다 글수정</h2>
+		<h2>건의합니다 글수정</h2>
     </div>
     <br>
     <hr>
     <br>
-    <form action="${conPath }/board/suggestModify.do?after=u" method="post">
+    <c:if test="${not empty member }">
+    	<form action="${conPath }/board/suggestModify.do?after=u" method="post" id="suggestForm">
+    </c:if>
+    <c:if test="${not empty admin }">
+    	<form action="${conPath }/board/suggestReplyModify.do?after=u" method="post" id="suggestForm">
+    </c:if>
+    
     	<input type="hidden" name="sno" value="${param.sno }"/>
     	<input type="hidden" name="search" value="${param.search }"/>
     	<input type="hidden" name="option" value="${param.option }" />
     	<input type="hidden" name="pageNum" value="${param.pageNum }" />
-      <table class="writeTable">
-        <tr class="RH_title">
-          <td>제목</td>
-          <td><input type="text" name="stitle" value="${suggest.stitle }"></td>
-        </tr>
-        <tr class="RH_writer">
-          <td>작성자</td>
-          <c:if test="${not empty member }">
-          	<td><input type="text" name="id" value="${suggest.id }"></td>
-          	<td><input type="hidden" name="aid" value="${suggest.aid }"></td>
-          </c:if>
-          <c:if test="${not empty admin }">
-          	<td><input type="hidden" name="id" value="${suggest.id }"></td>
-          	<td><input type="text" name="aid" value="${suggest.aid }"></td>
-          </c:if>
-        </tr>
-        <tr class="RH_text">
-          <td>내용</td>
-          <td><textarea name="stext" id="stext" cols="30" rows="10">${suggest.stext }</textarea></td>
-        </tr>
-        <tr>
-          <td class="submit_btn" colspan="2">
-            <input type="submit" value="글수정">
-          </td>
-        </tr>
-      </table>
+    	
+ 		<table class="writeTable">
+        	<tr class="RH_title">
+          		<td>제목</td>
+          		<td><input type="text" name="stitle" value="${suggest.stitle }"></td>
+        	</tr>
+        	<tr class="RH_writer">
+          		<!-- <td>작성자</td> -->
+          		<c:if test="${not empty member }">
+          		<td><input type="hidden" name="id" value="${suggest.id }"></td>
+          		<td><input type="hidden" name="aid" value="${suggest.aid }"></td>
+          		</c:if>
+          		<c:if test="${not empty admin }">
+          		<td><input type="hidden" name="id" value="${suggest.id }"></td>
+          		<td><input type="hidden" name="aid" value="${suggest.aid }"></td>
+          		</c:if>
+        	</tr>
+	       <tr class="RH_text">
+				<td>내용</td>
+				<td>
+	          	<input type="hidden" name="stext" id="stext" value="${suggest.stext }"/>
+					<div id="editor">
+						${suggest.stext }	
+					</div>
+				</td>
+	        </tr>
+	        <tr>
+	          <td class="submit_btn" colspan="2">
+	            <input type="button" value="글수정" onclick="submitForm()">
+	          </td>
+	        </tr>
+		</table>
     </form>
-  </div>
-  <jsp:include page="../main/footer.jsp"/>
+ 	</div>
+ 	<script>
+	    const Editor = toastui.Editor;
+	    const editor = new Editor({
+	      el: document.querySelector('#editor'),
+	      height: '500px',
+	      initialEditType: 'wysiwyg',
+	      language: 'ko',
+	    });
+	</script>
+	<script>
+	  	function submitForm() {
+	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      document.getElementById("stext").value = markdown;
+	      document.getElementById("suggestForm").submit();
+	    }
+	</script>
+	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
 

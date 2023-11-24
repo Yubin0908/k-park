@@ -19,15 +19,19 @@
 	<jsp:include page="../main/header.jsp"/>
 	<c:if test="${suggestWriteResult eq 1 }">
 		<script>
-			alert('건의사항이 등록되었습니다.');
+			alert('건의사항이 등록 되었습니다.');
 		</script>
 	</c:if>
 	<c:if test="${suggestDeleteResult eq 1 }">
 		<script>
-			alert('건의사항이 삭제되었습니다.');
+			alert('작성하신 글이 삭제 되었습니다.');
 		</script>
 	</c:if>
-	
+	<c:if test="${suggestReplyResult eq 1 }">
+		<script>
+			alert('답변글이 작성 되었습니다.');
+		</script>
+	</c:if>
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
@@ -67,16 +71,18 @@
         		<td>${list.sno }</td>
 	          	<td>${list.writer }</td>
 	          	
-	          	<td>
+	          	<td style="text-align: left">
 	          	<c:forEach var="i" begin="1" end="${list.sindent }">
 		          	<c:if test="${i eq list.sindent }">
 	      				&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
 	     			</c:if>
 	        		<c:if test="${i ne list.sindent }">
-	          			&nbsp; &nbsp; &nbsp;
+	          			&nbsp; &nbsp; &nbsp; 
 	          		</c:if>
           		</c:forEach>
-	          	<a class="detail_a" href="${conPath }/board/sugDetail.do?sno=${list.sno}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}">${list.stitle }</a></td>
+	          	<a class="detail_a" href="${conPath }/board/sugDetail.do?sno=${list.sno}
+	          				&pageNum=${paging.currentPage}&option=${param.option}
+	          				&search=${param.search}">${list.stitle }</a></td>
 	          	<td>${list.srdate }</td>
 	          	<td>${list.shit }</td>
         	</tr>
@@ -85,7 +91,8 @@
     </div>
     <div class="paging">
       <c:if test="${paging.startPage>paging.blockSize}">
-				[ <a href="${conPath }/board/sugList.do?pageNum=${paging.startPage-1 }&option=${param.option}&search=${param.search}">이전</a> ]
+				[ <a href="${conPath }/board/sugList.do?pageNum=${paging.startPage-1 }
+						&option=${param.option}&search=${param.search}">이전</a> ]
 			</c:if>	
 			<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage }">
 				<c:if test="${paging.currentPage==i }"> 
