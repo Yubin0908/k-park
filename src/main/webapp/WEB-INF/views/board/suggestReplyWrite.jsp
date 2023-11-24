@@ -9,15 +9,20 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/board.css" rel="stylesheet">
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+	<style>
+  		input[name="stitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${modifyResult eq 1 }">
-		<script>
-			alert('답변 수정이 완료되었습니다.');
-		</script>
-	</c:if>
 	<!-- model의 suggest(원글정보), param.sno, rparam.pageNum -->
-	<form action="${conPath }/board/suggestReplyWrite.do" method="post">
+	<form action="${conPath }/board/suggestReplyWrite.do" method="post" id="suggestForm">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
 		<input type="hidden" name="sno" value="${param.sno }">
 		<input type="hidden" name="sgroup" value="${suggest.sgroup }">
@@ -31,25 +36,45 @@
 		    </tr>
 		    <tr class="RH_writer">
 			<tr>
-				<th>작성자</th>
-				<td><input type="text" name="aid" required="required" autofocus="autofocus"></td>
+				<!-- <th>작성자</th> -->
+				<td><input type="hidden" name="aid" required="required" autofocus="autofocus"></td>
 			</tr>
 			<tr class="RH_text">
-				<th>내용</th>
-				<td><textarea rows="5" name="stext"></textarea></td>
-			</tr>
+			<td>내용</td>
+			<td>
+          	<input type="hidden" name="stext" id="stext" value="${suggest.stext }"/>
+				<div id="editor">
+						
+				</div>
+			</td>
+        </tr>
 			<tr>
 				<td class="submit_btn" colspan="3">
-					<input type="submit" value="답변쓰기" class="btn">
+					<!-- <input type="submit" value="답변쓰기" class="btn"> -->
+					<input type="button" value="답변글쓰기" onclick="submitForm()">
 					<input type="reset" value="초기화" class="btn">
 					<input type="button" value="목록" class="btn" 
 								onclick="location.href='${conPath}/board/suglist.do?pageNum=${param.pageNum }'">
 				</td>
 			</tr>
 		</table>
-	
-	
 	</form>
+	<script>
+    const Editor = toastui.Editor;
+    const editor = new Editor({
+      el: document.querySelector('#editor'),
+      height: '500px',
+      initialEditType: 'wysiwyg',
+      language: 'ko',
+    });
+  </script>
+  <script>
+  	function submitForm() {
+      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+      document.getElementById("stext").value = markdown;
+      document.getElementById("suggestForm").submit();
+    }
+  </script>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
