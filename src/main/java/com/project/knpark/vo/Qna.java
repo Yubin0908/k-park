@@ -11,7 +11,7 @@ public class Qna {
 	private String aid;
 	private String parkname;
 	private String qtype;
-	private String btitle;
+	private String qtitle;
 	private String qtext;
 	private Date qrdate;
 	private int qstatus;

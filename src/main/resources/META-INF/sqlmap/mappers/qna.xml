@@ -19,37 +19,34 @@
 	<!-- 가나다순으로 startRow~endRow번째 까지 -->
 	<select id="qnaList" parameterType="Qna" resultMap="QnaResult">
 		<if test="option==null or option==''">
-			SELECT *
-			    FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QNO DESC) A)
-			    WHERE RN BETWEEN #{startRow} AND #{endRow}
+			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA ORDER BY QNO DESC) A) M
+ 				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='all'">
-			SELECT * 
-   				FROM (SELECT ROWNUM RN, A.* 
-          			FROM (SELECT * FROM QNA 
-		        	WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
-		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
+			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' OR QTEXT LIKE '%'||#{search}||'%' OR PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+ 				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='qtitle'">
-			SELECT * 
-    			FROM (SELECT ROWNUM RN, A.* 
-         			 FROM (SELECT * FROM QNA 
-		        	WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
-		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
+			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
+   					, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTITLE LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+ 				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='qtext'">
-			SELECT * 
-    			FROM (SELECT ROWNUM RN, A.* 
-          			FROM (SELECT * FROM QNA 
-		        	WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QTITLE) A)
-		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
+			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+  				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QTEXT LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+ 				WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 		<if test="option=='parkname'">
-			SELECT * 
-    			FROM (SELECT ROWNUM RN, A.* 
-          			FROM (SELECT * FROM QNA 
-		        	WHERE PARKNAME LIKE '%'||UPPER(#{search})||'%' ORDER BY QTITLE) A)
-		  		WHERE RN BETWEEN #{startRow} AND #{endRow}
+			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
+     				, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP
+				  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE PARKNAME LIKE '%'||#{search}||'%' ORDER BY QNO DESC) A) M
+				 WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
 	</select>
 	
