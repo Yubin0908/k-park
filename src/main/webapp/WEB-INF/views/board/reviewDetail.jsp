@@ -188,8 +188,10 @@
       </div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/reviewModify.do?rno=${param.rno }&pageNum=${param.pageNum }'" style="cursor:pointer">글수정</button>
-    	<button onclick="location.href='${conPath}/board/reviewDelete.do?rno=${param.rno }'" style="cursor:pointer">글 삭제</button>
+    	<c:if test="${review.id eq member.id }">
+    		<button onclick="location.href='${conPath}/board/reviewModify.do?rno=${param.rno }&pageNum=${param.pageNum }'" style="cursor:pointer">글수정</button>
+    		<button onclick="location.href='${conPath}/board/reviewDelete.do?rno=${param.rno }'" style="cursor:pointer">글 삭제</button>
+    	</c:if>
       <button onclick="location.href='${conPath}/board/reviewList.do?pageNum=${param.pageNum }'" style="cursor:pointer">목록</button>
     </div>
   </div>

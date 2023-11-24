@@ -25,7 +25,7 @@
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
-      <span>홈 > 탐방후기</span>
+      <span>홈 > 고객마당 > 탐방후기</span>
       <br>
       <h2>탐방 후기</h2>
       <br>

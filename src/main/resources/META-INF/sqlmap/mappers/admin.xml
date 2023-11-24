@@ -15,4 +15,16 @@
 	<select id="getAdmin" parameterType="String" resultType="Admin">
 		SELECT * FROM ADMIN WHERE AID=#{aid}
 	</select>
+	
+	<select id="aidConfirm" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ADMIN WHERE AID = #{aid}
+	</select>
+	
+	<insert id="insertAdmin" parameterType="Admin">
+		INSERT INTO ADMIN VALUES (#{aid}, #{apw}, #{aname}, #{agroup}, SYSDATE)
+	</insert>
+	
+	<update id="modifyAdmin" parameterType="Admin">
+		UPDATE ADMIN SET APW = #{apw}, ANAME = #{aname}, AGROUP = #{agroup} WHERE AID = #{aid}
+	</update>
 </mapper>
