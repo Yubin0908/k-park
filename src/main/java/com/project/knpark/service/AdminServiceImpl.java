@@ -29,5 +29,19 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return result;
 	}
+	
+	@Override
+	public int aidConfirm(String aid) {
+		return adminRepository.aidConfirm(aid);
+	}
+	
+	@Override
+	public int insertAdmin(Admin admin) {
+		return adminRepository.insertAdmin(admin);
+	}
+	@Override
+	public int modifyAdmin(Admin admin) {
+		return adminRepository.modifyAdmin(admin);
+	}
 
 }

@@ -24,7 +24,7 @@
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
-      <span>홈 > 공지사항</span>
+      <span>홈 > 알림마당 > 공지사항</span>
       <br>
       <h2>공지사항</h2>
       <br>
@@ -44,7 +44,7 @@
     <br>
     <br>
     <div class="bbs_content">
-      <h5>총 <span>${cnt }</span> 건<button class="write" onclick="location.href='${conPath}/board/noticeWrite.do'">글쓰기</button></h5>
+      <h5>총 <span>${cnt }</span> 건<c:if test="${not empty admin }"><button class="write" onclick="location.href='${conPath}/board/noticeWrite.do'">글쓰기</button></c:if></h5>
       
       <table class="table">
       	<colgroup>

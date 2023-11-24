@@ -12,7 +12,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- jQuery js -->
   <link rel="stylesheet" href="${conPath }/css/main.css">
   <style>
-    .swiper-container {
+    .main-swiper {
       width: 450px;
       height: 650px;
       background-color: #333;
@@ -27,7 +27,7 @@
       margin: 15px 0 -40px 25px;
     }
     
-    .swiper-slide {
+    .main-swiper .swiper-slide {
       text-align: center;
       display: flex;
       justify-content: center;
@@ -35,7 +35,7 @@
       height: 500px;
     }
     
-    .swiper-slide img {
+    .main-swiper .swiper-slide img {
       object-fit: cover;
       height: 80%;
       width: 85%;
@@ -53,9 +53,19 @@
           type: 'GET',
           dataType: 'html',
           success: function(response) {
-            $('.content_tab').html(response);
-          }
-        });
+	          $('.content_tab').html(response);
+           var swiper2 = new Swiper('.second-swiper', {
+             loop: true,
+             slidesPerView: 1,
+             spaceBetween: 40,
+             slidesPerGroup: 1,
+             navigation: {
+               nextEl: '.swiper-button-nextA',
+               prevEl: '.swiper-button-prevA',
+             },
+       		});
+         }	
+     	 });
       });
     });
   </script>
@@ -69,7 +79,7 @@
 	</c:if>
 	<jsp:include page="header.jsp"/>
 	<div id="main_wrap">
-    <div class="swiper-container">
+    <div class="swiper-container main-swiper">
       <div class="notice_title">주요공지</div>
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="${conPath }/img/1.jpg"></div>
@@ -93,7 +103,7 @@
 
   <script>
     // photo Scape
-    var swiper = new Swiper('.swiper-container', {
+    var swiper = new Swiper('.main-swiper', {
       direction: 'vertical',
       pagination: true,
       spaceBetween: 0, // slide 여백
@@ -105,10 +115,7 @@
       },
       loop: false, // slide loop
       loopAdditionalSlides: 1, // 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 방지
-      pagination: {
-        el: ".swiper-pagination", // button Tag
-        clickable: true, // 버튼클릭여부
-      },
+      
     });
   </script>
   <jsp:include page="footer.jsp"/>
