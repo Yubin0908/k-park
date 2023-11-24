@@ -14,4 +14,7 @@ public interface QnaRepository {
 	public Qna qnaDetail(int qno);
 	public int qnaModify(Qna qna);
 	public int qnaDelete(int qno);
+	public int qnaPreReplyStep(Qna qna);
+	public int qnaReplyInsert(Qna qna);
+	public Qna qnaAdminReply(int qgroup);
 }
