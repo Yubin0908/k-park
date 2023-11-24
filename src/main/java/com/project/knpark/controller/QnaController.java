@@ -38,8 +38,11 @@ public class QnaController {
 	}
 	@RequestMapping(value = "qnaDetail", method= {RequestMethod.GET, RequestMethod.POST})
 	public String qnaDetail(int qno, Model model, String after, int qgroup) {
+		System.out.println(1);
 		model.addAttribute("qna", qnaService.qnaDetail(qno, after));
+		System.out.println(2);
 		model.addAttribute("reply", qnaService.qnaAdminReply(qgroup));
+		System.out.println(3);
 		return "board/qnaDetail";
 	}
 	@RequestMapping(value = "qnaModify", method=RequestMethod.GET)
