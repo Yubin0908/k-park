@@ -40,7 +40,7 @@
       	<h2>건의합니다</h2>
       	<br>
     </div>
-    <div class="search_wrap">
+    <!-- <div class="search_wrap">
 		<form action="">
 			<select name="option" id="">
 				<option value="all" selected>전체</option>
@@ -50,7 +50,7 @@
         <input type="search" name="search">
         <input type="submit" value="검색">
       </form>
-    </div>
+    </div> -->
     <br>
     <br>
     <br>

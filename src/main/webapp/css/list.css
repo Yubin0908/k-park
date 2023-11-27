@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#camp_wrap {
+  position: relative;
+  width: 1400px;
+  padding: 20px 0 10px;
+}
+
+/* .page-location span {
+  font-size: 16px;
+  color: #707070;
+}
+
+.information .txt-area dt {
+  font-size: 20px;
+  font-weight: 700;
+} */
+
+
+.title {
+  padding: 40px 0 50px;
+  font-size: 36px;
+  font-weight: 600;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+.sub_title {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.sub1 {
+  font-size: 36px;
+  line-height: 34px;
+  text-align: center;
+}
+
+.sub2 {
+  margin: 20px auto 0;
+  font-size: 18px;
+  line-height: 26px;
+  color: #666;
+  text-align: center;
+}
+
+.map_wrap {
+  /*float: left;*/
+  width: 680px;
+  margin: 0;
+  position: relative;
+  padding: 30px 0;
+}
+
+.img {
+  width: auto;
+  height: 500px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+} 
