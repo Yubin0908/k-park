@@ -28,7 +28,7 @@
     <br>
     <hr>
     <br>
-    <form action="${conPath }/board/faqModify.do?after=u" method="post">
+    <form action="${conPath }/board/faqModify.do?after=u" method="post" id="faqForm">
     	<input type="hidden" name="fno" value="${param.fno }"/>
     	<input type="hidden" name="search" value="${param.search }"/>
     	<input type="hidden" name="option" value="${param.option }" />
@@ -45,7 +45,7 @@
         <tr class="RH_text">
 				<td>내용</td>
 				<td>
-	          	<input type="hidden" name="ftext" id="ftext" value="${faq.ftext }"/>
+	          	<input type="hidden" name="ftext" id="ftext"/>
 					<div id="editor">
 						${faq.ftext }	
 					</div>
@@ -57,7 +57,7 @@
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">
-            <input type="submit" value="글수정">
+            <input type="button" value="글수정" onclick="submitForm()">
           </td>
         </tr>
       </table>
@@ -75,8 +75,8 @@
 	<script>
 	  	function submitForm() {
 	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-	      document.getElementById("stext").value = markdown;
-	      document.getElementById("suggestForm").submit();
+	      document.getElementById("ftext").value = markdown;
+	      document.getElementById("faqForm").submit();
 	    }
 	</script>
   <jsp:include page="../main/footer.jsp"/>

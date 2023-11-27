@@ -83,7 +83,6 @@ public class MemberController {
 			model.addAttribute("pwConfirmResult", "비밀번호가 올바르지 않습니다. 다시 입력해주세요.");
 			return "member/pwConfirm";
 		}
-		
 	}
 
 }
