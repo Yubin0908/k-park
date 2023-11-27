@@ -1,11 +1,15 @@
 package com.project.knpark.service;
 
+import java.sql.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.knpark.repository.ReservationRepository;
+import com.project.knpark.vo.Member;
 import com.project.knpark.vo.Reservation;
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -14,36 +18,43 @@ public class ReservationServiceImpl implements ReservationService {
 	private ReservationRepository reservationRepository;
 
 	@Override
-	public List<Reservation> getCampDate(int campno) {
-		return reservationRepository.getCampDate(campno);
+	public List<Reservation> getCampList(String parkname) {
+		return reservationRepository.getCampList(parkname);
 	}
-
+	
 	@Override
 	public int getCampDateRem(Reservation reservation) {
-		int result = reservationRepository.getCampDateRem(reservation);
-		
-		if(result == 0) {
-			return 0;
+		Date resdate = reservationRepository.getCampDateRem(reservation);
+		int result = 0;
+		if(resdate != null) {
+			result = 1;
 		} else {
-			return 1;
+			result = 0;
 		}
+		return result;
 		
 	}
-
+	
 	@Override
-	public Reservation getCampDetail(Reservation reservation) {
-		return reservationRepository.getCampDetail(reservation);
+	public int getCampBookingDate(Reservation reservation) {
+		int result = reservationRepository.getCampBookingDate(reservation);
+		
+		return result;
 	}
 
 	@Override
-	public int reservationCamp(Reservation reservation) {
+	public int reservationCamp(Reservation reservation, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+	    reservation.setId(id);
 		reservationRepository.remMinus(reservation);
+		System.out.println("service 예약정보 : " + reservation);
 		return reservationRepository.reservationCamp(reservation);
 	}
 
 	@Override
 	public int remMinus(Reservation reservation) {
-		return reservationRepository.remPlus(reservation);
+		return reservationRepository.remMinus(reservation);
 	}
 
 	@Override

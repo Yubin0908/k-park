@@ -22,25 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const selDate = document.querySelector('.selDate');
     
     selectableDays.forEach(day => {
-      day.addEventListener('click', () => {
-        const selectedDate = `${year}-${month}-${day.textContent}`;
-    
-        if (day.classList.contains('selected')) {
-          day.classList.remove('selected');
-          selDate.innerHTML = '';
-        } else {
-          const selected = document.querySelector('.selected');
-          if (selected) {
-            selected.classList.remove('selected');
-          }
-          const selDate = document.querySelector('.selDate');
-          day.classList.add('selected');
-          // alert(`선택된 날짜: ${selectedDate}`);
-          selDate.innerHTML = selectedDate;
-        }
-      });
-    });
-    
+		  day.addEventListener('click', () => {
+		    const selectedDate = new Date(year, month, parseInt(day.textContent, 10) + 1);
+		    const today = new Date();
+		
+		    if (selectedDate <= today) {
+		      alert('현재일 또는 이전 날짜는 선택할 수 없습니다.');
+		    }  else {
+		      const selected = document.querySelector('.selected');
+		      if (selected) {
+		        selected.classList.remove('selected');
+		      }
+		      const selDate = document.querySelector('.selDate');
+		      day.classList.add('selected');
+		      selDate.innerHTML = selectedDate.toISOString().split('T')[0];
+		    }
+		  });
+		});
   }
 
   let date = new Date();
@@ -83,5 +81,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   renderCalendar(currYear, currMonth);
-  disablePrevButton(); // 초기에 이전 버튼 비활성화
+  disablePrevButton();
 });

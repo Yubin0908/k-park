@@ -12,6 +12,7 @@
 		<typeAlias type="com.project.knpark.vo.Admin" alias="Admin"/>
 		<typeAlias type="com.project.knpark.vo.Qna" alias="Qna"/>
 		<typeAlias type="com.project.knpark.vo.Infomation" alias="Infomation"/>
+		<typeAlias type="com.project.knpark.vo.Reservation" alias="Reservation"/>
 	</typeAliases>
 	<mappers>
 		<mapper resource="META-INF/sqlmap/mappers/member.xml"/>
@@ -22,5 +23,6 @@
 		<mapper resource="META-INF/sqlmap/mappers/admin.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/qna.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/infomation.xml"/>
+		<mapper resource="META-INF/sqlmap/mappers/reservation.xml"/>
 	</mappers>
 </configuration>
