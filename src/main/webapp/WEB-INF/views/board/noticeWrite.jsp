@@ -28,7 +28,19 @@
         </tr>
         <tr class="RH_writer">
           <td>작성자</td>
-          <td><input type="text" name="aid" value="${admin.aid }"></td>
+          <td><input type="text" name="aid" value="${admin.aid }" readOnly></td>
+        </tr>
+        <tr>
+        	<td>주요공지 여부</td>
+        	<td>
+	        	<label for="ntop_1">
+	        		<input type="radio" name="ntop" id="ntop_1" value="1" />주요공지
+	        	</label>
+		        	
+		        <label for="ntop_0">
+		        	<input type="radio" name="ntop" value="0" id="ntop_0" checked/>일반공지
+		        </label>	
+        	</td>
         </tr>
         <tr class="RH_text">
           <td>내용</td>
@@ -41,7 +53,7 @@
         </tr>
         <tr>
           <td>소속</td>
-          <td><input type="text" name="parkname" value="${admin.agroup }"></td>
+          <td><input type="text" name="parkname" value="${admin.agroup }" readOnly></td>
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">

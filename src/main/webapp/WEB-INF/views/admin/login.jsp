@@ -62,7 +62,7 @@
 			<tr>
 				<td colspan="2" style="text-align:center;">
 					<input type="submit" value="로그인">
-					<input type="reset" value="회원가입" onclick="location.href='${conPath}/admin/insertAdmin.do'">
+					<input type="reset" value="관리자 등록" onclick="location.href='${conPath}/admin/insertAdmin.do'">
 				</td>
 			</tr>
 		</table>

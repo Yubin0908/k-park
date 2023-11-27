@@ -9,5 +9,6 @@
 </head>
 <body>
 	${DateConfirm }
+	${myReservation }
 </body>
 </html>

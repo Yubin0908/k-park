@@ -34,6 +34,18 @@
           <td>작성자</td>
           <td><input type="text" name="aid" value="${admin.aid }" disabled></td>
         </tr>
+        <tr>
+        	<td>주요공지 여부</td>
+        	<td>
+	        	<label for="ntop_1">
+	        		<input type="radio" name="ntop" id="ntop_1" value="1" />주요공지
+	        	</label>
+		        	
+		        <label for="ntop_0">
+		        	<input type="radio" name="ntop" value="0" id="ntop_0" checked/>일반공지
+		        </label>	
+        	</td>
+        </tr>
         <tr class="RH_text">
           <td>내용</td>
           <td>

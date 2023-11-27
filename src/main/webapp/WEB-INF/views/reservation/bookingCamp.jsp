@@ -173,7 +173,7 @@
         <div class="modal-body">
           <p id="reservationDetails"></p>
         </div>
-        <form action="${conPath}/reservation/booking.do" method="get">
+        <form action="${conPath}/reservation/reservationCamp.do" method="get">
         	<div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
           <input type="submit" class="btn btn-secondaty" value="예약하기">

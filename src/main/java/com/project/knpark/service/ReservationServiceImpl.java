@@ -58,7 +58,7 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public Reservation getBookingInfo(String id) {
+	public List<Reservation> getBookingInfo(String id) {
 		return reservationRepository.getBookingInfo(id);
 	}
 

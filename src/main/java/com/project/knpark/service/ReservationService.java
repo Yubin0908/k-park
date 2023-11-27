@@ -12,7 +12,7 @@ public interface ReservationService {
 	public int getCampBookingDate(Reservation reservation);
 	public int reservationCamp(Reservation reservation, HttpSession session);
 	public int remMinus(Reservation reservation);
-	public Reservation getBookingInfo(String id);
+	public List<Reservation> getBookingInfo(String id);
 	public int cancleReservation(int bno, Reservation reservation);
 	public int remPlus(Reservation reservation);
 }

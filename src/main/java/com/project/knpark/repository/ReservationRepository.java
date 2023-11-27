@@ -14,7 +14,7 @@ public interface ReservationRepository {
 	public int getCampBookingDate(Reservation reservation);
 	public int reservationCamp(Reservation reservation);
 	public int remMinus(Reservation reservation);
-	public Reservation getBookingInfo(String id);
+	public List<Reservation> getBookingInfo(String id);
 	public int cancleReservation(int bno);
 	public int remPlus(Reservation reservation);
 }
