@@ -51,4 +51,5 @@
 	<select id="pwConfirm" parameterType="String" resultType="String">
 		SELECT PW FROM MEMBER WHERE ID = #{id}
 	</select>
+	
 </mapper>

@@ -82,79 +82,69 @@
 <body>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="join_wrap">
-    <div id="title">
-      <h2>회원가입</h2>
-    </div>
-    <br>
-    <br>
-    <hr>
-    <div id="content">
-      <form action="${conPath }/member/join.do" method="post">
-      <table class="join_table">
-        <tr>
-          <td>아이디</td>
-          <td>
-            <input type="text" name="id" id="id" class="input">
-            <input type="button" class="idconfirm" value="중복확인"><br>
-            <span id="idConfirmMsg"></span>
-          </td>
-        </tr>
-        <tr><td>비밀번호</td><td><input type="password" name="pw" class="input"></td></tr>
-        <tr><td>이름</td><td><input type="text" name="name"  class="input"></td></tr>
-        <tr>
-          <td>우편번호</td>
-          <td>
-            <input type="text" id="sample4_postcode" name="mpost"
-                class="text_box"  placeholder="우편번호" required="required">
-            <input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
-          </td>
-        </tr>
-        <tr>
-          <td>주소</td>
-          <td>
-            <input type="text" id="sample4_roadAddress" name="address"  placeholder="도로명주소" class="input">
-            <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
-          </td>
-        </tr>
-        <tr><td>전화번호</td><td><input type="text" name="phone" required="required" class="input"></td></tr>
-        <tr><td>메일</td>
-        	<td>
-        		<input type="text" name="email" required="required" class="input">
-        		<!-- <input type="text" class="input" name="email" id="email" placeholder="이메일" >
-					<select class="input" name="email" id="email" >
-						<option>@naver.com</option>
-						<option>@daum.net</option>
-						<option>@gmail.com</option>
-						<option>@hanmail.com</option>
-						<option>@yahoo.co.kr</option>
-					</select> -->
-        	</td>
-        </tr>
-        <tr>
-          <td>성별</td>
-          <td class="gender_radio">
-            <label for="male">
-              <input type="radio" id="male" name="gender" value="m" required="required">남
-            </label>
-            <label for="female">
-              <input type="radio" id="female" name="gender" value="f">여
-            </label>
-          </td>
-        </tr>
-        <tr><td>생일</td><td><input type="date" name="birth" required="required"></td></tr>
-        <tr><td colspan="2">
-          <p style="text-align:center;">
-          	<button type="button" class="btn-primary" id="mail-Check-Btn">본인인증</button>
-            <input class="form-control mail-check-input" placeholder="인증번호 6자리를 입력해주세요!" disabled="disabled" maxlength="6">
-            <span id="mail-check-warn"></span>
-            <input type="submit" value="회원가입">
-            <input type="button" value="로그인" onclick="location='${conPath}/login.do'">
-          </p>
-        </td></tr>
-      </table>
-      </form>
-    </div>
-  </div>
+	    <div id="title">
+			<h2>회원가입</h2>
+	    </div>
+	    <br>
+	    <br>
+	    <hr>
+	    <div id="content">
+			<form action="${conPath }/member/join.do" method="post">
+			<table class="join_table">
+        		<tr>
+          			<td>아이디</td>
+          			<td>
+			            <input type="text" name="id" id="id" class="input">
+			            <input type="button" class="idconfirm" value="중복확인"><br>
+			            <span id="idConfirmMsg"></span>
+					</td>
+				</tr>
+		        <tr><td>비밀번호</td><td><input type="password" name="pw" class="input"></td></tr>
+		        <tr><td>이름</td><td><input type="text" name="name"  class="input"></td></tr>
+		        <tr>
+		          	<td>우편번호</td>
+		          	<td>	
+            			<input type="text" id="sample4_postcode" name="mpost"
+                			class="text_box"  placeholder="우편번호" required="required">
+            			<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
+          			</td>
+        		</tr>
+        		<tr>
+          			<td>주소</td>
+          			<td>
+			            <input type="text" id="sample4_roadAddress" name="address"  placeholder="도로명주소" class="input">
+			            <input type="hidden" id="sample4_jibunAddress" placeholder="지번주소">
+          			</td>
+		        </tr>
+		        <tr><td>전화번호</td><td><input type="text" name="phone" required="required" class="input"></td></tr>
+		        <tr><td>메일</td>
+		        	<td>
+		        		<input type="text" name="email" required="required" class="input">
+		        	</td>
+		        </tr>
+		        <tr>
+					<td>성별</td>
+					<td class="gender_radio">
+			            <label for="male">
+							<input type="radio" id="male" name="gender" value="m" required="required">남
+			            </label>
+			            <label for="female">
+			            	<input type="radio" id="female" name="gender" value="f">여
+			            </label>
+          			</td>
+		        </tr>
+		        <tr><td>생일</td><td><input type="date" name="birth" required="required"></td></tr>
+		        <tr><td colspan="2">
+          			<p style="text-align:center;">
+						<input type="submit" value="회원가입">
+            			<input type="button" value="로그인" onclick="location='${conPath}/login.do'">
+          			</p>
+        			</td>
+        		</tr>
+			</table>
+			</form>
+		</div>
+	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

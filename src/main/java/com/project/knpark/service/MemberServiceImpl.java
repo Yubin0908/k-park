@@ -1,9 +1,10 @@
 package com.project.knpark.service;
 
+import java.util.Random;
+
 import javax.mail.Message;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +45,7 @@ public class MemberServiceImpl implements MemberService {
 					// 받을 메일
 					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getEmail()));
 					// 보낼 메일
-					mimeMessage.setFrom(new InternetAddress("beretk@gmail.com"));
+					mimeMessage.setFrom(new InternetAddress("k.n.park23@gmail.com"));
 					// 메일 제목
 					mimeMessage.setSubject(member.getName() + "님 회원가입 감사합니다");
 					// 메일 본문
@@ -84,7 +85,7 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(String id) {
 		return memberRepository.deleteMember(id);
 	}
-	
+	@Override
 	public String pwConfirm(String id) {
 	    String oldPw = memberRepository.pwConfirm(id);
 	    return (oldPw != null) ? "1" : "0";
