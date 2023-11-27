@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  background-image: url("../img/background.png");
 }
 
 a {
@@ -23,9 +23,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  
 }
-
-
 
 .content {
   height: 650px;

@@ -80,7 +80,7 @@
 	<jsp:include page="header.jsp"/>
 	<div id="main_wrap">
     <div class="swiper-container main-swiper">
-      <div class="notice_title">주요공지</div>
+      <div class="notice_title">공원 사진</div>
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="${conPath }/img/1.jpg"></div>
         <div class="swiper-slide"><img src="${conPath }/img/2.jpg"></div>
@@ -102,7 +102,6 @@
 
 
   <script>
-    // photo Scape
     var swiper = new Swiper('.main-swiper', {
       direction: 'vertical',
       pagination: true,

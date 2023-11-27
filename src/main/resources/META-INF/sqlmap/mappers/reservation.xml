@@ -11,6 +11,20 @@
 		<result property="campaddress" column="campaddress"/>
 		<result property="camptel" column="camptel"/>
 	</resultMap>
+	<resultMap type="Reservation" id="ShelterResult">
+		<result property="shelterno" column="shelterno"/>
+		<result property="sheltername" column="sheltername"/>
+		<result property="parkname" column="parkname"/>
+		<result property="shelteraddress" column="shelteraddress"/>
+		<result property="sheltertel" column="sheltertel"/>
+	</resultMap>
+	<resultMap type="Reservation" id="ExploreResult">
+		<result property="exploreno" column="exploreno"/>
+		<result property="explorename" column="explorename"/>
+		<result property="parkname" column="parkname"/>
+		<result property="exploreaddress" column="exploreaddress"/>
+		<result property="exploretel" column="exploretel"/>
+	</resultMap>
 	<resultMap type="Reservation" id="ReservedResult">
 		<result property="resno" column="resno"/>
 		<result property="campno" column="campno"/>
@@ -28,6 +42,7 @@
 		<result property="status" column="status"/>
 		<result property="bdate" column="bdate"/>
 	</resultMap>
+	
 	<!-- 야영장 리스트 출력 -->
 	<select id="getCampList" parameterType="String" resultMap="CampResult">
 		SELECT CAMPNO, CAMPNAME FROM CAMP WHERE PARKNAME = #{parkname}
@@ -50,7 +65,12 @@
 	</update>
 	<!-- 예약 내역 출력 -->
 	<select id="getBookingInfo" parameterType="String" resultMap="BookingResult">
-		SELECT * FROM BOOKING WHERE ID = #{id}
+    SELECT A.*, B.*, C.*, D.*
+		FROM BOOKING A
+		LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
+		LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
+		LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+		WHERE A.ID = #{id}
 	</select>
 	<!-- 예약 취소 -->
 	<update id="cancleReservation" parameterType="int">
