@@ -33,17 +33,15 @@
 		    <tr class="RH_writer">
 				<tr>
 					<th>작성자</th>
-					<td><input type="text" name="aid" required="required" autofocus="autofocus" value="${admin.aid }"></td>
+					<td><input type="text" name="aid" required="required" autofocus="autofocus" value="${admin.aid }" readonly="readonly"></td>
 				</tr>
 				<tr>
-			     	<td>소속</td>
-			     	<td><input type="text" name="parkname" value="${admin.agroup }"></td>
+			     	<th>소속</th>
+			     	<td><input type="text" name="parkname" value="${admin.agroup }" readonly="readonly"></td>
 				</tr>
 				<tr>
-					<td>공개</td>
 					<td>
-						<input type="radio" name="qyn" value="y"> 공개
-						<input type="radio" name="qyn" value="n"> 비공개
+						<input type="hidden" name="qyn" value="y" checked="checked">
 					</td>
 				</tr>
 				<tr>

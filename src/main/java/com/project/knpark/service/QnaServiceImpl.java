@@ -63,11 +63,18 @@ public class QnaServiceImpl implements QnaService {
 	public int qnaReplyInsert(Qna qna, HttpServletRequest request) {
 		qna.setQip(request.getRemoteAddr());
 		qnaRepository.qnaPreReplyStep(qna);
+		int qno = qna.getQno();
+		qnaRepository.qnaStatusUpdate(qno);
 		return qnaRepository.qnaReplyInsert(qna);
 	}
 	
 	@Override
 	public Qna qnaAdminReply(int qgroup) {
 		return qnaRepository.qnaAdminReply(qgroup);
+	}
+	
+	@Override
+	public int qnaStatusUpdate(int qno) {
+		return qnaRepository.qnaStatusUpdate(qno);
 	}
 }

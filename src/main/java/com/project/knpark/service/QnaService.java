@@ -18,4 +18,5 @@ public interface QnaService {
 	public int qnaPreReplyStep(Qna qna);
 	public int qnaReplyInsert(Qna qna, HttpServletRequest request);
 	public Qna qnaAdminReply(int qgroup);
+	public int qnaStatusUpdate(int qno);
 }

@@ -31,7 +31,7 @@
 		<c:if test="${member.id ne qna.id }">
 			<script>
 				alert('작성자만 열람가능한 글입니다');
-				history.back();
+				location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum}';
 			</script>
 		</c:if>
 	</c:if>
@@ -54,21 +54,35 @@
 		          	<br>
 		          	<br>
 				<p class="hr"></p>
-				<div class="reply_qna">
-		        	<span>${admin.aid }(${qna.qrdate})&nbsp;</span>
-		        		<br>
-			          	<br>
-		        		&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
-		        	<span class="bold">A</span>
-			        <span class="normal"><a href="">${qna.qtitle }</a></span>
-		        	<br>
-		        	<h5>
-		       			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-		       			${reply.qtext}
-		       		</h5>
-			        <br>
-			       	<br>
-		       	</div>
+				<table>
+				<c:choose>
+					<c:when test="${qna.qstatus eq 1}">
+			       		<tr>
+			                <td>
+			                  <span> 관리자 답변 대기중. </span>
+			                </td>
+		            	</tr>
+		       		</c:when>
+		       		<c:otherwise>
+						<div class="reply_qna">
+				        	<span>${admin.aid }(${qna.qrdate})&nbsp;</span>
+				        		<br>
+					          	<br>
+				        		&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
+				        	<span class="bold">A</span>
+					        <span class="normal"><a href="">${qna.qtitle }</a></span>
+				        	<br>
+				        	<h5>
+				       			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+				       			${reply.qtext}
+				       		</h5>
+					        <br>
+					       	<br>
+				       	</div>
+			       	</c:otherwise>
+		       
+		       	</c:choose>
+		       	</table>
 	      	</div>
 	    </div>
 	    <div class="button">
@@ -77,8 +91,9 @@
 	    		<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'">글 삭제</button>
 	    	</c:if>
 	    	<c:if test="${not empty admin }">
-	    		<button onclick="location.href='${conPath}/board/qnaReplyWrite.do?qno=${param.qno }&pageNum=${param.pageNum }'">답변</button>
-	    		<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'">글 삭제</button>
+	    		<c:if test="${qna.qstatus eq 1 }">
+	    			<button onclick="location.href='${conPath}/board/qnaReplyWrite.do?qno=${param.qno }&pageNum=${param.pageNum }'">답변</button>
+	    		</c:if>
 	    	</c:if>
 			<button onclick="location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
 	    </div>

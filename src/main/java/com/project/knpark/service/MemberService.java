@@ -12,4 +12,5 @@ public interface MemberService {
 	public int modifyMember(Member member, HttpSession httpSession);
 	public int deleteMember(String id);
 	public String pwConfirm(String id);
+	public Member findIDAccount(Member member);
 }

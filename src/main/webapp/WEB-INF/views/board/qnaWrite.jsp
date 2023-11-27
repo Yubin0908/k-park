@@ -24,7 +24,7 @@
 				<table class="writeTable">
 	  				<tr class="RH_title">
 					    <td>제목</td>
-					    <td><input type="text" name="qtitle"></td>
+					    <td><input type="text" name="qtitle" size="60"></td>
 	 				</tr>
 	  
 	  				<tr class="RH_writer">

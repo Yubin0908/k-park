@@ -99,9 +99,9 @@
 				<li>
 	        		<a href="">이용안내</a>
 		      		<ul class="submenu">
-						<li><a href="#">야영장</a></li>
-				        <li><a href="#">대피소</a></li>
-				        <li><a href="#">생태탐방원</a></li>
+						<li><a href="${conPath }/guidance/campList.do">야영장</a></li>
+				        <li><a href="${conPath }/guidance/shelterList.do">대피소</a></li>
+				        <li><a href="${conPath }/guidance/exploreList.do">생태탐방원</a></li>
 		      		</ul>
 		      	</li>	
 				<li>
@@ -130,9 +130,9 @@
 	      		</li>
 	      		<c:if test="${not empty member }">
 		      		<li>
-		        		<a href="${conPath }/reservation/reservationList.do?id=${member.id}">마이페이지</a>
+		        		<a href="#">마이페이지</a>
 		        		<ul class="submenu">
-		        			<li><a href="#">나의 예약목록</a></li>
+		        			<li><a href="${conPath }/reservation/reservationList.do?id=${member.id}">나의 예약목록</a></li>
 		        		</ul>
 		      		</li>
 	      		</c:if>

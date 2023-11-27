@@ -90,6 +90,11 @@ public class MemberServiceImpl implements MemberService {
 	    String oldPw = memberRepository.pwConfirm(id);
 	    return (oldPw != null) ? "1" : "0";
 	}
+	
+	@Override
+	public Member findIDAccount(Member member) {
+		return memberRepository.findIDAccount(member);
+	}
 }
 
 

@@ -10,7 +10,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/login.css" rel="stylesheet">
-	
 </head>
 <body>
 	<c:if test="${joinResult eq 1 }">
@@ -34,7 +33,11 @@
 	<c:if test="${not empty param.after and empty param.pageNum}">
 		<c:set var="after" value="${param.after }"/>
 	</c:if>
-	
+	<c:if test="${not empty findId}">
+		<script>
+			alert()
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
 	<form action="${conPath }/member/login.do" method="post">
@@ -60,7 +63,10 @@
 	        	</td>
 	        </tr>
 			<tr>
-				<td colspan="2" style="text-align:center;"><input type="submit" value="로그인"></td>
+				<td colspan="2" style="text-align:center;">
+					<input type="submit" value="로그인">
+					<input type="button" value="아이디찾기" onclick="location.href='${conPath}/member/account.do'">
+				</td>
 			</tr>
 		</table>
 	</form>
