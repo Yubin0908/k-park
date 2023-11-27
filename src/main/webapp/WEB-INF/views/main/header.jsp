@@ -130,7 +130,7 @@
 	      		</li>
 	      		<c:if test="${not empty member }">
 		      		<li>
-		        		<a href="${conPath }/reservation/reservationList.do">마이페이지</a>
+		        		<a href="${conPath }/reservation/reservationList.do?id=${member.id}">마이페이지</a>
 		        		<ul class="submenu">
 		        			<li><a href="#">나의 예약목록</a></li>
 		        		</ul>
