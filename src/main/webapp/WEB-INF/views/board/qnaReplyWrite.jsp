@@ -33,18 +33,21 @@
 		    <tr class="RH_writer">
 				<tr>
 					<th>작성자</th>
-					<td><input type="text" name="aid" required="required" autofocus="autofocus"></td>
+					<td><input type="text" name="aid" required="required" autofocus="autofocus" value="${admin.aid }"></td>
 				</tr>
 				<tr>
-			     	<td>공원명</td>
-			     	<td><input type="text" name="parkname"></td>
+			     	<td>소속</td>
+			     	<td><input type="text" name="parkname" value="${admin.agroup }"></td>
 				</tr>
 				<tr>
 					<td>공개</td>
 					<td>
-						<input type="radio" name="qyn" value="Y"> 공개
-						<input type="radio" name="qyn" value="N"> 비공개
+						<input type="radio" name="qyn" value="y"> 공개
+						<input type="radio" name="qyn" value="n"> 비공개
 					</td>
+				</tr>
+				<tr>
+					<td><input type="hidden" name="qstatus" value="0"></td>
 				</tr>
 				<tr class="RH_text">
 					<th>내용</th>

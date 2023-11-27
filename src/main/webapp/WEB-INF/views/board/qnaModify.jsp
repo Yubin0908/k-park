@@ -39,6 +39,13 @@
 				<td>문의유형</td>
 				<td><input type="text" name="qtype" value="${qna.qtype }"></td>
 			</tr>
+			<tr>
+				<td>공개</td>
+				<td>
+					<input type="radio" name="qyn" value="Y"> 공개
+					<input type="radio" name="qyn" value="N"> 비공개
+				</td>
+			</tr>
         	<tr class="RH_text">
           		<td>내용</td>
           		<td>
