@@ -84,7 +84,15 @@ public class MemberController {
 			return "member/pwConfirm";
 		}
 	}
-
+	@RequestMapping(value = "account", method = RequestMethod.GET)
+	public String account() {
+		return "member/findAccount";
+	}
+	@RequestMapping(value = "account", method = RequestMethod.POST)
+	public String account(Model model, Member member) {
+		model.addAttribute("findId", memberService.findIDAccount(member));
+		return "forward:login.do";
+	}
 }
 
 

@@ -83,7 +83,10 @@
 				        </td>
 				        <td>${list.id }</td>
 				        <td>${list.qrdate }</td>
-				        <td>${list.qstatus }</td>
+				        <td>
+					        <c:if test="${list.qstatus eq 1 }">처리중</c:if>
+					        <c:if test="${list.qstatus eq 2 }">처리완료</c:if>
+				        </td>
 					</tr>
 		      	</c:forEach>
 			</table>
