@@ -38,8 +38,8 @@
 					<tr>
 						<td>공개</td>
 						<td>
-							<input type="radio" name="qyn" value="Y"> 공개
-							<input type="radio" name="qyn" value="N"> 비공개
+							<input type="radio" name="qyn" value="y"> 공개
+							<input type="radio" name="qyn" value="n"> 비공개
 						</td>
 					</tr>
 					<tr>
