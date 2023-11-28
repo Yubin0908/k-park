@@ -21,4 +21,5 @@ public class GuidanceServiceImpl implements GuidanceService {
 	public Guidance getGuidance(int fno, String after) {
 		return guidanceRepository.getGuidance(fno);
 	}
+
 }
