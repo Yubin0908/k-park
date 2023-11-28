@@ -36,13 +36,15 @@
 	<resultMap type="Reservation" id="BookingResult">
 		<result property="bno" column="bno"/>
 		<result property="id" column="id"/>
+		<result property="camp_parkname" column="camp_parkname"/>
+		<result property="shelter_parkname" column="shelter_parkname"/>
+		<result property="explore_parkname" column="explore_parkname"/>
 		<result property="campno" column="campno"/>
 		<result property="shelterno" column="shelterno"/>
 		<result property="exploreno" column="exploreno"/>
 		<result property="status" column="status"/>
 		<result property="bdate" column="bdate"/>
 	</resultMap>
-	
 	<!-- 야영장 리스트 출력 -->
 	<select id="getCampList" parameterType="String" resultMap="CampResult">
 		SELECT CAMPNO, CAMPNAME FROM CAMP WHERE PARKNAME = #{parkname}
@@ -65,12 +67,16 @@
 	</update>
 	<!-- 예약 내역 출력 -->
 	<select id="getBookingInfo" parameterType="String" resultMap="BookingResult">
-    SELECT A.*, B.*, C.*, D.*
-		FROM BOOKING A
-		LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
-		LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
-		LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
-		WHERE A.ID = #{id}
+    SELECT 
+	    A.*, 
+	    B.PARKNAME AS CAMP_PARKNAME, b.CAMPNAME, 
+	    C.PARKNAME AS SHELTER_PARKNAME, c.SHELTERNAME,
+	    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME
+			FROM BOOKING A
+			LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
+			LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
+			LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+			WHERE A.ID = #{id}
 	</select>
 	<!-- 예약 취소 -->
 	<update id="cancleReservation" parameterType="int">
@@ -80,4 +86,34 @@
 	<update id="remPlus" parameterType="Reservation">
 		UPDATE RESERVED SET REM = REM + 1 WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
 	</update>
+	<!-- 대피로 리스트 출력 -->
+	<select id="getShelterList" parameterType="String" resultMap="ShelterResult">
+		SELECT SHELTERNO, SHELTERNAME FROM SHELTER WHERE PARKNAME = #{parkname}
+	</select>
+	<!-- 대피소 예약 가능 여부 -->
+	<select id="getShelterDateRem" parameterType="Reservation" resultType="java.sql.Date">
+		SELECT RESDATE FROM RESERVED WHERE SHELTERNO = #{shelterno} AND REM > 0 AND RESDATE = #{resdate}
+	</select>
+	<!-- 대피소 예약 -->
+	<insert id="reservationShelter" parameterType="Reservation">
+		INSERT INTO BOOKING (BNO, ID, SHELTERNO, STATUS, BDATE) VALUES (BOOKING_SQ.NEXTVAL, #{id}, #{shelterno}, 1, #{bdate})
+	</insert>
+	<!-- 대피소 rem 조정 -->
+	<update id="remMinusShelter" parameterType="Reservation">
+		UPDATE RESERVED SET REM = REM - 1 WHERE SHELTERNO = #{shelterno} AND RESDATE = #{resdate}
+	</update>
+	
+	<!-- 관리자 예약현황 -->
+	<select id="getAdminReservation" parameterType="String" resultMap="BookingResult">
+		SELECT 
+    A.*, 
+    B.PARKNAME AS CAMP_PARKNAME, b.CAMPNAME, 
+    C.PARKNAME AS SHELTER_PARKNAME, c.SHELTERNAME,
+    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME
+		FROM BOOKING A
+		LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
+		LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
+		LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+		WHERE B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}
+	</select>
 </mapper>

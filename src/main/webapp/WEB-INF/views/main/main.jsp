@@ -11,64 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><!-- swiper js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- jQuery js -->
   <link rel="stylesheet" href="${conPath }/css/main.css">
-  <style>
-    .main-swiper {
-      width: 450px;
-      height: 650px;
-      background-color: #333;
-      border-radius: 25px 0 0 25px;
-      border: 1px solid #000;
-      overflow: hidden;
-    }
-    .notice_title {
-      color: #fff;
-      font-weight: bold;
-      font-size: 30px;
-      margin: 15px 0 -40px 25px;
-    }
-    
-    .main-swiper .swiper-slide {
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 500px;
-    }
-    
-    .main-swiper .swiper-slide img {
-      object-fit: cover;
-      height: 80%;
-      width: 85%;
-    }
-  </style>
-  <script>
-    $(document).ready(function() {
-      $('ul.content_nav li').on('click', 'a', function(e) {
-        e.preventDefault();
-        var tabId = $(this).parent().data('tabid');
-        var jspFile = '${conPath}/main/' + tabId + '.do';
 
-        $.ajax({
-          url: jspFile,
-          type: 'GET',
-          dataType: 'html',
-          success: function(response) {
-	          $('.content_tab').html(response);
-           var swiper2 = new Swiper('.second-swiper', {
-             loop: true,
-             slidesPerView: 1,
-             spaceBetween: 40,
-             slidesPerGroup: 1,
-             navigation: {
-               nextEl: '.swiper-button-nextA',
-               prevEl: '.swiper-button-prevA',
-             },
-       		});
-         }	
-     	 });
-      });
-    });
-  </script>
 </head>
 <body>
 	<c:if test="${modifyResult eq 1 }">
@@ -78,43 +21,96 @@
 		<script>alert('회원 탈퇴가 완료되었습니다.')</script>
 	</c:if>
 	<jsp:include page="header.jsp"/>
-	<div id="main_wrap">
-    <div class="swiper-container main-swiper">
-      <div class="notice_title">공원 사진</div>
+	<br>
+  <br>
+  <br>
+  <div id="main_wrap">
+    <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="${conPath }/img/1.jpg"></div>
         <div class="swiper-slide"><img src="${conPath }/img/2.jpg"></div>
-        <div class="swiper-slide"><img src="${conPath }/img/3.jpg"></div>
+        <div class="swiper-slide"><img src="${conPath }/img/생태탐방원_가야산.jpg"></div>
+        <div class="swiper-slide"><img src="${conPath }/img/생태탐방원_한려해상.jpg"></div>
+        <div class="swiper-slide"><img src="${conPath }/img/야영장_오대산.jpg"></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
-    <div class="content">
-      <ul class="content_nav">
-        <li data-tabid="tab1"><a href="#tab1">야영장</a></li>
-        <li data-tabid="tab2"><a href="#tab2">대피소</a></li>
-        <li data-tabid="tab3"><a href="#tab3">생태탐방원</a></li>
-      </ul>
-      <div class="content_tab">
-      	
+
+    <div class="news">
+      <div class="container">
+        <div class="sub_title">
+        	<div class="kkomi"></div>
+      		<div class="bandal"></div>
+          <h2>
+            K-공원
+            <span>새소식</span>
+          </h2>
+          <p>대한민국 구석구석 국립공원의 최신 소식을 빠르게 전달해드립니다.</p>
+        </div>
+        <div class="notice">
+          <h3>공지사항</h3>
+          <ul>
+          	<c:forEach var="notice" items="${notice }" begin="0" end="4" step="1">
+          		<li>
+	              <a href="${conPath}/board/noticeDetail.do?nno=${notice.nno}&pageNum=1">${notice.ntitle } </a>
+	              <time lang="ko">${notice.ndate }</time>
+            	</li>
+          	</c:forEach>
+          </ul>
+          <small lang="ko">
+            <a href="${conPath }/board/noticeList.do?pageNum=1">더보기</a>
+          </small>
+        </div>
+        <div class="notice">
+          <h3>묻고 답하기</h3>
+          <ul>
+          	<c:forEach var="qna" items="${qna }" begin="0" end="4" step="1">
+          		<li>
+	              <a href="${conPath }/board/qnaDetail.do?qno=${qna.qno}&qgroup=${qna.qgroup}&pageNum=1">${qna.qtitle }</a>
+	              <time lang="lo">${qna.qrdate }</time>
+            	</li>
+          	</c:forEach>
+          </ul>
+          <small lang="ko">
+            <a href="${conPath }/board/qnaList.do?pageNum=1">더보기</a>
+          </small>
+        </div>
+        <div class="notice">
+          <h3>건의 합니다</h3>
+          <ul>
+          	<c:forEach var="sug" items="${sug }" begin="0" end="4" step="1">
+          		<li>
+	              <a href="${conPath }/board/sugDetail.do?sno=${sug.sno}&pageNum=1">${sug.stitle }</a>
+	              <time lang="lo">${sug.srdate }</time>
+	            </li>
+          	</c:forEach>
+          </ul>
+          <small lang="ko">
+            <a href="${conPath }/board/sugList.do?pageNum=1">더보기</a>
+          </small>
+        </div>
       </div>
     </div>
   </div>
 
-
   <script>
-    var swiper = new Swiper('.main-swiper', {
+    var swiper = new Swiper('.swiper-container', {
       direction: 'vertical',
+      speed: 1000,
       pagination: true,
-      spaceBetween: 0, // slide 여백
-      slidesPerView: 1, // one slide 출력갯수
-      centeredSlides: true, // 센터모드
-      autoplay: { // 자동슬라이드
-        delay: 2500, // 시간
-        disableOnInteraction: false, // 스와이프 후 자동재생(false), 비활성화(true)
+      spaceBetween: 0,
+      slidesPerView: 1,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
       },
-      loop: false, // slide loop
-      loopAdditionalSlides: 1, // 슬라이드 반복 시 마지막 슬라이드에서 다음 슬라이드가 보여지지 않는 현상 방지
-      
+      loop: true,
+      loopAdditionalSlides: 1,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
     });
   </script>
   <jsp:include page="footer.jsp"/>

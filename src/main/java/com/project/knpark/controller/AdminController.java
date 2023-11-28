@@ -22,8 +22,8 @@ public class AdminController {
 	}
 	@RequestMapping(value = "admin/adminLogin", method=RequestMethod.POST)
 	public String login(Model model, String aid, String apw, HttpSession httpSession) {
-		String loginResult = adminService.loginCheck(aid, apw, httpSession);
-		return "main/main";
+		adminService.loginCheck(aid, apw, httpSession);
+		return "redirect:../main.do";
 	}
 	@RequestMapping(value = "admin/aidConfirm", method=RequestMethod.GET)
 	public String aidConfirm(Model model, String aid) {

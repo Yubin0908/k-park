@@ -24,7 +24,7 @@
       <table class="writeTable">
         <tr class="RH_title">
           <td>제목</td>
-          <td><input type="text" name="ntitle"></td>
+          <td><input type="text" name="ntitle" id="rtitle"></td>
         </tr>
         <tr class="RH_writer">
           <td>작성자</td>
@@ -75,9 +75,15 @@
   </script>
   <script>
   	function submitForm() {
-      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+  		const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
       document.getElementById("ntext").value = markdown;
-      document.getElementById("noticeForm").submit();
+  		const ntitle = document.getElementById("rtitle").value.trim();
+  		if(ntitle !== "" && markdown !== "") {
+ 	      document.getElementById("noticeForm").submit();
+  		} else {
+  			alert('빈칸이 존재합니다.');
+  			e.preventDefault();
+  		}
     }
   </script>
   <jsp:include page="../main/footer.jsp"/>
