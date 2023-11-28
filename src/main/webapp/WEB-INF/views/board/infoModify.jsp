@@ -5,9 +5,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${conPath}/css/board.css" rel="stylesheet"/>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="${conPath}/css/board.css" rel="stylesheet"/>
+	<style>
+  		input[name="ititle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+		select[name="itype"], input[name="iparkname"] {
+		  	width: 15%;
+		  	padding: 5px;
+		  	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -30,15 +44,21 @@
 				</tr>
 				<tr class="RH_writer">
 	  				<td>작성자</td>
-	  				<td><input type="text" name="aid" value="${infomation.aid }"></td>
+	  				<td><input type="text" name="aid" value="${infomation.aid }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td >공원명</td>
 					<td><input type="text" name="iparkname" value="${infomation.iparkname }"></td>
 				</tr>
 				<tr>
-					<td>유형</td>
-					<td><input type="text" name="itype" value="${infomation.itype }"></td>
+					<td>문의유형</td>
+					<td>
+						<select name="itype">
+							<option value="야영장">탐방</option>
+							<option value="대피소">대피소</option>
+							<option value="생태탐방원">생태탐방원</option>
+						</select>
+					</td>
 				</tr>
 				<tr class="RH_text">
 	  				<td>내용</td>

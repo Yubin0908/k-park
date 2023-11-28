@@ -10,6 +10,20 @@
 	<link href="${conPath}/css/board.css" rel="stylesheet"/>
 	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
   	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  	<style>
+  		input[name="ititle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+		select[name="itype"], input[name="iparkname"] {
+		  	width: 15%;
+		  	padding: 5px;
+		  	border-radius: 5px;
+		  	outline: none !important;
+		}
+  	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -20,24 +34,30 @@
     <br>
     <hr>
     <br>
-    <form action="${conPath }/board/infoWrite.do" method="post" id="reviewForm">
+    <form action="${conPath }/board/infoWrite.do" method="post" id="infoForm">
     	<table class="writeTable">
 	        <tr class="RH_title">
 		          <td>제목</td>
-		          <td><input type="text" name="ititle"></td>
+		          <td><input type="text" name="ititle" id="ititle"></td>
 	        </tr>
 	        <tr class="RH_writer">
 		          <td>작성자</td>
-		          <td><input type="text" name="aid" value="${admin.aid }"></td>
+		          <td><input type="text" name="aid" value="${admin.aid }" readonly="readonly"></td>
 	        </tr>
 	        <tr>
 	        	<td>공원명</td>
-	        	<td><input type="text" name="iparkname">
+	        	<td><input type="text" name="iparkname" id="iparkname">
 	        </tr>
 	        <tr>
-	        	<td>유형</td>
-	        	<td><input type="text" name="itype">
-	        </tr>
+				<td>문의유형</td>
+				<td>
+					<select name="itype">
+						<option value="야영장">탐방</option>
+						<option value="대피소">대피소</option>
+						<option value="생태탐방원">생태탐방원</option>
+					</select>
+				</td>
+			</tr>
 	        <tr class="RH_text">
 				<td>내용</td>
 				<td>
@@ -71,6 +91,20 @@
 	      document.getElementById("reviewForm").submit();
 	      console.log(markdown);
 	    }
+	</script>
+	<script>
+		function submitForm() {
+		    const ititle = document.getElementById("ititle").value.trim();
+		    const iparkname = document.getElementById("iparkname").value.trim();
+		    const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      	document.getElementById("itext").value = markdown;
+		    if(ititle !== "" && iparkname !== "" && markdown !== "") {
+		      	document.getElementById("infoForm").submit();
+		    } else {
+		       	alert('빈칸이 존재합니다.');
+		       	e.preventDefault();
+		    }
+		}
 	</script>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

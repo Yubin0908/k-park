@@ -7,89 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<style>
-	@font-face {
-	    font-family: 'GangwonEduHyeonokT_OTFMediumA';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-    * { margin: 0; padding: 0;}
-    #header_wrap li {list-style: none;}
-    nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
-    #header_wrap {
-      width: 100%;
-      background-color: #FFFF;
-      height: 98px;
-      border-bottom: groove;
-      font-family: 'GangwonEduHyeonokT_OTFMediumA'; 
-      font-size: 20px;
-    }
-    #header_wrap nav > a{
-    	float: left;
-    }
-    .user a{
-     	display: flex;
-     	text-align: center;
-     	position: inherit;
-     	float: right;
-     	line-height: 57px;
-     	padding: 22px; 	
-    }
-    /********* header 메뉴 *********/
-    .menu{
-    	width: 650px;
-    	margin: 0px auto;
-    	float: left;
-    }
-    .menu > li {
-    	width: 20%;
-    	height:50px;
-    	float: left;
-    	text-align: center;
-    	line-height: 5;
-    	background-color: #FFFF;
-    }
-    .menu a {
-    	color: #1e1e1e;
-    }
-    .submenu {
-  		height: 0; /*ul의 높이를 안보이게 처리*/
- 	 	overflow: hidden;
- 	 	background-color: #1E1F21;
- 	 	opacity: 0.5;
-	}
-	.menu > li:hover  {
-  		background-color: #FFFF;
-  		transition-duration: 0.5s;
-	}
-	.menu > li:hover .submenu {
-  		height: 150px; /*서브메뉴 li한개의 높이 50*5*/
-  		transition-duration: 1s;
-  		
-  	}
-  	.menu .submenu > li a{
-  		color: #ccc;
-  	}
-  	.menu .submenu li > a:hover{
-  		color: #009eff;
-  	}
-  	.menu .submenu li > a{
-  		position: relative;
-  		display: block;
-  		line-height: 50px;
-  	}
-  	nav img {
-  		display: inline-block;
-  		width: 200px;
-  		height: 92px;
-  		padding: 5px;
-  		margin-left: 46px;
-  		margin-right: 30px;
-  	}
-</style>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="${conPath }/css/header.css" rel="stylesheet"/>
 </head>
 <body>
 	<div id="header_wrap">
@@ -97,7 +17,7 @@
 	    	<a href="${conPath }/main.do"><img src="${conPath }/img/k.n.park.png" alt="logo" width="50"></a>
 			<ul class="menu">
 				<li>
-	        		<a href="">이용안내</a>
+	        		<a href="#">이용안내</a>
 		      		<ul class="submenu">
 						<li><a href="${conPath }/guidance/campList.do">야영장</a></li>
 				        <li><a href="${conPath }/guidance/shelterList.do">대피소</a></li>
@@ -105,7 +25,7 @@
 		      		</ul>
 		      	</li>	
 				<li>
-			    	<a href="">예약하기</a>
+			    	<a href="#">예약하기</a>
 			    	<ul class="submenu">
 			    		<li><a href="${conPath }/reservation/bookingCamp.do">야영장</a></li>
 				        <li><a href="${conPath }/reservation/bookingShelter.do">대피소</a></li>
@@ -113,7 +33,7 @@
 			    	</ul>
 			    </li>
 	     		<li>
-	       	 		<a href="">고객마당</a>
+	       	 		<a href="#">고객마당</a>
 	       	 		<ul class="submenu">
 				        <li><a href="${conPath }/board/qnaList.do">묻고답하기</a></li>
 				        <li><a href="${conPath }/board/sugList.do">건의합니다</a></li>
@@ -121,14 +41,14 @@
 	       	 		</ul>
 	      		</li>
 	      		<li>
-	       	 		<a href="">알림마당</a>
+	       	 		<a href="#">알림마당</a>
 	       	 		<ul class="submenu">
 	       	 			<li><a href="${conPath }/board/noticeList.do">공지사항</a></li>
 				        <li><a href="${conPath }/board/faqList.do">자주하는 질문</a></li>
 				        <li><a href="${conPath }/board/infoList.do">예약방법안내</a></li>
 	       	 		</ul>
 	      		</li>
-	      		<c:if test="${not empty member }">
+	      		<c:if test="${not empty member.id }">
 		      		<li>
 		        		<a href="#">마이페이지</a>
 		        		<ul class="submenu">
@@ -136,28 +56,33 @@
 		        		</ul>
 		      		</li>
 	      		</c:if>
-	      		<c:if test="${not empty admin }">
+	      		<c:if test="${not empty admin.aid }">
 	      			<li>
 	      				<a href="#">관리자 메뉴</a>
 	      				<ul class="submenu">
-	      					<li><a href="#">예약현황</a></li>
-	      					<li><a href="#">회원관리</a></li>
+	      					<li><a href="${conPath }/reservation/adminList.do?parkname='${admin.agroup }'">예약현황</a></li>
+	      					<li><a href="${conPath }/admin/memberList.do">회원관리</a></li>
 	      				</ul>
 	      			</li>
 	      		</c:if>
 	   		</ul>
 	    </nav>
 		<div class="user">
-		<c:if test="${empty member and empty admin}">
+		<c:if test="${empty member.id and empty admin.aid}">
 	    	<ul>
-			    <li><a href="${conPath }/member/join.do">회원가입</a></li>	      	
-	    		<li><a href="${conPath }/member/login.do"><span>로그인</span></a></li>
+			    <li><a href="${conPath }/member/join.do"><img src="${conPath }/img/join.png" alt="joinImg" > 회원가입</a></li>	      	
+	    		<li><a href="${conPath }/member/login.do"><img src="${conPath }/img/login.png" alt="loginImg" > 로그인</a></li>
 	      	</ul>
 	    </c:if>
-	    <c:if test="${not empty member or not empty admin }">
-	    	<li><a href="${conPath }/member/modify.do">정보수정</a></li>	      	
-	    	<li><a href="${conPath }/member/logout.do">로그아웃</a></li>
-	    	<li><a>${member.name } ${admin.aname }님 환영합니다.</a></li>
+	    <c:if test="${not empty member.id or not empty admin.aid }">
+	    	<li><a href="${conPath }/member/logout.do"><img src="${conPath }/img/logout.png" alt="logoutImg" > 로그아웃</a></li>
+	    	<c:if test="${empty member.id }">
+	    		<li><a><img src="${conPath }/img/admin.png" alt="adminImg" > ${admin.aname }님 환영합니다.</a></li>
+	    	</c:if>
+	    	<c:if test="${empty admin.aid }">
+	    		<li><a href="${conPath }/member/modify.do"><img src="${conPath }/img/memberModify.png" alt="modifyImg" >정보수정</a></li>	
+	    		<li><a><img src="${conPath }/img/member.png" alt="memberImg" > ${member.name }님 환영합니다.</a></li>
+	    	</c:if>
 	    </c:if>
     	</div>
 	</div>

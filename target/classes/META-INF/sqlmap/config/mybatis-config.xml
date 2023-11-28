@@ -27,4 +27,5 @@
 		<mapper resource="META-INF/sqlmap/mappers/reservation.xml"/>
 		<mapper resource="META-INF/sqlmap/mappers/guidance.xml"/>
 	</mappers>
+
 </configuration>

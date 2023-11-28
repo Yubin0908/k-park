@@ -1,0 +1,92 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'GangwonEduHyeonokT_OTFMediumA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* { margin: 0; padding: 0;}
+#header_wrap li {list-style: none;}
+nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
+#header_wrap {
+	width: 100%;
+    background-color: #FFFF;
+    height: 121px;
+    border-bottom: groove;
+    font-family: 'GangwonEduHyeonokT_OTFMediumA'; 
+    font-size: 20px;
+}
+#header_wrap nav > a{
+	float: left;
+}
+.user a{
+ 	display: flex;
+ 	text-align: center;
+ 	position: inherit;
+ 	float: right;
+ 	line-height: 73px;
+ 	padding: 24px;
+ 	padding-right: 67px; 	
+}
+/********* header 메뉴 *********/
+.menu{
+	width: 650px;
+	margin: 0px auto;
+	float: left;
+}
+.menu > li {
+	width: 20%;
+	height:50px;
+	float: left;
+	text-align: center;
+	line-height: 119px;
+	background-color: #FFFF;
+}
+.menu a {
+	color: #1e1e1e;
+}
+.submenu {
+height: 0; /*ul의 높이를 안보이게 처리*/
+	overflow: hidden;
+	background-color: #1E1F21;
+ 	opacity: 0.5;
+}
+.menu > li:hover  {
+	background-color: #FFFF;
+ 	transition-duration: 0.5s;
+}
+
+.menu > li:hover .submenu {
+ 	height: 150px; /*서브메뉴 li한개의 높이 50*5*/
+	transition-duration: 1s;	
+}
+
+.menu .submenu > li a{
+	color: #ccc;
+}
+
+.menu .submenu li > a:hover{
+	color: #009eff;
+}
+
+.menu .submenu li > a{
+	position: relative;
+	display: block;
+	line-height: 50px;
+}
+
+nav img {
+	display: inline-block;
+	width: 235px;
+	height: 122px;
+	margin-left: 46px;
+	margin-right: 30px;
+	margin-top: -5px;
+}
+.user img{
+	margin-top: 20px;
+	margin-right: 5px;
+	width: 30px; 
+	height: 30px;
+}
