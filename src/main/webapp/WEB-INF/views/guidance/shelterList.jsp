@@ -16,25 +16,8 @@
 
 		});
 	</script>
-	<style>
-		.button button {
-			padding: 10px 25px;
-			background-color: transparent;
-		  	border-color: #0042a2;
-		  	border-radius: 5px;
-		  	color: #0042a2;
-		  	font-weight: bold;
-		  	font-size: 0.8em;
-		}
-	</style>
 </head>
 <body>
-	<jsp:include page="../main/header.jsp"/>
-	<img alt="" src="${conPath }/img/${park}.jpg" width="55%">
-	<div class="button">
-		<button onclick="history.back();" 
-					style="cursor:pointer">뒤로가기</button>
-    </div>
-	<jsp:include page="../main/footer.jsp"/>
+	${shelterList }
 </body>
 </html>

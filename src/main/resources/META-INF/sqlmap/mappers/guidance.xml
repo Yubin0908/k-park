@@ -17,3 +17,12 @@
 		SELECT CAMPNO, CAMPNAME FROM CAMP WHERE PARKNAME = #{parkname}
 	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
