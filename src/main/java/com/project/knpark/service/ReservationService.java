@@ -1,5 +1,6 @@
 package com.project.knpark.service;
 
+import java.sql.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -15,4 +16,9 @@ public interface ReservationService {
 	public List<Reservation> getBookingInfo(String id);
 	public int cancleReservation(int bno, Reservation reservation);
 	public int remPlus(Reservation reservation);
+	public List<Reservation> getShelterList(String parkname);
+	public int getShelterDateRem(Reservation reservation);
+	public int reservationShelter(Reservation reservation, HttpSession session);
+	public int remMinusShelter(Reservation reservation);
+	public List<Reservation> getAdminReservation(String parkname);
 }

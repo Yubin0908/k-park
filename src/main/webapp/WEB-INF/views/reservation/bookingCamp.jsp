@@ -195,7 +195,7 @@
 	 		  console.log('sel_date : ' + sel_date);
 	 		  console.log('campno : ' + campno);
 
-	 		  $.get('${conPath}/reservation/bookingDate.do', {
+	 		  $.get('${conPath}/reservation/bookingCampDate.do', {
 	 		    resdate: sel_date,
 	 		    campno: campno
 	 		  }, function(data) {

@@ -30,4 +30,9 @@ public class Reservation {
 	private String id;
 	private int status;
 	private Date bdate;
+	
+	private String camp_parkname;
+	private String shelter_parkname;
+	private String explore_parkname;
+
 }
