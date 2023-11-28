@@ -10,6 +10,22 @@
 	<link href="${conPath}/css/board.css" rel="stylesheet"/>
 	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
   	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+  	<style>
+  		input[name="qtitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+		select[name="qtype"] {
+		  	width: 15%;
+		  	padding: 5px;
+		  	border-radius: 5px;
+		  	outline: none !important;
+		  	margin-bottom: 5px;
+		  	margin-top: 5px
+		}
+  	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -20,7 +36,7 @@
 	    <br>
 	    <hr>
 	    <br>
-    	<form action="${conPath }/board/qnaModify.do?after=u" method="post" id="reviewForm">
+    	<form action="${conPath }/board/qnaModify.do?after=u" method="post" id="qnaForm">
 	    	<input type="hidden" name="option" value="${param.option }"/>
 	    	<input type="hidden" name="search" value="${param.search }" />
 	    	<input type="hidden" name="qno" value="${param.qno }"/>
@@ -29,27 +45,33 @@
       	<table class="writeTable">
         	<tr class="RH_title">
         		<td>제목</td>
-        		<td><input type="text" name="qtitle" value="${qna.qtitle }"></td>
+        		<td><input type="text" name="qtitle" value="${qna.qtitle }" id="qtitle"></td>
         	</tr>
         	<tr>
         		<td>공원명</td>
-          		<td><input type="text" name="parkname" value="${qna.parkname }"></td>
+          		<td><input type="text" name="parkname" value="${qna.parkname }" id="parkname"></td>
         	</tr>
         	<tr>
 				<td>문의유형</td>
-				<td><input type="text" name="qtype" value="${qna.qtype }"></td>
+				<td>
+					<select name="qtype">
+						<option value="야영장">탐방</option>
+						<option value="대피소">대피소</option>
+						<option value="생태탐방원">생태탐방원</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td>공개</td>
 				<td>
-					<input type="radio" name="qyn" value="y"> 공개
+					<input type="radio" name="qyn" value="y" checked="checked"> 공개
 					<input type="radio" name="qyn" value="n"> 비공개
 				</td>
 			</tr>
         	<tr class="RH_text">
           		<td>내용</td>
           		<td>
-					<input type="hidden" name="qtext" id="qtext"/>
+					<input type="hidden" name="qtext" id="qtext" required/>
 					<div id="editor">
   					</div>
 				</td>
@@ -62,23 +84,36 @@
     	</table>
 	</form>
 </div>
-  <script>
-    const Editor = toastui.Editor;
-    const editor = new Editor({
-      el: document.querySelector('#editor'),
-      height: '500px',
-      initialEditType: 'wysiwyg',
-      language: 'ko',
-    });
-  </script>
-  <script>
-  	function submitForm() {
-      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-      document.getElementById("qtext").value = markdown;
-      document.getElementById("reviewForm").submit();
-    }
-  </script>
-  
+  	<script>
+	    const Editor = toastui.Editor;
+	    const editor = new Editor({
+	      el: document.querySelector('#editor'),
+	      height: '500px',
+	      initialEditType: 'wysiwyg',
+	      language: 'ko',
+	    });
+  	</script>
+  	<script>
+	  	function submitForm() {
+	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      document.getElementById("qtext").value = markdown;
+	      document.getElementById("reviewForm").submit();
+	    }
+  	</script>
+ 	<script>
+		function submitForm() {
+		    const qtitle = document.getElementById("qtitle").value.trim();
+		    const parkname = document.getElementById("parkname").value.trim();
+		    const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      	document.getElementById("qtext").value = markdown;
+		    if(qtitle !== "" && parkname !== "" && markdown !== "") {
+		      	document.getElementById("qnaForm").submit();
+		    } else {
+		       	alert('빈칸이 존재합니다.');
+		       	e.preventDefault();
+		    }
+		}
+	</script>
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

@@ -92,8 +92,15 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public Member findIDAccount(Member member) {
-		return memberRepository.findIDAccount(member);
+	public String findIDAccount(Member member) {
+		String returnId = memberRepository.findIDAccount(member);
+		return returnId;
+	}
+	
+	@Override
+	public String findPWAccount(Member member) {
+		String returnPw = memberRepository.findPWAccount(member);
+		return returnPw;
 	}
 }
 

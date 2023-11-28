@@ -84,14 +84,38 @@ public class MemberController {
 			return "member/pwConfirm";
 		}
 	}
-	@RequestMapping(value = "account", method = RequestMethod.GET)
+	@RequestMapping(value = "accountId", method=RequestMethod.GET)
 	public String account() {
-		return "member/findAccount";
+		return "member/findIdAccount";
 	}
-	@RequestMapping(value = "account", method = RequestMethod.POST)
-	public String account(Model model, Member member) {
-		model.addAttribute("findId", memberService.findIDAccount(member));
-		return "forward:login.do";
+	
+	@RequestMapping(value = "accountId", method=RequestMethod.POST)
+	public String account(Model model, @ModelAttribute("mDto") Member member) {
+		String rtnId = (String)memberService.findIDAccount(member);
+		if(rtnId == null || "".equals(rtnId)) {
+			model.addAttribute("findId", "아이디를 찾을 수 없습니다.");
+			return "member/findIdAccount";
+		}else {
+			model.addAttribute("findId", rtnId);
+			return "member/login";
+		}
+	}
+	
+	@RequestMapping(value = "accountPw", method=RequestMethod.GET)
+	public String accountPw() {
+		return "member/findPwAccount";
+	}
+	
+	@RequestMapping(value = "accountPw", method=RequestMethod.POST)
+	public String accountPw(Model model, @ModelAttribute("mDto")Member member){
+		String rtnPw = (String)memberService.findPWAccount(member);
+		if(rtnPw == null || "".equals(rtnPw)) {
+			model.addAttribute("findPw", "비밀번호를 찾을 수 없습니다.");
+			return "member/findPwAccount";
+		}else {
+			model.addAttribute("findPw", rtnPw);
+			return "member/login";
+		}
 	}
 }
 

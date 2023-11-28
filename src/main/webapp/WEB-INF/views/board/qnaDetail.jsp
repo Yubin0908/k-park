@@ -59,13 +59,13 @@
 					<c:when test="${qna.qstatus eq 1}">
 			       		<tr>
 			                <td>
-			                  <span> 관리자 답변 대기중. </span>
+			                  <span> 관리자 답변 대기중... </span>
 			                </td>
 		            	</tr>
 		       		</c:when>
 		       		<c:otherwise>
 						<div class="reply_qna">
-				        	<span>${admin.aid }(${qna.qrdate})&nbsp;</span>
+				        	<span>Q. ${qna.qtitle }(${qna.qrdate})&nbsp;</span>
 				        		<br>
 					          	<br>
 				        		&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
@@ -78,9 +78,9 @@
 				       		</h5>
 					        <br>
 					       	<br>
+			       			<span>${qna.parkname} | ${reply.qrdate }</span>
 				       	</div>
 			       	</c:otherwise>
-		       
 		       	</c:choose>
 		       	</table>
 	      	</div>

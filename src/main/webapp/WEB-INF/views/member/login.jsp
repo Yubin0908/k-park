@@ -19,6 +19,18 @@
 	<c:if test="${not empty loginResult}">
 		<script>alert('${loginResult}');</script>
 	</c:if>
+	<c:if test="${not empty findId}">
+		<script>alert('테스트 : 아이디는 ${findId}입니다.');</script>
+	</c:if>
+	<c:if test="${not empty findPw}">
+		<script>alert('회원가입시 사용한 비밀번호는 ${findPw}입니다.');</script>
+	</c:if>
+	<c:if test="${not empty admin }">
+      <script>
+         alert('이미 로그인되어 있습니다.');
+         history.back();
+      </script>
+   	</c:if>
 	<c:if test="${not empty member }">
 		<script>
 			location.href='${conPath}/main.do';
@@ -33,43 +45,39 @@
 	<c:if test="${not empty param.after and empty param.pageNum}">
 		<c:set var="after" value="${param.after }"/>
 	</c:if>
-	<c:if test="${not empty findId}">
-		<script>
-			alert()
-		</script>
-	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
-	<form action="${conPath }/member/login.do" method="post">
-		<input type="hidden" name="after" value="${after}">
-		<div id="title">
-	      <h2>로그인</h2>
-	      <br>
-	      <br>
-	      <hr>
-	      <br>
-	    </div>
-		<table class="login_table">
-			<tr>
-	          <td>아이디</td>
-	          <td>
-	            <input type="text" name="id" id="id" class="input" value="${id }">
-	          </td>
-	        </tr>
-	        <tr>
-	        	<td>비밀번호</td>
-	        	<td>
-	        		<input type="password" name="pw" class="input" value="${pw }">
-	        	</td>
-	        </tr>
-			<tr>
-				<td colspan="2" style="text-align:center;">
-					<input type="submit" value="로그인">
-					<input type="button" value="아이디찾기" onclick="location.href='${conPath}/member/account.do'">
-				</td>
-			</tr>
-		</table>
-	</form>
+		<form action="${conPath }/member/login.do" method="post">
+			<input type="hidden" name="after" value="${after}">
+			<div id="title">
+		      <h2>로그인</h2>
+		      <br>
+		      <br>
+		      <hr>
+		      <br>
+		    </div>
+			<table class="login_table">
+				<tr>
+		          <td>아이디</td>
+		          <td>
+		            <input type="text" name="id" id="id" class="input" value="${id }">
+		          </td>
+		        </tr>
+		        <tr>
+		        	<td>비밀번호</td>
+		        	<td>
+		        		<input type="password" name="pw" class="input" value="${pw }">
+		        	</td>
+		        </tr>
+				<tr>
+					<td colspan="2" style="text-align:center;">
+						<input type="submit" value="로그인">
+						<input type="button" value="아이디찾기" onclick="location.href='${conPath}/member/accountId.do'">
+						<input type="button" value="비밀번호찾기" onclick="location.href='${conPath}/member/accountPw.do'">
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

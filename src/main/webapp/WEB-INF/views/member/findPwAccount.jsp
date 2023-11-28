@@ -12,12 +12,14 @@
 	<link href="${conPath }/css/login.css" rel="stylesheet">
 </head>
 <body>
-	
+	<c:if test="${not empty findPw}">
+		<script>alert('${findPw}');</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
-	<form action="${conPath }/member/account.do" method="post">
+	<form action="${conPath }/member/accountPw.do" method="post">
 		<div id="title">
-	      <h2>아이디 찾기</h2>
+	      <h2>비밀번호 찾기</h2>
 	      <br>
 	      <br>
 	      <hr>
@@ -31,13 +33,17 @@
 	          </td>
 	        </tr>
 	        <tr>
+	        	<td>아이디</td>
+	        	<td><input type="text" name="id" class="input"></td>
+	        </tr>
+	        <tr>
 	        	<td>이메일</td>
 	        	<td>
 	        		<input type="email" name="email" class="input">
 	        	</td>
 	        </tr>
 			<tr>
-				<td colspan="2" style="text-align:center;"><input type="submit" value="로그인"></td>
+				<td colspan="2" style="text-align:center;"><input type="submit" value="찾기"></td>
 			</tr>
 		</table>
 	</form>

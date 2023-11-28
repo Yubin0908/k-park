@@ -39,16 +39,16 @@
 		        BIRTH = #{birth}
 		    WHERE ID = #{id, jdbcType=VARCHAR}
 	</update>
-	<select id="findIDAccount" parameterType="String" resultType="Member">
+	<select id="findIDAccount" parameterType="Member" resultType="String">
 		SELECT ID FROM MEMBER WHERE NAME=#{name} AND EMAIL=#{email}
 	</select>
-	<!-- <select id="findPWAccount" parameterType="String" resultType="Member">
+	<select id="findPWAccount" parameterType="Member" resultType="String">
 		SELECT PW FROM MEMBER WHERE ID=#{id} AND NAME=#{name} AND EMAIL=#{email}
-	</select> -->
+	</select> 
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM MEMBER WHERE ID=#{id}
 	</delete>
-	<select id="pwConfirm" parameterType="String" resultType="String">
+	<select id="pwConfirm" parameterType="Member" resultType="String">
 		SELECT PW FROM MEMBER WHERE ID = #{id}
 	</select>
 	

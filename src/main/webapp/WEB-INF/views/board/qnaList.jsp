@@ -28,7 +28,7 @@
 	<div id="bbs_wrap">
 	    <br>
 	    	<div class="sub_title">
-	    	<span>홈 > 알림마당  > 묻고답하기</span>
+	    	<span>홈 > 고객마당  > 묻고답하기</span>
 	    	<br>
 	    		<h2>묻고답하기</h2>
 	    		<br>

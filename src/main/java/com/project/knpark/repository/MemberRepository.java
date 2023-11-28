@@ -13,5 +13,6 @@ public interface MemberRepository {
 	public int modifyMember(Member member);
 	public int deleteMember(String id);
 	public String pwConfirm(@Param("id") String id);
-	public Member findIDAccount(Member member);
+	public String findIDAccount(Member member);
+	public String findPWAccount(Member member);
 }
