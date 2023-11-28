@@ -43,7 +43,7 @@
 			이메일: csnp&#64;knps.or.kr
 			<br>
 			Copyright@Korea National Park Service. All Rights Reserved.
-			<a href="https://reservation.knps.or.kr/contents/copyrightPolicy.do" class="btn" 
+			<a href="${conPath}/main/copyrightPolicy.do" class="btn" 
 				style="font-weight: bold; color: blue; background: lightgray;
 	        	">저작권정책</a><!-- text-decoration: none; -->
 	        <a href="http://www.knps.or.kr/portal/main/contents.do?menuNo=7020135" class="btn" target="_blank" 

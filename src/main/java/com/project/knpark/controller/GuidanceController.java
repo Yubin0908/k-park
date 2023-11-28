@@ -16,15 +16,19 @@ public class GuidanceController {
 	@Autowired
 	private GuidanceService guidanceService;
 	
-	@RequestMapping(value = "guidanceCamp", method=RequestMethod.GET)
+	@RequestMapping(value = "campList", method=RequestMethod.GET)
 	public String guidanceCamp() {
 		return "guidance/guidanceCamp";
 	}
 	
-	@RequestMapping(value = "guidanceCampList", method=RequestMethod.GET)
-	public String guidanceCampList(Model model, String parkname) {
-		model.addAttribute("campList", guidanceService.getCampList(parkname));
-		return "guidance/campList";
+	@RequestMapping(value = "shelterList", method=RequestMethod.GET)
+	public String guidanceShelter() {
+		return "guidance/guidanceShelter";
+	}
+	
+	@RequestMapping(value = "exploreList", method=RequestMethod.GET)
+	public String guidanceExplore() {
+		return "guidance/guidanceExplore";
 	}
 	@RequestMapping(value = "guidance.do", method=RequestMethod.GET)
 	public String guidanceDetail(String park, Model model) {
