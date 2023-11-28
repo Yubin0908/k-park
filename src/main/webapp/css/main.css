@@ -1,80 +1,167 @@
-@charset "UTF-8";
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  background-image: url("../img/background.png");
-}
-
-a {
-  text-decoration: none;
-}
-li {
-  list-style: none;
-}
 
 #main_wrap {
   width: 1400px;
-  height: 800px;
-  margin: 150px auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  
+  margin: 0 auto;
 }
 
-.content {
-  height: 650px;
-  width: 920px;
-  flex: 0 0 auto;
-  border-radius: 0 25px 25px 0;
+.swiper-container {
+  width: 95%;
+  height:600px;
+  background-color: #333;
+  border-radius: 25px;
+  overflow: hidden;
+  z-index: -5;
 }
 
-.content_nav {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 160px;
-  height: 100%;
-}
-
-.content_nav li {
-  flex: 1;
+.swiper-container img {
   width: 100%;
-  background-color: #555;
-  text-align: center;
-  margin: 0;
-  line-height: 200px;
+  height: 100%;
+  z-index: -5;
 }
 
-.content_nav li a {
+.news {
   position: relative;
-  display: block;
-  background-repeat: no-repeat;
-  background-size: 50px auto;
-  background-position: center top 20px;
-  color: rgba(255, 255, 255, 1);
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.news .container {
+  position: relative;
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.news .sub_title {
+  position: relative;
+  width: 100%;
+  margin: 5% 0 3.5% 0;
+  text-align: center;
+}
+
+.news h2 {
+  font-size: 40px;
+  font-weight: 500;
+  color: #282828;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  letter-spacing: -.6px;
+  line-height: 1.7;
+}
+
+.news h2 span {
+  color: #2766b5;
+  font-weight: 600;
+}
+
+.news p {
+  font-size: 18px;
+  font-weight: 400;
+  color: #4a4a4a;
+  margin-top: 10px;
+  line-height: 1.7;
+  letter-spacing: -.6px;
+}
+
+.notice {
+  position: relative;
+  width: 30%;
+  min-height: 360px;
+  border: 1px solid #e0e0e0;
+  display: inline-block;
+  margin: 0 15px 0 15px;
+}
+
+.notice h3 {
+  width: 100%;
+  padding: 10px 22px;
+  border-bottom: 1px solid #e0e0e0;
+  display: inline-block;
   font-size: 20px;
+  font-weight: 400;
+  color: #282828;
 }
 
-.content_nav li:nth-child(1) > a {
-  background-image: url('https://reservation.knps.or.kr/assets/img/main/icon-stepOff1.png');
-}
-.content_nav li:nth-child(2) > a {
-  background-image: url('https://reservation.knps.or.kr/assets/img/main/icon-stepOn2.png');
-}
-.content_nav li:nth-child(3) > a {
-  background-image: url('https://reservation.knps.or.kr/assets/img/main/icon-stepOff3.png');
+.container {
+	width: 100%;
 }
 
-.content_tab {
-	width: 750px;
-	height: 650px;
-	margin-top: -650px; 
-	margin-left: 160px;
-	background-color: #555;
+.kkomi {
+ 	width: auto;
+  height: 200px;
+  background: url(../img/kkomi.png) no-repeat;
+  background-size: contain;
+  margin-top: -50px;
+  margin-left: 100px;
+  margin-bottom: -200px;
+}
+.bandal {
+	width: auto;
+  height: 200px;
+  background: url(../img/bandal.png) no-repeat;
+  background-size: contain;
+  margin-top: -50px;
+  margin-bottom: -150px;
+  margin-left: 1050px;
+}
+
+.container ul, .container li {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #545454;
+  line-height: 1.7;
+  font-size: 17px;
+  font-weight: 300;
+  letter-spacing: -.6px;
+  word-break: break-all;
+}
+
+.container li {
+  padding: 16px 22px;
+  border-bottom: 1px dotted #d9d9d9;
+  background: url('https://www.eariul.go.kr/smgeco/images/main/icon_dott.png') 22px center no-repeat;
+}
+
+.container ul li a {
+  width: 70%;
+  display: inline-block;
+  text-indent: 10px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 100%;
+  vertical-align: top;
+  text-decoration: none;
+  color: #545454;
+}
+
+time {
+  float: right;
+  color: #949494;
+  line-height: 1.9;
+  font-size: 15px;
+  letter-spacing: .7px;
+}
+
+small {
+  position: absolute;
+  right: 22px;
+  top: 17px;
+  padding-right: 17px;
+  background: url('https://www.eariul.go.kr/smgeco/images/main/icon_more.png') right center no-repeat;
+}
+
+small a {
+  font-size: 14px;
+  color: #545454;
+  height: 100%;
+  vertical-align: top;
+  text-decoration: none;
 }

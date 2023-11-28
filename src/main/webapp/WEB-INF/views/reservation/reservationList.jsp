@@ -39,12 +39,12 @@
         			<c:if test="${list.status eq 1 }"><span style="color:blue; font-weight: 700;">예약확정</span></c:if>
         		</td>
         		<td>
-        			<c:if test="${list.campno ne null }">야영장</c:if>
-        			<c:if test="${list.shelterno ne null }">대피소</c:if>
-        			<c:if test="${list.exploreno ne null }">생태탐방원</c:if>
+        			<c:if test="${list.shelterno eq '' and list.exploreno eq '' }">야영장</c:if>
+        			<c:if test="${list.campno eq '' and list.exploreno eq '' }">대피소</c:if>
+        			<c:if test="${list.campno eq '' and list.shelterno eq '' }">생태탐방원</c:if>
         		</td>
         		<td>
-        			[${list.parkname }]${list.campname }${list.sheltername }${list.explorename }
+        			[${list.camp_parkname }${list.shelter_parkname }${list.explore_parkname }]${list.campname }${list.sheltername }${list.explorename }
         		</td>
         		<td>
         			${list.bdate }

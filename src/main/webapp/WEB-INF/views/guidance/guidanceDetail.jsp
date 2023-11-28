@@ -32,7 +32,7 @@
 	<jsp:include page="../main/header.jsp"/>
 	<img alt="" src="${conPath }/img/${park}.jpg" width="55%">
 	<div class="button">
-		<button onclick="location.href='${conPath}/guidance/guidanceCamp.do?'" 
+		<button onclick="history.back();" 
 					style="cursor:pointer">뒤로가기</button>
     </div>
 	<jsp:include page="../main/footer.jsp"/>

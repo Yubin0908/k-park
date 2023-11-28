@@ -8,30 +8,12 @@
   	<link rel="stylesheet" href="${conPath }/css/list.css">
   	<title>Document</title>
 </head>
-<script>
-
-    $(function(){
-        $('img[usemap]').rwdImageMaps();
-        $(".image-map .link").off().on("click", function (e) {
-            e.preventDefault();
-            var activeTab = $(this).attr("href");
-            $(".image-map-list .btn").removeClass("is-active")
-            $(activeTab).addClass("is-active");
-            $(activeTab).focus();
-        })
-    })
-
-    let goDetail = function(parkId){
-        $("#parkId").val(parkId);
-        $("#contentsForm").submit();
-    }
-</script>
+	
 <body>
 	<jsp:include page="../main/header.jsp"/>
   	<div id="camp_wrap">
 	    <div class="page-location">
 	      	<span>홈 > 이용안내 > 야영장</span>
-	      
 	    </div>
 	    <div class="infomation">
 	      	<h3 class="title">야영장 이용안내</h3>
@@ -40,19 +22,23 @@
 	        	<p class="sub2">우리나라 대표 휴양공간인 국립공원 야영장에서 사랑하는 사람들과 함께 야영을 하며, 계절에 따라 변화하는 자연의 풍광을 만끽하세요.</p>
 			</div>
 			<div class="map_wrap">
-				<img src="${conPath }/img/campMap.png" alt="야영장 지도" usemap="#img-map" class="img">
-		        <map name="img-map">
-		          	<area target="_self" alt="설악산" title="설악산" href="#m1-1" coords="491,36,606,111" shape="rect" class="link">
-					<area target="_self" alt="북한산" title="북한산" href="#m1-3" coords="181,163,294,233" shape="rect" class="link">
-	        		<area target="_self" alt="지리산" title="지리산" href="#m1-17" coords="321,679,432,752" shape="rect" class="link">
-	        		<area target="_self" alt="태백산" title="태백산" href="#m1-8" coords="625,275,732,349" shape="rect" class="link">
-				</map>
+				<div class="button">
+				<button href="" id="m1-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">설악산</button>
+				<button href="" id="m1-2" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">북한산</button>
+				<button href="" id="m1-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">지리산</button>
+				<button href="" id="m1-4" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">태백산</button>
 			</div>
-			<div class="image-map-list">
-				<a href="javascript:void(0);" id="m1-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=sulak'">설악산</a>
-				<a href="javascript:void(0);" id="m1-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">북한산</a>
-				<a href="javascript:void(0);" id="m1-17" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=jiri'">지리산</a>
-				<a href="javascript:void(0);" id="m1-8" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=tabak'">태백산</a>
+				<img src="${conPath }/img/campMap1.png" alt="야영장 지도" usemap="#img-map" class="img">
+				<map name="img-map">
+		          	<area target="_self" alt="설악산" title="설악산" href="#m1-1" coords="491,36,606,111" shape="rect" class="link"
+		          			onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">
+					<area target="_self" alt="북한산" title="북한산" href="#m1-2" coords="181,163,294,233" shape="rect" class="link"
+							onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">
+	        		<area target="_self" alt="지리산" title="지리산" href="#m1-3" coords="321,679,432,752" shape="rect" class="link"
+	        				onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">
+	        		<area target="_self" alt="태백산" title="태백산" href="#m1-4" coords="625,275,732,349" shape="rect" class="link"
+	        				onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">
+				</map>
 			</div>
     	</div>
 	</div>

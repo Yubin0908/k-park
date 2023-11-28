@@ -72,5 +72,40 @@ public class ReservationServiceImpl implements ReservationService {
 	public int remPlus(Reservation reservation) {
 		return reservationRepository.remPlus(reservation);
 	}
-
+	
+	@Override
+	public List<Reservation> getShelterList(String parkname) {
+		return reservationRepository.getShelterList(parkname);
+	}
+	
+	@Override
+	public int getShelterDateRem(Reservation reservation) {
+		Date resdate = reservationRepository.getShelterDateRem(reservation);
+		int result = 0;
+		if(resdate != null) {
+			result = 1;
+		} else {
+			result = 0;
+		}
+		return result;
+	}
+	@Override
+	public int reservationShelter(Reservation reservation, HttpSession session) {
+		Member member = (Member) session.getAttribute("member");
+		String id = member.getId();
+	    reservation.setId(id);
+		reservationRepository.remMinusShelter(reservation);
+		System.out.println("service 예약정보 : " + reservation);
+		return reservationRepository.reservationShelter(reservation);
+	}
+	
+	@Override
+	public int remMinusShelter(Reservation reservation) {
+		return reservationRepository.remMinusShelter(reservation);
+	}
+	
+	@Override
+	public List<Reservation> getAdminReservation(String parkname) {
+		return reservationRepository.getAdminReservation(parkname);
+	}
 }

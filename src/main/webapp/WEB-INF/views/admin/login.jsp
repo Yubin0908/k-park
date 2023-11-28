@@ -34,7 +34,12 @@
 			alert('관리자 등록이 완료되었습니다.');
 		</script>
 	</c:if>
-	
+	<c:if test="${not empty admin }">
+		<script>
+			alert('이미 로그인되어 있습니다.');
+			history.back();
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
 	<form action="${conPath }/admin/adminLogin.do" method="post">

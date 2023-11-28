@@ -20,28 +20,48 @@ public class ReservationController {
 	private ReservationService reservationService;
 	
 	@RequestMapping(value="bookingCamp", method=RequestMethod.GET)
-	public String bookingCampDate() {
+	public String bookingCamp() {
 		return "reservation/bookingCamp";
 	}
+	@RequestMapping(value="bookingShelter", method=RequestMethod.GET)
+	public String bookingShelter() {
+		return "reservation/bookingShelter";
+	}
+	
 	
 	@RequestMapping(value="bookingCampList", method=RequestMethod.GET)
 	public String bookingCampList(Model model, String parkname) {
 		model.addAttribute("campList", reservationService.getCampList(parkname));
 		return "reservation/campList";
 	}
-	@RequestMapping(value="bookingDate", method=RequestMethod.GET)
-	public String bookingDate(Model model, Reservation reservation) {
+	@RequestMapping(value="bookingShelterList", method=RequestMethod.GET)
+	public String bookingShelterList(Model model, String parkname) {
+		model.addAttribute("shelterList", reservationService.getShelterList(parkname));
+		return "reservation/shelterList";
+	}
+	
+	@RequestMapping(value="bookingCampDate", method=RequestMethod.GET)
+	public String bookingCampDate(Model model, Reservation reservation) {
 		model.addAttribute("DateConfirm", reservationService.getCampDateRem(reservation));
-		model.addAttribute("myReservation", reservationService.getCampBookingDate(reservation));
 		return "reservation/bookingDate";
 	}
+	@RequestMapping(value="bookingShelterDate", method=RequestMethod.GET)
+	public String bookingShelterDate(Model model, Reservation reservation) {
+		model.addAttribute("DateConfirm", reservationService.getShelterDateRem(reservation));
+		return "reservation/bookingDate";
+	}
+	
 	@RequestMapping(value="reservationCamp", method=RequestMethod.GET) 
-	public String booking(Model model, Reservation reservation, HttpSession session) {
-		System.out.println("예약 정보 : " + reservation);
+	public String reservationCamp(Model model, Reservation reservation, HttpSession session) {
 		model.addAttribute("bookingResult", reservationService.reservationCamp(reservation, session));
-		System.out.println(reservation);
 		return "reservation/bookingResult";
 	}
+	@RequestMapping(value="reservationShelter", method=RequestMethod.GET)
+	public String reservationShelter(Model model, Reservation reservation, HttpSession session) {
+		model.addAttribute("bookingResult", reservationService.reservationShelter(reservation, session));
+		return "reservation/bookingResult";
+	}
+	
 	@RequestMapping(value="reservationList", method=RequestMethod.GET)
 	public String reservationList(Model model, String id) {
 		model.addAttribute("reservedList", reservationService.getBookingInfo(id));
@@ -51,6 +71,11 @@ public class ReservationController {
 	public String cancleReservation(int bno, Model model, Reservation reservation) {
 		model.addAttribute("reservationCancel", reservationService.cancleReservation(bno, reservation));
 		return "forward:reservationList.do";
+	}
+	@RequestMapping(value="adminList", method=RequestMethod.GET)
+	public String getAdminReservation(String parkname, Model model) {
+		model.addAttribute("adminReservedList", reservationService.getAdminReservation(parkname));
+		return "admin/reservedList";
 	}
 	
 }
