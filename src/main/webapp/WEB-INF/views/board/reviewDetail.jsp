@@ -92,7 +92,9 @@
 					            		</c:if>
 			            			</c:forEach>
 			            			<span>${cmtList.cname} (${cmtList.crdate})&nbsp;</span>
-			            			<a class="reply_a" href="">답글쓰기</a>
+			            			<c:if test="${cmtList.cname ne member.id }">
+			            				<a class="reply_a" href="">답글쓰기</a>
+			            			</c:if>
 			            			<c:if test="${cmtList.cname eq member.id }">
 			            				<a class="reply_b" href="">댓글수정</a>&nbsp;<a class="reply_c" href="${conPath }/board/ReviewCmtDelete.do?cno=${cmtList.cno}&rno=${param.rno}&pageNum=${param.pageNum}">댓글삭제</a>
 			            			</c:if>
@@ -136,13 +138,13 @@
 		      <script>
 		        document.addEventListener("DOMContentLoaded", function() {
 		          var replyAdds = document.querySelectorAll(".reply_a");
-		          var replyModifys =document.querySelectorAll(".reply_b");
+		          var replyModifys = document.querySelectorAll(".reply_b");
 		    
 		          replyAdds.forEach(function(link) {
 		            link.addEventListener("click", function(event) {
 		              event.preventDefault();
-		              var form = this.nextElementSibling.nextElementSibling.nextElementSibling.nextElementSibling;
-		    
+		              var form = this.nextElementSibling.nextElementSibling;
+		              	
 		              if (form.style.display === "none" || form.style.display === "") {
 		                form.style.display = "block";
 		              } else {

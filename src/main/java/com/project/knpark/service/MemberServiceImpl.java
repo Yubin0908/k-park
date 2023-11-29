@@ -1,5 +1,6 @@
 package com.project.knpark.service;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.mail.Message;
@@ -14,6 +15,7 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
 import com.project.knpark.repository.MemberRepository;
+import com.project.knpark.util.Paging;
 import com.project.knpark.vo.Member;
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -141,6 +143,18 @@ public class MemberServiceImpl implements MemberService {
 		System.out.println(to + "에게 인증메일 전송완료");
 	}
 
+	@Override
+	public List<Member> memberList(Member member, String pageNum) {
+		Paging paging = new Paging(memberRepository.memberCount(), pageNum, 10, 10);
+		member.setStartRow(paging.getStartRow());
+		member.setEndRow(paging.getEndRow());
+		return memberRepository.memberList(member);
+	}
+	
+	@Override
+	public int memberCount() {
+		return memberRepository.memberCount();
+	}
 	
 }
 

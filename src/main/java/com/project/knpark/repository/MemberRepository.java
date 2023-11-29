@@ -1,5 +1,7 @@
 package com.project.knpark.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +17,6 @@ public interface MemberRepository {
 	public String pwConfirm(@Param("id") String id);
 	public String findIDAccount(Member member);
 	public String findPWAccount(Member member);
+	public List<Member> memberList(Member member);
+	public int memberCount();
 }

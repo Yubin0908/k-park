@@ -11,9 +11,14 @@
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script><!-- swiper js -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- jQuery js -->
   <link rel="stylesheet" href="${conPath }/css/main.css">
-
 </head>
 <body>
+	<%-- <c:if test="${param.result ne '로그인 성공'}">
+		<script>
+			alert('${param.result}');
+			history.back();
+		</script>
+	</c:if> --%>
 	<c:if test="${modifyResult eq 1 }">
 		<script>alert('정보 수정이 완료되었습니다.');</script>
 	</c:if>
@@ -27,7 +32,7 @@
   <div id="main_wrap">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="${conPath }/img/1.jpg"></div>
+        <div class="swiper-slide"><img src="${conPath }/img/1.jpg" style="position:relative;"></div>
         <div class="swiper-slide"><img src="${conPath }/img/2.jpg"></div>
         <div class="swiper-slide"><img src="${conPath }/img/생태탐방원_가야산.jpg"></div>
         <div class="swiper-slide"><img src="${conPath }/img/생태탐방원_한려해상.jpg"></div>
