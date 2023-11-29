@@ -51,5 +51,12 @@
 	<select id="pwConfirm" parameterType="Member" resultType="String">
 		SELECT PW FROM MEMBER WHERE ID = #{id}
 	</select>
-	
+	<select id="memberList" resultMap="MemberResult" parameterType="Member">
+		SELECT * FROM
+	  (SELECT ROWNUM RN, A.* FROM (SELECT * FROM MEMBER ORDER BY ID) A)
+	  WHERE RN BETWEEN #{startRow} AND #{endRow}
+	</select>
+	<select id="memberCount" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+	</select>
 </mapper>

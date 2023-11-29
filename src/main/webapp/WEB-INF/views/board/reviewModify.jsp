@@ -15,7 +15,7 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
     <div class="sub_title">
-      <h2>공지사항 글수정</h2>
+      <h2>탐방 후기 수정</h2>
     </div>
     <br>
     <hr>

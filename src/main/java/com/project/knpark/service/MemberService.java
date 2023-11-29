@@ -1,4 +1,5 @@
 package com.project.knpark.service;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,4 +16,6 @@ public interface MemberService {
 	public String findIDAccount(Member member);
 	public String findPWAccount(Member member);
 	public String authEmail(String email);
+	public List<Member> memberList(Member member, String pageNum);
+	public int memberCount();
 }

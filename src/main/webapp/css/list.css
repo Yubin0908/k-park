@@ -68,6 +68,10 @@
 	width:1400px; margin: 0 auto;
 	overflow: hidden;;
 }
+
+.infomation img{
+	margin-left: 250px;
+}
 .button button {
 	position: relative;
 	float: right;

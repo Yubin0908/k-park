@@ -103,10 +103,7 @@
       el: document.querySelector('#editor'),
       height: '500px',
       initialEditType: 'wysiwyg',
-      hooks: {
-    	    addImageBlobHook: onUploadImage
-    	  }
-     
+      
     });
 
     editor.getMarkdown();
