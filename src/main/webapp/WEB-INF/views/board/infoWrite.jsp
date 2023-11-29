@@ -46,7 +46,7 @@
 	        </tr>
 	        <tr>
 	        	<td>공원명</td>
-	        	<td><input type="text" name="iparkname" id="iparkname">
+	        	<td><input type="text" name="iparkname" id="iparkname" value="${admin.agroup }" readonly="readonly">
 	        </tr>
 	        <tr>
 				<td>문의유형</td>

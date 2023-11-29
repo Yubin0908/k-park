@@ -17,6 +17,11 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
+	<c:if test="${qnaWriteResult eq 1 }">
+		<script>
+			alert('묻고답하기 글이 등록되었습니다.');
+		</script>
+	</c:if>
 	<c:if test="${modifyResult eq 1 }">
 		<script>
 			alert('묻고답하기 수정이 완료되었습니다.');
