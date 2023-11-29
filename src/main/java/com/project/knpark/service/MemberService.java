@@ -14,4 +14,5 @@ public interface MemberService {
 	public String pwConfirm(String id);
 	public String findIDAccount(Member member);
 	public String findPWAccount(Member member);
+	public String authEmail(String email);
 }

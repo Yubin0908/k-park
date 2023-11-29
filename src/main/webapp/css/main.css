@@ -15,7 +15,7 @@
   background-color: #333;
   border-radius: 25px;
   overflow: hidden;
-  z-index: -5;
+  z-index: -999;
 }
 
 .swiper-container img {

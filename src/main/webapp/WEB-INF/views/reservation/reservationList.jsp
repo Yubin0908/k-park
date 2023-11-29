@@ -32,6 +32,11 @@
           <th>예약일자</th>
           <th>예약취소</th>
         </tr>
+        <c:if test="${ reservedList.size() eq 0}">
+        	<tr>
+        		<td colspan="5">예약내역이 존재하지 않습니다.</td>
+        	</tr>
+        </c:if>
         <c:forEach items="${reservedList }" var="list">
         	<tr>
         		<td>

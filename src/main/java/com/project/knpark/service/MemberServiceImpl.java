@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,9 @@ public class MemberServiceImpl implements MemberService {
 	private MemberRepository memberRepository;
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	private int authNumber;
+	
 	@Override
 	public int idConfirm(String id) {
 		System.out.println("전달받은 " + id);
@@ -102,6 +106,42 @@ public class MemberServiceImpl implements MemberService {
 		String returnPw = memberRepository.findPWAccount(member);
 		return returnPw;
 	}
+	
+	public void makeAuthNumber() {
+		Random num = new Random();
+		int checkNum = num.nextInt(888888) + 111111;
+		System.out.println("authNumber : " + checkNum);
+		authNumber = checkNum;
+	}
+	@Override
+	public String authEmail(String email) {
+		makeAuthNumber();
+		String from = "k.n.park23@gmail.com";
+		String to = email;
+		String title = "[K-공원]회원가입 인증메일 입니다.";
+		String content = "[K-공원]에 방문해주셔서 감사드립니다!" +
+						 "<br>" +
+						 "인증 번호는 " + authNumber + "입니다." + 
+						 "인증번호를 인증번호 확인란에 입력하여 주세요.";
+		mailSend(from, to, title, content);
+		return Integer.toString(authNumber);
+	}
+	
+	public void mailSend(final String from, final String to, final String title, final String content) {
+		MimeMessagePreparator message = new MimeMessagePreparator() {			
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
+				mimeMessage.setFrom(new InternetAddress(from));
+				mimeMessage.setSubject(title);
+				mimeMessage.setText(content, "utf-8", "html");				
+			}
+		};
+		mailSender.send(message);
+		System.out.println(to + "에게 인증메일 전송완료");
+	}
+
+	
 }
 
 
