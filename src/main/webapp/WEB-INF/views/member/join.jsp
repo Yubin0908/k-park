@@ -10,7 +10,7 @@
 	<link href="${conPath }/css/join.css" rel="stylesheet">
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="${conPath }/js/address.js"></script>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script>
 		$(document).ready(function(){
 			$('.idconfirm').click(function(){
@@ -41,10 +41,42 @@
 					});
 				}
 			});
+			$('#mail-Check-Btn').on('click', function() {
+				const email = $('#email').val(); // 이메일 주소값 얻어오기!
+				console.log('전송된 이메일 : ' + email); // 이메일 오는지 확인
+				const checkInput = $('.checkinput') // 인증번호 입력하는곳 
+				
+				$.ajax({
+					url : '${conPath}/member/emailConfirm.do',
+					type : 'post',
+					data : 'email='+email,
+					success : function (data) {
+						console.log("인증번호 : ", data);
+						checkInput.attr('disabled',false);
+						code = data.trim();
+						alert('인증번호가 전송되었습니다.')
+					}			
+				}); // end ajax
+				$('.checkinput').blur(function() {
+					const inputcode = $(this).val();
+					const msgArea = $('#mail-check-warn');
+					
+					if(inputcode === code) {
+						msgArea.html('인증번호가 일치합니다.');
+						msgArea.css('color', 'green');
+						$('#mail-Check-Btn').attr('disabled', true);
+						$('#email').attr('readonly', true);
+					} else {
+						msgArea.html('인증번호가 일치하지 않습니다.');
+						msgArea.css('color', 'red');
+					}
+				});
+			});
 			$('form').submit(function(){
 				var idConfirmResult = $('#idConfirmMsg').text().trim();
 				var email = $('input[name="email"]');
 				var patternMmail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // macth함수 사용
+				var checkmail = $('#mail-check-warn');
 				if(idConfirmResult!='사용가능한 ID입니다.'){
 					alert('사용가능한 ID인지 중복확인 후 가입이 가능 합니다.');
 					$('input[name="id"]').focus();
@@ -57,25 +89,12 @@
 					alert('메일 형식이 맞지 않습니다.');
 					email.focus();
 					return false;
+				} else if(checkmail != '인증번호가 일치합니다.') {
+					alert('메일인증을 해주세요.');
+					return false;
 				}
 			});
 		});
-		$('#mail-Check-Btn').click(function() {
-			const eamil = $('#userEmail1').val() + $('#userEmail2').val(); // 이메일 주소값 얻어오기!
-			console.log('완성된 이메일 : ' + eamil); // 이메일 오는지 확인
-			const checkInput = $('.mail-check-input') // 인증번호 입력하는곳 
-			
-			$.ajax({
-				type : 'get',
-				url : '<c:url value ="/user/mailCheck?email="/>'+eamil, // GET방식이라 Url 뒤에 email을 뭍힐수있다.
-				success : function (data) {
-					console.log("data : " +  data);
-					checkInput.attr('disabled',false);
-					code =data;
-					alert('인증번호가 전송되었습니다.')
-				}			
-			}); // end ajax
-		}); // end send eamil
 	</script>
 
 </head>
@@ -119,7 +138,9 @@
 		        <tr><td>전화번호</td><td><input type="text" name="phone" required="required" class="input"></td></tr>
 		        <tr><td>메일</td>
 		        	<td>
-		        		<input type="text" name="email" required="required" class="input">
+		        		<input type="text" name="email" required="required" class="input" id="email">
+		        		<input type="number" name="checkNum" class="checkinput" disabled maxlength="6"/><input type="button" value="인증번호 발송" id="mail-Check-Btn"/>
+		        		<span id="mail-check-warn"></span>
 		        	</td>
 		        </tr>
 		        <tr>

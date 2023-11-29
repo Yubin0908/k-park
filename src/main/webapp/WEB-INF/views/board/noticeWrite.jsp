@@ -63,12 +63,50 @@
       </table>
     </form>
   </div>
+  <!-- <script>
+	  const fetchUploadImage = async (blob) => {
+		  try {
+		    // 이미지를 업로드하고 업로드된 경로를 반환하는 로직을 작성해야 합니다.
+		    // 예를 들어, fetch를 사용하여 이미지를 서버로 업로드하고, 서버가 반환한 이미지 경로를 받아올 수 있습니다.
+		    const response = await fetch('${conPath}/upload/', {
+		      method: 'POST',
+		      body: blob,
+		    });
+	
+		    if (response.ok) {
+		      const data = await response.json();
+		      return data.imageUrl; // 업로드된 이미지의 경로 또는 서버에서 받은 이미지 URL
+		    } else {
+		      throw new Error('Image upload failed');
+		    }
+		  } catch (error) {
+		    throw new Error(`Image upload failed: ${error.message}`);
+		  }
+		};
+  </script>
+  <script>
+	  const onUploadImage = async (blob, callback) => {
+		  console.log(blob);
+		  try {
+		    const path = await fetchUploadImage(blob);
+		    console.log(path);
+		    callback(path, blob.name);
+		  } catch (error) {
+		    console.error('Image upload failed:', error);
+		  }
+		  return false;
+		};
+  </script> -->
   <script>
     const Editor = toastui.Editor;
     const editor = new Editor({
       el: document.querySelector('#editor'),
       height: '500px',
       initialEditType: 'wysiwyg',
+      hooks: {
+    	    addImageBlobHook: onUploadImage
+    	  }
+     
     });
 
     editor.getMarkdown();

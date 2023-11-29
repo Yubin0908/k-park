@@ -117,6 +117,13 @@ public class MemberController {
 			return "member/login";
 		}
 	}
+	
+	@RequestMapping(value = "emailConfirm", method=RequestMethod.POST)
+	public String emailConfirm(String email, Model model) {
+		System.out.println("controller에 들어온 email : " + email);
+		model.addAttribute("authNumber", memberService.authEmail(email));
+		return "member/authNumber";
+	}
 }
 
 
