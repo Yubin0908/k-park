@@ -49,7 +49,7 @@ public class QnaController {
 	@RequestMapping(value = "qnaModify", method=RequestMethod.POST)
 	public String qnaModify(HttpServletRequest request, Qna qna, Model model, String pageNum) {
 		model.addAttribute("modifyResult", qnaService.qnaModify(qna, request));
-		return "forward:qnaList.do";
+		return "forward:qnaDetail.do";
 	}
 	@RequestMapping(value = "qnaDelete", method=RequestMethod.GET)
 	public String qnaDelete(int qno, Model model) {

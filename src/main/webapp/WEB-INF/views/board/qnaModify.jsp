@@ -31,12 +31,12 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
     	<div class="sub_title">
-    		<h2>공지사항 글수정</h2>
+    		<h2>묻고답하기 글수정</h2>
     	</div>
 	    <br>
 	    <hr>
 	    <br>
-    	<form action="${conPath }/board/qnaModify.do?after=u" method="post" id="qnaForm">
+    	<form action="${conPath }/board/qnaModify.do?after=u&qgroup=${qna.qgroup}" method="post" id="qnaForm">
 	    	<input type="hidden" name="option" value="${param.option }"/>
 	    	<input type="hidden" name="search" value="${param.search }" />
 	    	<input type="hidden" name="qno" value="${param.qno }"/>
