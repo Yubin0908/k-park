@@ -29,11 +29,11 @@
 			</div>
 				<img src="${conPath }/img/exploreMap.png" alt="생태탐방원 지도" usemap="#img-map" class="img">
 				<map name="img-map">
-					<area target="_self" alt="무등산" title="무등산" href="#m3-1" coords="154,718,268,791" shape="rect" class="link"
+					<area target="_self" alt="무등산" title="무등산" href="#m3-1" coords="117,551,205,609" shape="rect" class="link"
 							onclick="location.href='${conPath}/guidance/guidance.do?park=moodeungexplore'">
-	        		<area target="_self" alt="내장산" title="내장산" href="#m3-2" coords="142,636,257,710" shape="rect" class="link"
+	        		<area target="_self" alt="내장산" title="내장산" href="#m3-2" coords="103,485,198,541" shape="rect" class="link"
 	        				onclick="location.href='${conPath}/guidance/guidance.do?park=naejangexplore'">
-	        		<area target="_self" alt="소백산" title="소백산" href="#m3-3" coords="461,287,576,360" shape="rect" class="link"
+	        		<area target="_self" alt="소백산" title="소백산" href="#m3-3" coords="346,218,442,280" shape="rect" class="link"
 	        				onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekexplore'">
 				</map>
 			</div>

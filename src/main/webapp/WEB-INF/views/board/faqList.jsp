@@ -35,7 +35,7 @@
 			<select name="option" id="">
 				<option value="all" selected>전체</option>
 	          	<option value="ftitle">제목</option>
-	          	<option value="ftext">답변</option>
+	          	<option value="ftext">내용</option>
 			</select>
         <input type="search" name="search">
         <input type="submit" value="검색">

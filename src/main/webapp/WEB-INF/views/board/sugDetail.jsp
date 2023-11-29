@@ -47,10 +47,19 @@
       </div>
     </div>
     <div class="button">
-    	<c:if test="${suggest.id eq member.id}" ><button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button></c:if>
-    	<c:if test="${suggest.id eq member.id}" ><button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'">글 삭제</button></c:if>
-    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/suggestReplyWrite.do?sno=${param.sno}&pageNum=${param.pageNum}'">답변</button></c:if>
-		<button onclick="location.href='${conPath}/board/sugList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
+    	<c:if test="${suggest.id eq member.id}" ><button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }
+    		&pageNum=${param.pageNum }&option=${param.option }
+    		&search=${param.search }'" style="cursor:pointer">글수정</button>
+    	</c:if>
+    	<c:if test="${suggest.id eq member.id}" >
+    		<button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'" 
+    			style="cursor:pointer">글 삭제</button>
+    	</c:if>
+    	<c:if test="${not empty admin}" >
+    		<button onclick="location.href='${conPath}/board/suggestReplyWrite.do?sno=${param.sno}&pageNum=${param.pageNum}'" 
+    			style="cursor:pointer">답변</button>
+    	</c:if>
+			<button onclick="location.href='${conPath}/board/sugList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   	</div>
 	<jsp:include page="../main/footer.jsp"/>
