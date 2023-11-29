@@ -38,7 +38,7 @@
 	<table class="writeTable">
         <tr class="RH_title">
 			<td>제목</td>
-			<td><input type="text" name="stitle"></td>
+			<td><input type="text" name="stitle" id="stitle"></td>
         </tr>
         <tr class="RH_writer">
         	<td>작성자</td>
@@ -57,7 +57,7 @@
 
         <tr>
 			<td class="submit_btn" colspan="2">
-            	<input type="button" value="글쓰기" onclick="submitForm()">
+            	<input type="button" value="글쓰기" onclick="submitForm()" style="cursor:pointer">
             	<c:if test="${not empty admin}" ><input type="submit" value="답변쓰기" class="btn"></c:if>
 				<input type="reset" value="초기화" class="btn">
 			</td>
@@ -76,9 +76,15 @@
   </script>
   <script>
   	function submitForm() {
+	  const stitle = document.getElementById("stitle").value.trim();
       const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
       document.getElementById("stext").value = markdown;
-      document.getElementById("suggestForm").submit();
+      if(stitle !== "" && markdown !== ""){
+      	document.getElementById("suggestForm").submit();
+      }else{
+    	  alert('빈칸이 존재합니다.');
+			e.preventDefault();
+      }
     }
   </script>
   <jsp:include page="../main/footer.jsp"/>

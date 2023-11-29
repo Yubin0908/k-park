@@ -38,8 +38,8 @@
       </div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/faqModify.do?fno=${param.fno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
-    	<button onclick="location.href='${conPath}/board/faqDelete.do?fno=${param.fno }'">글 삭제</button>
+    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/faqModify.do?fno=${param.fno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button></c:if>
+    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/faqDelete.do?fno=${param.fno }'">글 삭제</button></c:if>
 		<button onclick="location.href='${conPath}/board/faqList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   </div>

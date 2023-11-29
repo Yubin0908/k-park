@@ -32,7 +32,10 @@
 			<caption>${param.sno }번글의 답변글 쓰기</caption>
 			<tr class="RH_title">
 				<th>글제목</th>
-				<td><input type="text" name="stitle" required="required" value="[답변]${suggest.stitle }">
+				<td>
+					<input type="text" name="stitle" id="stitle"
+						required="required" value="[답변]${suggest.stitle }">
+				</td>
 		    </tr>
 		    <tr class="RH_writer">
 			<tr>
@@ -49,12 +52,12 @@
 			</td>
         </tr>
 			<tr>
-				<td class="submit_btn" colspan="3">
+				<td class="button" colspan="3">
 					<!-- <input type="submit" value="답변쓰기" class="btn"> -->
-					<input type="button" value="답변글쓰기" onclick="submitForm()">
-					<input type="reset" value="초기화" class="btn">
-					<input type="button" value="목록" class="btn" 
-								onclick="location.href='${conPath}/board/suglist.do?pageNum=${param.pageNum }'">
+					<input type="button" value="답변글쓰기" onclick="submitForm()" style="cursor:pointer">
+					<input type="reset" value="초기화" class="button" style="cursor:pointer">
+					<input type="button" value="목록" class="button" style="cursor:pointer"
+						onclick="location.href='${conPath}/board/suglist.do?pageNum=${param.pageNum }'"> 
 				</td>
 			</tr>
 		</table>
@@ -70,9 +73,15 @@
   </script>
   <script>
   	function submitForm() {
+  	  const stitle = document.getElementById("stitle").value.trim();
       const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
       document.getElementById("stext").value = markdown;
-      document.getElementById("suggestForm").submit();
+      if(stitle !== "" && markdown !== ""){
+      	document.getElementById("suggestForm").submit();
+      }else{
+    	  alert('빈칸이 존재합니다.');
+			e.preventDefault(); 
+      }
     }
   </script>
 	<jsp:include page="../main/footer.jsp"/>
