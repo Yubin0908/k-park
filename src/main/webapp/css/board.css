@@ -10,7 +10,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'GangwonEduHyeonokT_OTFMediumA';
-  font-size: 18px;
+  font-size: 25px;
 }
 
 #bbs_wrap {
@@ -190,7 +190,7 @@
   text-align: center;
 }
 
-.button button {
+.button button, .submit_btn input {
   padding: 10px 60px;
   background-color: transparent;
   border-color: #0042a2;
@@ -229,7 +229,7 @@ input[name="aid"], input[name="parkname"], input[name="id"] {
 .submit_btn {
   text-align: center;
 }
-.submit_btn input, sub {
+sub {
   padding: 5px 20px;
   background-color: #0042a2;
   color: #fff;

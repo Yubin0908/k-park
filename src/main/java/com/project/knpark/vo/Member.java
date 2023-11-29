@@ -13,4 +13,6 @@ public class Member {
 	public String gender;
 	public Date   birth;
 	public Date   mRdate;
+	public int startRow;
+	public int endRow;
 }
