@@ -10,9 +10,9 @@
 #header_wrap li {list-style: none;}
 nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
 #header_wrap {
-	width: 100%;
+	width: 1903px;
     background-color: #FFFF;
-    height: 121px;
+    height: 119px;
     border-bottom: groove;
     font-family: 'GangwonEduHyeonokT_OTFMediumA'; 
     font-size: 20px;
@@ -34,6 +34,8 @@ nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
 	width: 650px;
 	margin: 0px auto;
 	float: left;
+	position: relative;
+	height: 120px;
 }
 .menu > li {
 	width: 20%;
@@ -47,10 +49,12 @@ nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
 	color: #1e1e1e;
 }
 .submenu {
-height: 0; /*ul의 높이를 안보이게 처리*/
+	height: 0; /*ul의 높이를 안보이게 처리*/
 	overflow: hidden;
-	background-color: #1E1F21;
- 	opacity: 0.5;
+	background-color: #646465;
+	opacity: 0.9;
+ 	position: relative;
+ 	z-index:999;
 }
 .menu > li:hover  {
 	background-color: #FFFF;
@@ -59,11 +63,12 @@ height: 0; /*ul의 높이를 안보이게 처리*/
 
 .menu > li:hover .submenu {
  	height: 150px; /*서브메뉴 li한개의 높이 50*5*/
-	transition-duration: 1s;	
+	transition-duration: 1s;
+	display: block;
 }
 
 .menu .submenu > li a{
-	color: #ccc;
+	color: #ffffff;
 }
 
 .menu .submenu li > a:hover{
@@ -79,7 +84,7 @@ height: 0; /*ul의 높이를 안보이게 처리*/
 nav img {
 	display: inline-block;
 	width: 235px;
-	height: 122px;
+	height: 121px;
 	margin-left: 46px;
 	margin-right: 30px;
 	margin-top: -5px;
