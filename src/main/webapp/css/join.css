@@ -134,6 +134,13 @@ body {
   margin-bottom: 10px;
 }
 
+.checkinput {
+	width: 25%;
+	padding: 8px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+
 .join_table input[type="button"],
 .join_table input[type="submit"] {
   padding: 8px 15px;
