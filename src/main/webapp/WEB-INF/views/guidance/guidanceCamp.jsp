@@ -23,21 +23,25 @@
 			</div>
 			<div class="map_wrap">
 				<div class="button">
-				<button href="" id="m1-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">설악산</button>
-				<button href="" id="m1-2" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">북한산</button>
-				<button href="" id="m1-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">지리산</button>
-				<button href="" id="m1-4" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">태백산</button>
+				<button href="" id="m1-4" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">태백산<br>(소도)</button>
+				<button href="" id="m1-3" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">지리산<br>(백무동)</button>
+				<button href="" id="m1-2" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">북한산<br>(사기막)</button>
+				<button href="" id="m1-1" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">설악산<br>(설악동)</button>
 			</div>
 				<img src="${conPath }/img/campMap1.png" alt="야영장 지도" usemap="#img-map" class="img">
 				<map name="img-map">
-		          	<area target="_self" alt="설악산" title="설악산" href="#m1-1" coords="491,36,606,111" shape="rect" class="link"
-		          			onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">
-					<area target="_self" alt="북한산" title="북한산" href="#m1-2" coords="181,163,294,233" shape="rect" class="link"
-							onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">
-	        		<area target="_self" alt="지리산" title="지리산" href="#m1-3" coords="321,679,432,752" shape="rect" class="link"
-	        				onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">
 	        		<area target="_self" alt="태백산" title="태백산" href="#m1-4" coords="625,275,732,349" shape="rect" class="link"
 	        				onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">
+	        		<area target="_self" alt="지리산" title="지리산" href="#m1-3" coords="321,679,432,752" shape="rect" class="link"
+	        				onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">
+					<area target="_self" alt="북한산" title="북한산" href="#m1-2" coords="181,163,294,233" shape="rect" class="link"
+							onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">
+		          	<area target="_self" alt="설악산" title="설악산" href="#m1-1" coords="491,36,606,111" shape="rect" class="link"
+		          			onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">
 				</map>
 			</div>
     	</div>

@@ -23,21 +23,25 @@
 			</div>
 			<div class="map_wrap">
 				<div class="button">
-				<button href="" id="m2-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=seolakshelter'">설악산</button>
-				<button href="" id="m2-2" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=dukyoushelter'">덕유산</button>
-				<button href="" id="m2-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=jeerishelter'">지리산</button>
-				<button href="" id="m2-4" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekshelter'">소백산</button>
+				<button href="" id="m2-4" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=jeerishelter'">지리산<br>(세석)</button>
+				<button href="" id="m2-3" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=dukyoushelter'">덕유산<br>(삿갓재)</button>
+				<button href="" id="m2-2" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekshelter'">소백산<br>(제2연화봉)</button>
+				<button href="" id="m2-1" class="btn" 
+					onclick="location.href='${conPath}/guidance/guidance.do?park=seolakshelter'">설악산<br>(소청)</button>
 			</div><
 				<img src="${conPath }/img/shelterMap.png" alt="대피소 지도" usemap="#img-map" class="img">
 				<map name="img-map">
+	        		<area target="_self" alt="지리산" title="지리산" href="#m2-4" coords="270,680,384,754" shape="rect" class="link"
+	        				onclick="location.href='${conPath}/guidance/guidance.do?park=jeerishelter'">
+					<area target="_self" alt="덕유산" title="덕유산" href="#m2-3" coords="304,524,423,598" shape="rect" class="link"
+							onclick="location.href='${conPath}/guidance/guidance.do?park=dukyoushelter'">
+	        		<area target="_self" alt="소백산" title="소백산" href="#m2-2" coords="461,289,575,362" shape="rect" class="link"
+	        				onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekshelter'">
 		          	<area target="_self" alt="설악산" title="설악산" href="#m2-1" coords="440,36,555,108" shape="rect" class="link"
 		          			onclick="location.href='${conPath}/guidance/guidance.do?park=seolakshelter'">
-					<area target="_self" alt="덕유산" title="덕유산" href="#m2-2" coords="304,524,423,598" shape="rect" class="link"
-							onclick="location.href='${conPath}/guidance/guidance.do?park=dukyoushelter'">
-	        		<area target="_self" alt="지리산" title="지리산" href="#m2-3" coords="270,680,384,754" shape="rect" class="link"
-	        				onclick="location.href='${conPath}/guidance/guidance.do?park=jeerishelter'">
-	        		<area target="_self" alt="소백산" title="소백산" href="#m2-4" coords="461,289,575,362" shape="rect" class="link"
-	        				onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekshelter'">
 				</map>
 			</div>
     	</div>
