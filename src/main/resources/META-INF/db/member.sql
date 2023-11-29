@@ -34,11 +34,12 @@ SELECT ID FROM MEMBER WHERE NAME='홍길동' AND EMAIL='hong@naver.com';
 SELECT PW FROM MEMBER WHERE ID='aaa' AND NAME='홍길동' AND EMAIL='hong@naver.com';
 
 -- 7. 회원탈퇴 : Member.xml id=deleteMember
-DELETE FROM MEMBER WHERE ID='qqq';
+DELETE FROM MEMBER WHERE ID='sss';
 ROLLBACK;
 
 COMMIT;
 SELECT * FROM MEMBER;
+
 
 
 
