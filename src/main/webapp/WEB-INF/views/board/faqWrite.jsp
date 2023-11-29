@@ -38,7 +38,7 @@
     	<table class="writeTable">
 	        <tr class="RH_title">
           <td>제목</td>
-          <td><input type="text" name="ftitle"></td>
+          <td><input type="text" name="ftitle" id="ftitle"></td>
         </tr>
 	        <tr class="RH_writer">
 		          <!-- <td>작성자</td> -->
@@ -55,7 +55,7 @@
         </tr>
         <tr>
         	<td>공원명</td>
-          	<td><input type="text" name="parkname"></td>
+          	<td><input type="text" name="parkname" value="${admin.agroup }" readonly="readonly"></td>
         </tr>
         <tr>
           	<td class="submit_btn" colspan="2">
@@ -76,9 +76,15 @@
   	</script>
 	<script>
 	  	function submitForm() {
+		  const ftitle = document.getElementById("ftitle").value.trim();
 	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
 	      document.getElementById("ftext").value = markdown;
-	      document.getElementById("reviewForm").submit();
+	      if(ftitle !== "" && markdown !== ""){
+	      	document.getElementById("reviewForm").submit();
+	      }else{
+	    	  alert('빈칸이 존재합니다.');
+	  			e.preventDefault();
+	      }
 	      console.log(markdown);
 	    }
 	</script>
