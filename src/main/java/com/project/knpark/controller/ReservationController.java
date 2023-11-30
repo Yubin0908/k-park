@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.knpark.service.ReservationService;
 import com.project.knpark.vo.Reservation;
@@ -89,10 +90,35 @@ public class ReservationController {
 	    return "admin/adminService";
 	}
 	@RequestMapping(value="addDate", method=RequestMethod.GET)
-		public String addDate(Model model, String parkname) {
-			model.addAttribute("campList", reservationService.getCampList(parkname));
-			model.addAttribute("shelterList", reservationService.getShelterList(parkname));
-			return "admin/addDate";
+	public String addDate(Model model, String parkname, String type, Reservation reservation) {
+		if(type == null) {
+			type = reservation.getType();
+		} else {
+			if(type.equals("camp")) {
+				model.addAttribute("campList", reservationService.getCampList(parkname));
+			} else if(type.equals("shelter")){
+				model.addAttribute("shelterList", reservationService.getShelterList(parkname));
+			}
 		}
-	
+		return "admin/addDate";	
+	}
+	@RequestMapping(value="todayAdd", method=RequestMethod.GET)
+	public String todatAdd(Model model, Reservation reservation) {
+		System.out.println(reservation);
+		model.addAttribute("addResult", reservationService.todayDateAdd(reservation));
+		return "redirect:addDate.do";
+	}
+	@RequestMapping(value="nextdayAdd", method=RequestMethod.GET)
+	public String nextdayAdd(Model model, Reservation reservation) {
+		System.out.println(reservation);
+		model.addAttribute("addResult", reservationService.nextDateAdd(reservation));
+		return "redirect:addDate.do";
+	}
+	@RequestMapping(value="preDateAdd", method=RequestMethod.GET)
+	public String preDateAdd(Model model, Reservation reservation) {
+		System.out.println(reservation);
+		model.addAttribute("addResult", reservationService.preDateAdd(reservation));
+		return "redirect:addDate.do";
+	}
+
 }

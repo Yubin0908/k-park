@@ -114,7 +114,15 @@
   			<input type="submit" value="검색"/>
   		</form>
   	</div>
-  	<a href="${conPath }/reservation/addDate.do?parkname=${param.parkname}"><img src="${conPath }/img/plus.png" alt="" class="plus" /></a>
+  	<form action="${conPath }/reservation/addDate.do" method="get" id="addForm">
+  		<input type="hidden" name="parkname" value="${param.parkname }" />
+  		<select name="type" style="margin-left: 1250px; margin-top: 10px;">
+  			<option value="camp">아영장</option>
+  			<option value="shelter">대피소</option>
+  		</select>
+  		<img src="${conPath }/img/plus.png" alt="" class="plus" id="submitBtn" />
+  	</form>
+  	
     <table>
       <tr>
         <th>날짜</th>
@@ -156,7 +164,11 @@
       </c:forEach>
     </table>
   </div>
-
+	<script>
+	  document.getElementById('submitBtn').addEventListener('click', function() {
+	    document.getElementById('addForm').submit();
+	  });
+</script>
   <br /><br /><br />
   <jsp:include page="../main/footer.jsp"/>
 </body>
