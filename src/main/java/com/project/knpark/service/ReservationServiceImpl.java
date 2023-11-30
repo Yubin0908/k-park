@@ -118,4 +118,41 @@ public class ReservationServiceImpl implements ReservationService {
 	public int reservedRemControl(Reservation reservation) {
 		return reservationRepository.reservedRemControl(reservation);
 	}
+	@Override
+	public int todayDateAdd(Reservation reservation) {
+		int confirm = reservationRepository.dateConfirm(reservation);
+		if(confirm == 0) {
+			return reservationRepository.todayDateAdd(reservation);
+		} else { 
+			return 2;
+		}	
+	}
+	
+	@Override
+	public int nextDateAdd(Reservation reservation) {
+	    int confirm = reservationRepository.dateConfirm(reservation);
+	    System.out.println("confirm : " + confirm);
+
+	    if (confirm == 0) {
+	        return reservationRepository.nextDateAdd(reservation);
+	    } else {
+	        return 2;
+	    }
+	}
+	
+	@Override
+	public int preDateAdd(Reservation reservaion) {
+		int confirm = reservationRepository.dateConfirm(reservaion);
+		if(confirm == 0) {
+			return reservationRepository.preDateAdd(reservaion);
+		} else {
+			return 2;
+		}
+		
+	}
+	
+	@Override
+	public int dateConfirm(Reservation reservation) {
+		return reservationRepository.dateConfirm(reservation);
+	}
 }

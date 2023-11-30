@@ -148,4 +148,40 @@
 	<select id="reservedRemControl" parameterType="Reservation">
 		UPDATE RESERVED SET REM = #{rem} WHERE RESNO = #{resno} AND RESDATE = #{resdate}
 	</select>
+	<!-- 관리자 예약일자 등록(당일) -->
+	<insert id="todayDateAdd" parameterType="Reservation">
+		<if test="type == 'camp'">
+			INSERT INTO RESERVED (RESNO, CAMPNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{campno}, SYSDATE, 20)
+		</if>
+		<if test="type == 'shelter'">
+			INSERT INTO RESERVED (RESNO, SHELTERNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{shelterno}, SYSDATE, 20)
+		</if>
+	</insert>
+	<!-- 관리자 예약일자 등록(익일) -->
+	<insert id="nextDateAdd" parameterType="Reservation">
+		<if test="type == 'camp'">
+			INSERT INTO RESERVED (RESNO, CAMPNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{campno}, SYSDATE+1, 20)
+		</if>
+		<if test="type == 'shelter'">
+			INSERT INTO RESERVED (RESNO, SHELTERNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{shelterno}, SYSDATE+1, 20)
+		</if>
+	</insert>
+	<!-- 관리자 예약일자 등록(지정일) -->
+	<insert id="preDateAdd" parameterType="Reservation">
+		<if test="type == 'camp'">
+			INSERT INTO RESERVED (RESNO, CAMPNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{campno}, #{resdate}, 20)
+		</if>
+		<if test="type == 'shelter'">
+			INSERT INTO RESERVED (RESNO, SHELTERNO, RESDATE, REM) VALUES (RESERVED_SQ.NEXTVAL, #{shelterno}, #{resdate}, 20)
+		</if>
+	</insert>
+	
+	<select id="dateConfirm" parameterType="Reservation" resultType="int">
+		<if test="type == 'camp'">
+			SELECT COUNT(*) FROM RESERVED WHERE CAMPNO = #{campno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
+		</if>
+		<if test="type == 'shelter'">
+			SELECT COUNT(*) FROM RESERVED WHERE SHELTERNO = #{shelterno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
+		</if>
+	</select>
 </mapper>

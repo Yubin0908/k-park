@@ -36,5 +36,6 @@ public class Reservation {
 	private String explore_parkname;
 	
 	private String search;
-
+	private String option;
+	private String type;
 }
