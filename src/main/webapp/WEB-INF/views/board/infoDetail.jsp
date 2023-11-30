@@ -37,8 +37,16 @@
       	</div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/infoModify.do?ino=${param.ino }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">글수정</button>
-    	<button onclick="location.href='${conPath}/board/infoDelete.do?ino=${param.ino }'" style="cursor:pointer">글 삭제</button>
+    	<c:if test="${not empty admin }">
+    		<button onclick="location.href='${conPath}/board/infoModify.do?ino=${param.ino }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" 
+    			style="cursor:pointer">글수정
+    		</button>
+    	</c:if>
+    	<c:if test="${not empty admin }">
+    		<button onclick="location.href='${conPath}/board/infoDelete.do?ino=${param.ino }'" 
+    			style="cursor:pointer">글 삭제
+    		</button>
+    	</c:if>
 		<button onclick="location.href='${conPath}/board/infoList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   </div>

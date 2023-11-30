@@ -23,6 +23,7 @@
 		  	border-radius: 5px;
 		  	outline: none !important;
 		  	margin-bottom: 5px;
+		  	font-size: 20px;
 		}
   	</style>
 </head>
@@ -61,7 +62,7 @@
 						<td>문의유형</td>
 						<td>
 							<select name="qtype">
-								<option value="야영장">탐방</option>
+								<option value="야영장">야영장</option>
 								<option value="대피소">대피소</option>
 								<option value="생태탐방원">생태탐방원</option>
 							</select>
@@ -78,7 +79,7 @@
 	     			</tr>
 					<tr>
 						<td class="submit_btn" colspan="2">
-							<input type="button" value="등록" onclick="submitForm()">
+							<input type="button" value="등록" onclick="submitForm()" style="cursor:pointer">
 	        			</td>
 	      			</tr>
 	      		</table>
@@ -90,9 +91,10 @@
 	  el: document.querySelector('#editor'),
 	  height: '500px',
 	  initialEditType: 'wysiwyg',
+	  language: 'ko',
 	});
 	
-	editor.getMarkdown();
+	/* editor.getMarkdown(); */
 </script>
 <script>
 	function submitForm() {
