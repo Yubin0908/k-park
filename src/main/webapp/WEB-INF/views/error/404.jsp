@@ -16,6 +16,20 @@
 	      location.href="${conPath}/main.do";
 	    }, 3500);
 	</script>
+	<style>
+		@font-face {
+		    font-family: 'GangwonEduHyeonokT_OTFMediumA';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduHyeonokT_OTFMediumA.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+		
+		* {
+		  	margin: 0;
+		  	padding: 0;
+		  	font-family: 'GangwonEduHyeonokT_OTFMediumA';
+		}
+	</style>
 </head>
 <body>
 	<img src="${conPath }/img/404error.jpg" alt="404에러" class="img">

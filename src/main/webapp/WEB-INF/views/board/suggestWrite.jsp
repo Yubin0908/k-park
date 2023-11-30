@@ -58,8 +58,10 @@
         <tr>
 			<td class="submit_btn" colspan="2">
             	<input type="button" value="글쓰기" onclick="submitForm()" style="cursor:pointer">
-            	<c:if test="${not empty admin}" ><input type="submit" value="답변쓰기" class="btn"></c:if>
-				<input type="reset" value="초기화" class="btn">
+            	<c:if test="${not empty admin}" >
+            		<input type="submit" value="답변쓰기" class="btn" style="cursor:pointer">
+            	</c:if>
+				<input type="reset" value="초기화" class="btn" style="cursor:pointer">
 			</td>
         </tr>
       </table>

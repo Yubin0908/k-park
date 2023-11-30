@@ -41,7 +41,7 @@
         </tr>
         <tr>
           <td class="submit_btn" colspan="2">
-            <input type="button" value="후기작성" onclick="submitForm()">
+            <input type="button" value="후기작성" onclick="submitForm()" style="cursor:pointer">
           </td>
         </tr>
       </table>

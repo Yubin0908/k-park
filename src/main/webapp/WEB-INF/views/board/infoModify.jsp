@@ -27,7 +27,7 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div id="bbs_wrap">
    		<div class="sub_title">
-     		<h2>자주하는질문 글수정</h2>
+     		<h2>예약방법안내 글수정</h2>
    		</div>
 	   	<br>
 	   	<hr>
@@ -54,7 +54,7 @@
 					<td>문의유형</td>
 					<td>
 						<select name="itype">
-							<option value="야영장">탐방</option>
+							<option value="야영장">야영장</option>
 							<option value="대피소">대피소</option>
 							<option value="생태탐방원">생태탐방원</option>
 						</select>
@@ -66,7 +66,7 @@
 				</tr>
 	      		<tr>
 	        		<td class="submit_btn" colspan="2">
-	          			<input type="submit" value="글수정">
+	          			<input type="submit" value="글수정" style="cursor:pointer">
 	        		</td>
 	      		</tr>
 	    	</table>
