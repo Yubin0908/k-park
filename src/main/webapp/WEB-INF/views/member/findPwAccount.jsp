@@ -15,34 +15,6 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script>
 		$(document).ready(function() {
-			$('.idconfirm').click(function(){
-				$.ajax({
-					url : '${conPath}/member/idConfirm.do',
-					datatype : 'html',
-					data : "id="+$('#id').val(),
-					success : function(data, status){
-						$('#idConfirmMsg').html(data);
-					}
-				});
-			});
-			$('#id').keyup(function(){
-				var id = $(this).val();
-				var patternId = /^[a-zA-Z0-9_]+$/; // macth함수 사용
-				if(id.length<2){
-					$('#idConfirmMsg').text('아이디는 2글자 이상 입력 하세요.');
-				}else if(!id.match(patternId)){
-					$('#idConfirmMsg').text('아이디는 영문자와 숫자 _만 들어갈 수 있습니다.');
-				}else {
-					$.ajax({
-						url : '${conPath}/member/idConfirm.do',
-						datatype : 'html',
-						data : "id="+$('#id').val(),
-						success : function(data, status){
-							$('#idConfirmMsg').html(data);
-						}
-					});
-				}
-			});
 			$('#mail-Check-Btn').on('click', function() {
 				const email = $('#email').val(); // 이메일 주소값 얻어오기!
 				console.log('전송된 이메일 : ' + email); // 이메일 오는지 확인
@@ -81,22 +53,20 @@
 			<tr>
 	          <td>이름</td>
 	          <td>
-	            <input type="text" name="name" class="input">
+	            <input type="text" name="name" class="input" placeholder="이름을 입력하세요">
 	          </td>
 	        </tr>
 	        <tr>
 	        	<td>아이디</td>
 	        	<td>
-	        		<input type="text" name="id" class="input">
-	        		<span id="idConfirmMsg"></span>
+	        		<input type="text" name="id" class="input" placeholder="아이디를 입력하세요" required="required">
+	        		
 	        	</td>
 	        </tr>
 	        <tr>
 	        	<td>이메일</td>
 	        	<td>
-	        		<input type="email" name="email" class="input" id="email">
-	        		<input type="number" name="checkNum" class="checkinput" disabled maxlength="6"/><input type="button" value="이메일 발송" id="mail-Check-Btn"/>
-		        		<span id="mail-check-warn"></span>
+	        		<input type="email" name="email" class="input" id="email" placeholder="이메일을 입력하세요" >
 	        	</td>
 	        </tr>
 			<tr>
