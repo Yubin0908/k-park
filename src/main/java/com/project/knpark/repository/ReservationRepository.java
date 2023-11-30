@@ -22,4 +22,6 @@ public interface ReservationRepository {
 	public int reservationShelter(Reservation reservation);
 	public int remMinusShelter(Reservation reservation);
 	public List<Reservation> getAdminReservation(String parkname);
+	public List<Reservation> getReservedList(Reservation reservation);
+	public int reservedRemControl(Reservation reservation);
 }

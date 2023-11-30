@@ -21,4 +21,6 @@ public interface ReservationService {
 	public int reservationShelter(Reservation reservation, HttpSession session);
 	public int remMinusShelter(Reservation reservation);
 	public List<Reservation> getAdminReservation(String parkname);
+	public List<Reservation> getReservedList(Reservation reservation);
+	public int reservedRemControl(Reservation reservation);
 }

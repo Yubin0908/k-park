@@ -108,4 +108,14 @@ public class ReservationServiceImpl implements ReservationService {
 	public List<Reservation> getAdminReservation(String parkname) {
 		return reservationRepository.getAdminReservation(parkname);
 	}
+	
+	@Override
+	public List<Reservation> getReservedList(Reservation reservation) {
+		return reservationRepository.getReservedList(reservation);
+	}
+	
+	@Override
+	public int reservedRemControl(Reservation reservation) {
+		return reservationRepository.reservedRemControl(reservation);
+	}
 }

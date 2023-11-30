@@ -15,7 +15,7 @@
 	<br />
 	<div id="reserved_wrap">
     <h3>통합 예약목록(${param.parkname })</h3>
-		<a href="reservation/adminService.do?parname=${param.parkname }" style="float:right;">예약 스케줄 관리</a>
+		<a href="${conPath }/reservation/adminService.do?parkname=${param.parkname }" style="float:right;">예약 스케줄 관리</a>
     <div class="reserved_board">
       <table>
         <colgroup>

@@ -116,4 +116,36 @@
 		LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
 		WHERE B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}
 	</select>
+	<!-- 관리자 예약관리 -->
+	<select id="getReservedList" parameterType="Reservation" resultMap="ReservedResult">
+		<if test="search == null">
+			SELECT 
+	    A.*, 
+	    B.PARKNAME AS CAMP_PARKNAME, b.CAMPNAME, 
+	    C.PARKNAME AS SHELTER_PARKNAME, c.SHELTERNAME,
+	    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME
+			FROM RESERVED A
+			LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
+			LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
+			LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+			WHERE B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}
+		</if>
+		<if test="search != null">
+			SELECT 
+	    A.*, 
+	    B.PARKNAME AS CAMP_PARKNAME, b.CAMPNAME, 
+	    C.PARKNAME AS SHELTER_PARKNAME, c.SHELTERNAME,
+	    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME
+			FROM RESERVED A
+			LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
+			LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
+			LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+			WHERE (B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}) AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{search, jdbcType=VARCHAR}
+		</if>
+		
+	</select>
+	<!-- 관리자 예약조정 -->
+	<select id="reservedRemControl" parameterType="Reservation">
+		UPDATE RESERVED SET REM = #{rem} WHERE RESNO = #{resno} AND RESDATE = #{resdate}
+	</select>
 </mapper>

@@ -10,12 +10,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'GangwonEduHyeonokT_OTFMediumA';
-  font-size: 25px;
 }
 
 #bbs_wrap {
   width: 1400px;
   margin: 20px auto;
+  font-size: 25px;
 }
 
 .sub_title {
@@ -209,6 +209,7 @@ input[name="ntitle"], input[name="rtitle"] {
   padding: 5px;
   border-radius: 5px;
   outline: none !important;
+  font-size: 16px;
 }
 
 input[name="aid"], input[name="parkname"], input[name="id"] {
@@ -216,6 +217,7 @@ input[name="aid"], input[name="parkname"], input[name="id"] {
   padding: 5px;
   border-radius: 5px;
   outline: none !important;
+  font-size: 16px;
 }
 
 .RH_text textarea {
@@ -247,4 +249,8 @@ sub {
 }
 .RH_file {
   height: 45px;
+}
+
+.toastui-editor-contents p {
+  font-size: 30px;
 }

@@ -84,8 +84,9 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int modifyMember(Member member, HttpSession httpSession) {
+		System.out.println("service:" + member);
 		httpSession.setAttribute("member", member);
-		return 1;//memberRepository.modifyMember(member);
+		return memberRepository.modifyMember(member);
 	}
 	@Override
 	public int deleteMember(String id) {
