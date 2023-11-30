@@ -23,4 +23,8 @@ public interface ReservationService {
 	public List<Reservation> getAdminReservation(String parkname);
 	public List<Reservation> getReservedList(Reservation reservation);
 	public int reservedRemControl(Reservation reservation);
+	public int todayDateAdd(Reservation reservation);
+	public int nextDateAdd(Reservation reservation);
+	public int preDateAdd(Reservation reservaion);
+	public int dateConfirm(Reservation reservation);
 }
