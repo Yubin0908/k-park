@@ -22,6 +22,7 @@
 						<li><a href="${conPath }/guidance/campList.do">야영장</a></li>
 				        <li><a href="${conPath }/guidance/shelterList.do">대피소</a></li>
 				        <li><a href="${conPath }/guidance/exploreList.do">생태탐방원</a></li>
+				        <li><a href="${conPath}/main/map.do">지도로보기</a></li>
 		      		</ul>
 		      	</li>	
 				<li>
@@ -60,7 +61,7 @@
 	      			<li>
 	      				<a href="#">관리자 메뉴</a>
 	      				<ul class="submenu">
-	      					<li><a href="${conPath }/reservation/adminList.do?parkname='${admin.agroup }'">예약현황</a></li>
+	      					<li><a href="${conPath }/reservation/adminList.do?parkname=${admin.agroup }">예약현황</a></li>
 	      					<li><a href="${conPath }/admin/memberList.do">회원관리</a></li>
 	      				</ul>
 	      			</li>

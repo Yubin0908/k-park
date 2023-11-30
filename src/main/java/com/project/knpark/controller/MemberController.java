@@ -107,8 +107,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value = "accountPw", method=RequestMethod.POST)
-	public String accountPw(Model model, @ModelAttribute("mDto")Member member){
-		String rtnPw = (String)memberService.findPWAccount(member);
+	public String accountPw(Model model, @ModelAttribute("mDto")Member member, HttpSession httpSession){
+		String rtnPw = (String)memberService.findPWAccount(member, httpSession);
 		if(rtnPw == null || "".equals(rtnPw)) {
 			model.addAttribute("findPw", "비밀번호를 찾을 수 없습니다.");
 			return "member/findPwAccount";

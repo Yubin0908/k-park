@@ -1,11 +1,5 @@
 Manifest-Version: 1.0
-
 Built-By: ActionCow
-
-Built-By: kotor
-Build-Jdk: 11.0.19
-Built-By: KIMBYUNGHO
-
 Build-Jdk: 1.8.0_371
 Created-By: Maven Integration for Eclipse
 
