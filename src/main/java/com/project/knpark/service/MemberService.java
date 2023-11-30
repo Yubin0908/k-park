@@ -14,7 +14,7 @@ public interface MemberService {
 	public int deleteMember(String id);
 	public String pwConfirm(String id);
 	public String findIDAccount(Member member);
-	public String findPWAccount(Member member);
+	public String findPWAccount(Member member, HttpSession httpSession);
 	public String authEmail(String email);
 	public List<Member> memberList(Member member, String pageNum);
 	public int memberCount();

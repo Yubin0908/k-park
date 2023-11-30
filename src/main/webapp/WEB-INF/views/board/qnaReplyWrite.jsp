@@ -9,6 +9,14 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/board.css" rel="stylesheet">
+	<style>
+		input[name="qtitle"] {
+			width: 95%;
+		  	padding: 5px;
+		 	border-radius: 5px;
+		  	outline: none !important;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -25,7 +33,7 @@
 		<input type="hidden" name="qstep" value="${qna.qstep }">
 		<input type="hidden" name="qindent" value="${qna.qindent }">
 		<table class="writeTable">
-			<caption>${param.qno }번글의 답변글 쓰기</caption>
+			<caption style="font-size: 40px;">${param.qno }번글의 답변글 쓰기</caption>
 			<tr class="RH_title">
 				<th>글제목</th>
 				<td><input type="text" name="qtitle" required="required" value="[답변]${qna.qtitle }">
