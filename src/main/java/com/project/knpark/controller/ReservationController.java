@@ -77,5 +77,22 @@ public class ReservationController {
 		model.addAttribute("adminReservedList", reservationService.getAdminReservation(parkname));
 		return "admin/reservedList";
 	}
+	@RequestMapping(value="adminService", method=RequestMethod.GET)
+	public String adminService(Reservation reservation, Model model) {
+		model.addAttribute("reservedList", reservationService.getReservedList(reservation));
+		return "admin/adminService";
+	}
+	@RequestMapping(value="adminRemControl", method=RequestMethod.POST)
+	public String adminRemControl(Reservation reservation, Model model) {
+	    System.out.println(reservation);
+	    model.addAttribute("ControlResult", reservationService.reservedRemControl(reservation));
+	    return "admin/adminService";
+	}
+	@RequestMapping(value="addDate", method=RequestMethod.GET)
+		public String addDate(Model model, String parkname) {
+			model.addAttribute("campList", reservationService.getCampList(parkname));
+			model.addAttribute("shelterList", reservationService.getShelterList(parkname));
+			return "admin/addDate";
+		}
 	
 }

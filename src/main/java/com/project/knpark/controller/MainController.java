@@ -47,5 +47,9 @@ public class MainController {
 	public String copyrightPolicy() {
 		return "content/copyrightPolicy";
 	}
+	@RequestMapping(value="map", method=RequestMethod.GET)
+	public String map() {
+		return "content/map";
+	}
 	
 }

@@ -29,6 +29,7 @@
 	<br>
   <br>
   <br>
+  <a href="${conPath }/main/map.do">지도 테스트</a>
   <div id="main_wrap">
     <div class="swiper-container">
       <div class="swiper-wrapper">

@@ -34,5 +34,7 @@ public class Reservation {
 	private String camp_parkname;
 	private String shelter_parkname;
 	private String explore_parkname;
+	
+	private String search;
 
 }

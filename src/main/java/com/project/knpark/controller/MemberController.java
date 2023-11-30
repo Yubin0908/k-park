@@ -62,6 +62,7 @@ public class MemberController {
 	public String modify(@ModelAttribute("mDto") Member member, HttpSession httpSession,
 							Model model) {
 		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession));
+		System.out.println("modify: " + member);
 		return "forward:../main.do";
 	}
 	@RequestMapping(value = "withdrawal", method = RequestMethod.GET)

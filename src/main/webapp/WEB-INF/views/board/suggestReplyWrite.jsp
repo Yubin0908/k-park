@@ -52,7 +52,7 @@
 			</td>
         </tr>
 			<tr>
-				<td class="button" colspan="3">
+				<td class="submit_btn" colspan="3">
 					<!-- <input type="submit" value="답변쓰기" class="btn"> -->
 					<input type="button" value="답변글쓰기" onclick="submitForm()" style="cursor:pointer">
 					<input type="reset" value="초기화" class="button" style="cursor:pointer">
