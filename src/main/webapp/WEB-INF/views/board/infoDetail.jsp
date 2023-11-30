@@ -37,8 +37,8 @@
       	</div>
     </div>
     <div class="button">
-    	<button onclick="location.href='${conPath}/board/infoModify.do?ino=${param.ino }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
-    	<button onclick="location.href='${conPath}/board/infoDelete.do?ino=${param.ino }'">글 삭제</button>
+    	<button onclick="location.href='${conPath}/board/infoModify.do?ino=${param.ino }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">글수정</button>
+    	<button onclick="location.href='${conPath}/board/infoDelete.do?ino=${param.ino }'" style="cursor:pointer">글 삭제</button>
 		<button onclick="location.href='${conPath}/board/infoList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
     </div>
   </div>

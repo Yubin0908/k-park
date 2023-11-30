@@ -8,7 +8,11 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath }/css/board.css" rel="stylesheet">
-	
+	<style>
+		.button button{
+			cursor:pointer;
+		}
+	</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -38,9 +42,13 @@
       </div>
     </div>
     <div class="button">
-    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/faqModify.do?fno=${param.fno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button></c:if>
-    	<c:if test="${not empty admin}" ><button onclick="location.href='${conPath}/board/faqDelete.do?fno=${param.fno }'">글 삭제</button></c:if>
-		<button onclick="location.href='${conPath}/board/faqList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
+    	<c:if test="${not empty admin}" >
+    		<button onclick="location.href='${conPath}/board/faqModify.do?fno=${param.fno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
+    	</c:if>
+    	<c:if test="${not empty admin}" >
+    		<button onclick="location.href='${conPath}/board/faqDelete.do?fno=${param.fno }'">글 삭제</button>
+    	</c:if>
+		<button onclick="location.href='${conPath}/board/faqList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">목록</button>
     </div>
   </div>
   <jsp:include page="../main/footer.jsp"/>
