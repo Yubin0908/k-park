@@ -82,6 +82,11 @@ var positions = [
         latlng: new kakao.maps.LatLng(37.11750834625864, 128.95162599200506),
         address: '강원도 태백시 소도동 천제단길 181'
     },
+    {
+        title: '세석대피소',
+        latlng: new kakao.maps.LatLng(35.31809464983184, 127.69340777383621),
+        address: '경남 산청군 시천면 세석길 217-573'
+    },
 ];
 
 var imageSrc = '../img/marker.png',
