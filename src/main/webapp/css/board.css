@@ -6,127 +6,127 @@
     font-style: normal;
 }
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'GangwonEduHyeonokT_OTFMediumA';
+  	margin: 0;
+  	padding: 0;
+  	box-sizing: border-box;
+  	font-family: 'GangwonEduHyeonokT_OTFMediumA';
 }
 
 #bbs_wrap {
-  width: 1400px;
-  margin: 20px auto;
-  font-size: 25px;
+  	width: 1400px;
+  	margin: 20px auto;
+  	font-size: 25px;
 }
 
 .sub_title {
-  text-align: center;
-  margin: 30px 0;
+  	text-align: center;
+  	margin: 30px 0;
 }
 
 .sub_title span {
-  display: block;
-  text-align: left;
-  color: #aaa;
+  	display: block;
+  	text-align: left;
+  	color: #aaa;
 }
 
 .sub_title h2 {
-  font-size: 2.2em;
-  letter-spacing: 15px;
+  	font-size: 2.2em;
+  	letter-spacing: 15px;
 }
 
 .search_wrap {
-  background-color: #f5f8fb;
-  width: 100%;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  	background-color: #f5f8fb;
+  	width: 100%;
+  	height: 100px;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
 }
 
 .search_wrap select,
 .search_wrap input[type="search"],
 .search_wrap input[type="submit"] {
-  font-size: 20px;
-  border-radius: 8px;
-  outline: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  	font-size: 20px;
+  	border-radius: 8px;
+  	outline: none;
+  	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  	text-align: center;
 }
 
 .search_wrap select {
-  width: 150px;
-  padding: 8px;
-  color: #333;
-  margin-right: 10px;
-  border: none;
+  	width: 150px;
+  	padding: 8px;
+  	color: #333;
+  	margin-right: 10px;
+  	border: none;
 }
 
 .search_wrap input[type="search"] {
-  width: 300px;
-  padding: 8px;
-  border: 1px solid #ddd;
-  margin-right: 10px;
+  	width: 300px;
+  	padding: 8px;
+  	border: 1px solid #ddd;
+  	margin-right: 10px;
 }
 
 .search_wrap input[type="submit"] {
-  width: 98px;
-  padding: 8px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  background: #0042a2;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+  	width: 98px;
+  	padding: 8px;
+  	font-weight: 700;
+  	letter-spacing: 4px;
+  	background: #0042a2;
+  	color: #fff;
+  	border: none;
+  	cursor: pointer;
 }
 
 .search_wrap input[type="submit"]:hover {
-  background: #003080;
+  	background: #003080;
 }
 
 .bbs_content {
-  width: 100%;
-  text-align: center;
-  height: auto;
+  	width: 100%;
+  	text-align: center;
+  	height: auto;
 }
 
 .bbs_content h5 {
-  text-align: left !important;
-  margin-bottom: 10px;
-  margin-left: 10px;
+  	text-align: left !important;
+  	margin-bottom: 10px;
+  	margin-left: 10px;
 }
 
 .bbs_content h5 .write {
-  padding: 5px 20px;
-  float: right;
-  margin-bottom: 10px;
-  background-color: #0042a2;
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1.1em;
+  	padding: 5px 20px;
+  	float: right;
+  	margin-bottom: 10px;
+  	background-color: #0042a2;
+  	color: #fff;
+  	font-weight: bold;
+  	border: none;
+  	border-radius: 8px;
+  	cursor: pointer;
+  	font-size: 1.1em;
 }
 
 .bbs_content span {
-  color: #0042a2;
-  font-size: 1.2em;
+  	color: #0042a2;
+  	font-size: 1.2em;
 }
 
 .table {
-  width: 100%;
-  height: 650px;
-  border-collapse: collapse;
+  	width: 100%;
+  	height: 650px;
+  	border-collapse: collapse;
 }
 
 .bbs_content_title {
-  border-top: 1px solid #555;
-  border-bottom: 1px solid #eee;
-  background-color: #eee;
+  	border-top: 1px solid #555;
+  	border-bottom: 1px solid #eee;
+  	background-color: #eee;
 }
 
 .bbs_content_list {
-  border-bottom: 1px solid #eee;
+  	border-bottom: 1px solid #eee;
 }
 
 .bbs_content .detail_a {
@@ -136,121 +136,123 @@
 }
 
 .paging {
-  text-align: center;
-  margin-top: 20px;
+  	text-align: center;
+  	margin-top: 20px;
 }
 
 .paging a {
-	text-decoration: none;
-	color: #555;
+		text-decoration: none;
+		color: #555;
 }
 
 .bbs_detail {
-  width: 100%;
-  border-top: 2px solid #aaa;
+  	width: 100%;
+  	border-top: 2px solid #aaa;
 }
 
 .bbs_detail h2 {
-  letter-spacing: 0;
-  font-size: 1.4em;
+  	letter-spacing: 0;
+  	font-size: 1.4em;
 }
 
 .bbs_detail span {
-  color: #777;
+  	color: #777;
 }
 
 .bbs_detail .hr {
-  border: 0 none;
-  background-color: #eee;
-  height: 2px;
-  margin-bottom: 25px;
+  	border: 0 none;
+  	background-color: #eee;
+  	height: 2px;
+  	margin-bottom: 25px;
 }
 
 .bbs_detail .view {
-  line-height: 25px;
+  	line-height: 25px;
 }
 
 .bbs_detail .bold {
-  font-weight: bold;
-  color: #000;
-  margin: 10px 20px;
+  	font-weight: bold;
+  	color: #000;
+  	margin: 10px 20px;
 }
 
 .bbs_detail .normal {
-  font-size: 14px;
+  	font-size: 14px;
  	color: #555;
 }
 
 .bbs_detail .normal a {
-  text-decoration: none;
-  color: #555;
+  	text-decoration: none;
+  	color: #555;
 }
 
 .button {
-  text-align: center;
+  	text-align: center;
 }
 
 .button button, .submit_btn input {
-  padding: 10px 60px;
-  background-color: transparent;
-  border-color: #0042a2;
-  border-radius: 5px;
-  color: #0042a2;
-  font-weight: bold;
-  font-size: 1.1em;
+  	padding: 10px 60px;
+  	background-color: transparent;
+  	border-color: #0042a2;
+  	border-radius: 5px;
+  	color: #0042a2;
+  	font-weight: bold;
+  	font-size: 1.1em;
 }
 .writeTable {
-  width: 100%;
-  border-collapse: collapse;
+  	width: 100%;
+  	border-collapse: collapse;
 }
 
-input[name="ntitle"], input[name="rtitle"] {
-  width: 95%;
-  padding: 5px;
-  border-radius: 5px;
-  outline: none !important;
-  font-size: 16px;
+input[name="ntitle"], input[name="rtitle"],	
+	input[name="stitle"], input[name="ftitle"],
+	input[name="qtitle"], input[name="ititle"] {
+  	width: 95%;
+  	padding: 5px;
+  	border-radius: 5px;
+  	outline: none !important;
+  	font-size: 20px;
 }
 
 input[name="aid"], input[name="parkname"], input[name="id"] {
-  width: 15%;
-  padding: 5px;
-  border-radius: 5px;
-  outline: none !important;
-  font-size: 16px;
+	width: 15%;
+	padding: 5px;
+	border-radius: 5px;
+	outline: none !important;
+	font-size: 20px;
 }
 
 .RH_text textarea {
-  resize: none;
-  width: 95%;
-  height: 450px;
-  outline: none !important;
+  	resize: none;
+  	width: 95%;
+  	height: 450px;
+  	outline: none !important;
 }
 
 .submit_btn {
-  text-align: center;
+  	text-align: center;
 }
 sub {
-  padding: 5px 20px;
-  background-color: #0042a2;
-  color: #fff;
-  font-weight: bold;
-  font-size: 17px;
+  	padding: 5px 20px;
+  	background-color: #0042a2;
+  	color: #fff;
+  	font-weight: bold;
+  	font-size: 17px;
 }
 
 .RH_title {
-  height: 50px;
+  	height: 50px;
 }
 .RH_writer {
-  height: 50px;
+  	height: 50px;
 }
 .RH_text {
-  height: 500px;
+  	height: 500px;
 }
 .RH_file {
-  height: 45px;
+  	height: 45px;
 }
 
 .toastui-editor-contents p {
-  font-size: 30px;
+  	font-size: 30px;
 }

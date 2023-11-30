@@ -23,7 +23,8 @@
 		  	border-radius: 5px;
 		  	outline: none !important;
 		  	margin-bottom: 5px;
-		  	margin-top: 5px
+		  	margin-top: 5px;
+		  	font-size: 20px;
 		}
   	</style>
 </head>
@@ -55,7 +56,7 @@
 				<td>문의유형</td>
 				<td>
 					<select name="qtype">
-						<option value="야영장">탐방</option>
+						<option value="야영장">야영장</option>
 						<option value="대피소">대피소</option>
 						<option value="생태탐방원">생태탐방원</option>
 					</select>
@@ -78,7 +79,7 @@
         	</tr>
         	<tr>
         		<td class="submit_btn" colspan="2">
-            		<input type="button" value="글수정" onclick="submitForm()">
+            		<input type="button" value="글수정" onclick="submitForm()" style="cursor:pointer">
           		</td>
         	</tr>
     	</table>
