@@ -86,14 +86,6 @@
 	    });
   	</script>
 	<script>
-	  	function submitForm() {
-	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-	      document.getElementById("itext").value = markdown;
-	      document.getElementById("reviewForm").submit();
-	      console.log(markdown);
-	    }
-	</script>
-	<script>
 		function submitForm() {
 		    const ititle = document.getElementById("ititle").value.trim();
 		    const iparkname = document.getElementById("iparkname").value.trim();
