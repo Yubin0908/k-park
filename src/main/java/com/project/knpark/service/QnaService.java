@@ -9,14 +9,14 @@ import com.project.knpark.vo.Qna;
 public interface QnaService {
 	public List<Qna> qnaList(String pageNum, Qna qna);
 	public int getQnaTotCnt(Qna qna);
-	public int qnaInsert(Qna qna, HttpServletRequest request);
+	public int qnaInsert(Qna qna, HttpServletRequest request, String pageNum);
 	public Qna qnaDetail(int qno, String after);
 	public int qnaModify(Qna qna, HttpServletRequest request);
 	public int qnaDelete(int qno);
 	// 답변
 	public Qna qnaModifyReplyView(int qno);
 	public int qnaPreReplyStep(Qna qna);
-	public int qnaReplyInsert(Qna qna, HttpServletRequest request);
+	public int qnaReplyInsert(Qna qna, HttpServletRequest request, String pageNum);
 	public Qna qnaAdminReply(int qgroup);
 	public int qnaStatusUpdate(int qno);
 }

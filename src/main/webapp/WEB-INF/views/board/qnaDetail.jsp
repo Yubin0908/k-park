@@ -20,19 +20,14 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${qnaWriteResult eq 1 }">
+	<c:if test="${not empty modifyResult }">
 		<script>
-			alert('묻고답하기 글이 등록되었습니다.');
+			alert('${modifyResult}');
 		</script>
 	</c:if>
-	<c:if test="${modifyResult eq 1 }">
+	<c:if test="${not empty qnaReplyResult}">
 		<script>
-			alert('묻고답하기 수정이 완료되었습니다.');
-		</script>
-	</c:if>
-	<c:if test="${qnaReplyResult eq 1 }">
-		<script>
-			alert('관리자답변이 등록되었습니다.');
+			alert('${qnaReplyResult}');
 		</script>
 	</c:if>
 	<c:if test="${qna.qyn eq 'n' and empty admin }">
@@ -90,8 +85,11 @@
 	    		<button onclick="location.href='${conPath}/board/qnaModify.do?qno=${param.qno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" 
 	    			style="cursor:pointer">글수정
 	    		</button>
+	    		<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'" 
+    				style="cursor:pointer">글 삭제
+    			</button>
 	    	</c:if>
-    		<c:if test="${not empty admin }">
+    		<c:if test="${not empty admin && qna.qstatus ne 2}">
     			<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'" 
     				style="cursor:pointer">글 삭제
     			</button>

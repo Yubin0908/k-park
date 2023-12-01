@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.QnaService;
 import com.project.knpark.util.Paging;
@@ -31,9 +32,10 @@ public class QnaController {
 
 	
 	@RequestMapping(value = "qnaWrite", method=RequestMethod.POST) 
-	public String qnaWrite(Qna qna, HttpServletRequest request, Model model) {
-		model.addAttribute("qnaWriteResult", qnaService.qnaInsert(qna, request));
-		return "forward:qnaList.do";
+	public String qnaWrite(Qna qna, HttpServletRequest request, Model model, RedirectAttributes redirectAttributes, String pageNum) {
+		model.addAttribute("qnaWriteResult", qnaService.qnaInsert(qna, request, pageNum));
+		redirectAttributes.addFlashAttribute("qnaWriteResult", "글이 등록되었습니다.");
+		return "redirect:qnaList.do";
 	}
 	@RequestMapping(value = "qnaDetail", method= {RequestMethod.GET, RequestMethod.POST})
 	public String qnaDetail(int qno, Model model, String after, int qgroup) {
@@ -47,9 +49,12 @@ public class QnaController {
 		return "board/qnaModify";
 	}
 	@RequestMapping(value = "qnaModify", method=RequestMethod.POST)
-	public String qnaModify(HttpServletRequest request, Qna qna, Model model, String pageNum) {
+	public String qnaModify(HttpServletRequest request, Qna qna, Model model, String pageNum, RedirectAttributes rediAttributes) {
+		int qno = qna.getQno();
+		int qgroup = qna.getQgroup();
 		model.addAttribute("modifyResult", qnaService.qnaModify(qna, request));
-		return "forward:qnaDetail.do";
+		rediAttributes.addFlashAttribute("modifyResult", "글이 수정되었습니다.");
+		return "redirect:qnaDetail.do?qno="+qno+"&qgroup="+qgroup+"&pageNum="+pageNum;
 	}
 	@RequestMapping(value = "qnaDelete", method=RequestMethod.GET)
 	public String qnaDelete(int qno, Model model) {
@@ -62,8 +67,11 @@ public class QnaController {
 		return "board/qnaReplyWrite";
 	}
 	@RequestMapping(value = "qnaReplyWrite", method=RequestMethod.POST)
-	public String qnaReply(Qna qna, Model model, HttpServletRequest request) {
-		model.addAttribute("qnaReplyResult", qnaService.qnaReplyInsert(qna, request));
-		return "forward:qnaDetail.do";
+	public String qnaReply(Qna qna, Model model, HttpServletRequest request, RedirectAttributes redirectAttributes, String pageNum) {
+		int qno = qna.getQno();
+		int qgroup = qna.getQgroup();
+		model.addAttribute("qnaReplyResult", qnaService.qnaReplyInsert(qna, request, pageNum));
+		redirectAttributes.addFlashAttribute("qnaReplyResult", "답변글이 등록되었습니다.");
+		return "redirect:qnaDetail.do?qno="+qno+"&qgroup="+qgroup+"&pageNum="+pageNum;
 	}
 }

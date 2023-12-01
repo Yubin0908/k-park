@@ -28,7 +28,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 
 	@Override
-	public int qnaInsert(Qna qna, HttpServletRequest request) {
+	public int qnaInsert(Qna qna, HttpServletRequest request, String pageNum) {
 		qna.setQip(request.getRemoteAddr());
 		return qnaRepository.qnaInsert(qna);
 	}
@@ -60,7 +60,7 @@ public class QnaServiceImpl implements QnaService {
 	}
 	
 	@Override
-	public int qnaReplyInsert(Qna qna, HttpServletRequest request) {
+	public int qnaReplyInsert(Qna qna, HttpServletRequest request, String pageNum) {
 		qna.setQip(request.getRemoteAddr());
 		qnaRepository.qnaPreReplyStep(qna);
 		int qno = qna.getQno();
