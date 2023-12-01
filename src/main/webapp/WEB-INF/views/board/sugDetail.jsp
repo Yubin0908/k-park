@@ -41,7 +41,10 @@
       	<br>
       	<hr>
       	<br>
-		내용 : ${suggest.stext }
+      	<div style="min-height: 250px;">
+      		내용 : ${suggest.stext }
+      	</div>
+		
 	       
         <p class="hr"></p>
           <span class="bold">작성자</span>

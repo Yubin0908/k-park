@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${modifyResult eq 1 }">
+	<c:if test="${not empty modifyResult}">
 		<script>
-			alert('글 수정이 완료되었습니다.');
+			alert('${modifyResult}');
 		</script>
 	</c:if>
 	<div id="bbs_wrap">
@@ -27,10 +27,12 @@
     	<h2>Q. ${infomation.ititle }</h2>
     	<p class="hr"></p>
     	<div class="view">
-	       	${infomation.itext }
+    		<div style="min-height: 250px;">
+    			${infomation.itext }
+    		</div>
         	<p class="hr"></p>
 	          	<span class="bold">관리공원</span>
-	          	<span class="normal"><a href="">${qna.parkname }</a></span>
+	          	<span class="normal"><a href="">${infomation.parkname }</a></span>
 	          	<br>
 	          	<br>
 			<p class="hr"></p>

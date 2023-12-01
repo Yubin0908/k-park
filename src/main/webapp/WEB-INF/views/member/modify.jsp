@@ -12,6 +12,9 @@
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="${conPath }/js/address.js"></script>
 	<link rel="stylesheet" href="${conPath }/css/join.css" />
+  <link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+</head>
+  
 </head>
 <body>
 	<c:if test="${empty member }">
@@ -54,14 +57,15 @@
 				<tr>
 					<td>성별</td>
 		          	<td class="gender_radio">
-			        	<label for="male">
-			              <input type="radio" id="male" name="gender" value="m" required="required">남
+			        		<label for="male">
+			              <input type="radio" id="male" name="gender" value="m" required="required"<c:if test="${member.gender eq 'm' }">checked</c:if>>남
+			          	</label>
 			            <label for="female">
-			              <input type="radio" id="female" name="gender" value="f">여
+			              <input type="radio" id="female" name="gender" value="f"<c:if test="${member.gender eq 'f' }">checked</c:if>>여
 			            </label>
 		          	</td>
 				</tr>
-				<tr><td>생일</td><td><input type="date" name="birth" value="${member.birth }"></td></tr>
+				<tr><td>생일</td><td><input id="datepicker" name="birth" value="${member.birth }" placeholder="생일을 입력하세요" required="required" width="360px"></td></tr>
 				<tr><td colspan="2">
 					<p style="text-align:center;">
 						<input type="submit" value="정보수정">
@@ -72,7 +76,17 @@
 		</form>
 	</div>
 	</div>
-	
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+  <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/js/gijgo.min.js"></script>
+  <script>
+	  $(document).ready(function() {
+		  $('#datepicker').datepicker({
+			  format: 'yyyy-mm-dd'
+		  });
+		});
+  </script>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

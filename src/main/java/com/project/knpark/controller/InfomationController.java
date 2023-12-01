@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.InfomationService;
 import com.project.knpark.util.Paging;
@@ -33,9 +34,10 @@ public class InfomationController {
 		return "board/infoWrite";
 	}
 	@RequestMapping(value = "board/infoWrite", method=RequestMethod.POST)
-	public String infoInsert(Infomation infomation, Model model) {
+	public String infoInsert(Infomation infomation, Model model, RedirectAttributes redirectAttributes) {
 		model.addAttribute("infoWriteResult", infomationService.infoInsert(infomation));
-		return "forward:infoList.do";
+		redirectAttributes.addFlashAttribute("infoWriteResult", "예약안내글이 등록되었습니다.");
+		return "redirect:infoList.do";
 	}
 	@RequestMapping(value = "board/infoModify", method=RequestMethod.GET)
 	public String infoModify(int ino, Model model, String after) {
@@ -43,9 +45,11 @@ public class InfomationController {
 		return "board/infoModify";
 	}
 	@RequestMapping(value = "board/infoModify", method=RequestMethod.POST)
-	public String infoModify(Infomation infomation, Model model, String pageNum) {
+	public String infoModify(Infomation infomation, Model model, String pageNum, RedirectAttributes redirectAttributes) {
+		int ino = infomation.getIno();
 		model.addAttribute("modifyResult", infomationService.infoModify(infomation));
-		return "forward:infoDetail.do";
+		redirectAttributes.addFlashAttribute("modifyResult", "예약방법안내글이 수정되었습니다.");
+		return "redirect:infoDetail.do?ino="+ino+"&pageNum="+pageNum;
 	}
 	@RequestMapping(value = "board/infoDelete", method=RequestMethod.GET)
 	public String infoDelete(int ino, Model model) {

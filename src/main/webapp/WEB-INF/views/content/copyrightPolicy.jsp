@@ -12,6 +12,7 @@
 			position: relative;
 			width: 1400px;
 			padding: 20px 0 10px;
+			height: 750px;
 		}
 		.page_location {
 			display: flex;

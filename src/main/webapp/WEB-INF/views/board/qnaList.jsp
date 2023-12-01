@@ -15,9 +15,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${qnaWriteResult eq 1 }">
+	<c:if test="${not empty qnaWriteResult}">
 		<script>
-			alert('글이 등록되었습니다.');
+			alert('${qnaWriteResult}');
 		</script>
 	</c:if>
 	<c:if test="${deleteResult eq 1 }">
@@ -37,10 +37,18 @@
 	    <div class="search_wrap">
 		    <form action="">
 			    <select name="option" id="">
-				    <option value="all" selected>전체</option>
-				    <option value="qtitle">제목</option>
-				    <option value="qtext">내용</option>
-				    <option value="parkname">공원명</option>
+			    	<option value=""
+						<c:if test="${param.option eq '' }">selected="selected"</c:if>
+					>검색조건</option>
+				    <option value="qtitle"
+				    	<c:if test="${param.option eq 'qtitle' }">selected="selected"</c:if> 
+				    >제목</option>
+				    <option value="qtext"
+				    	<c:if test="${param.option eq 'qtext' }">selected="selected"</c:if>
+				    >내용</option>
+				    <option value="parkname"
+				    	<c:if test="${param.option eq 'parkname' }">selected="selected"</c:if>
+				    >공원명</option>
 			    </select>
 			    <input type="search" name="search">
 			    <input type="submit" value="조회">
