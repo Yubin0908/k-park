@@ -28,7 +28,7 @@
 						console.log("인증번호 : ", data);
 						checkInput.attr('disabled',false);
 						code = data.trim();
-						alert('비밀번호가 전송되었습니다.')
+						alert('비밀번호가 전송되었습니다.');
 					}			
 				});
 			});
