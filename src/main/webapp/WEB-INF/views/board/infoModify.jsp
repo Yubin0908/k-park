@@ -17,7 +17,7 @@
 		 	border-radius: 5px;
 		  	outline: none !important;
 		}
-		select[name="itype"], input[name="iparkname"] {
+		select[name="itype"], input[name="parkname"] {
 		  	width: 15%;
 		  	padding: 5px;
 		  	border-radius: 5px;

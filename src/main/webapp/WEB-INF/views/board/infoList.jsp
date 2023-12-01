@@ -5,9 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${conPath}/css/board.css" rel="stylesheet"/>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<link href="${conPath}/css/board.css" rel="stylesheet"/>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -24,7 +24,7 @@
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
-    	<span>홈 > 알림마당 > 예약방법안내</span>
+    	<span><a href="${conPath }/" style="text-decoration: none; color: #000; font-weight: 400;">홈</a> > 알림마당 > <span style="font-weight: 600; display: inline-block;"> 예약방법안내</span></span>
 	    <br>
 	    <h2>예약방법안내</h2>
 	    <br>

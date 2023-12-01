@@ -35,7 +35,7 @@
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
-    	<span>홈 >건의합니다</span>
+    	<span><a href="${conPath }/" style="text-decoration: none; color: #000; font-weight: 400;">홈</a> > 고객마당  > <span style="font-weight: 600; display: inline-block;"> 건의합니다</span></span>
       	<br>
       	<h2>건의합니다</h2>
       	<br>

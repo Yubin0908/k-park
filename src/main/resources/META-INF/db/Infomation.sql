@@ -70,7 +70,7 @@ INSERT INTO INFOMATION (INO, AID, PARKNAME, ITYPE, ITITLE, ITEXT)
     
 -- 글 수정 id = infoModify
 UPDATE INFOMATION
-    SET IPARKNAME = '소백산',
+    SET PARKNAME = '소백산',
         ITYPE = '타입',
         ITITLE = '제목이다',
         ITEXT = '본문이다'

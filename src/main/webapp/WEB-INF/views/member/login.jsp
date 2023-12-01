@@ -20,7 +20,7 @@
 		<script>alert('${loginResult}');</script>
 	</c:if>
 	<c:if test="${not empty findId}">
-		<script>alert('테스트 : 아이디는 ${findId}입니다.');</script>
+		<script>alert('아이디는 ${findId}입니다.');</script>
 	</c:if>
 	<c:if test="${not empty findPw}">
 		<script>alert('입력하신 이메일로 회원님의 비밀번호가 전송되었습니다.');</script>

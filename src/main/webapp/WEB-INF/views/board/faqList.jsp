@@ -25,7 +25,7 @@
 	<div id="bbs_wrap">
     <br>
     <div class="sub_title">
-    	<span>홈 > 자주하는 질문</span>
+    	<span><a href="${conPath }/" style="text-decoration: none; color: #000; font-weight: 400;">홈</a> > 알림마당  > <span style="font-weight: 600; display: inline-block;"> 자주하는 질문</span></span>
       	<br>
       	<h2>자주하는 질문</h2>
       	<br>
