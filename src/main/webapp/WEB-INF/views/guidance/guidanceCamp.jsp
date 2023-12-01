@@ -23,13 +23,13 @@
 			</div>
 			<div class="map_wrap">
 				<div class="button">
-				<button href="" id="m1-4" class="btn" 
+				<button id="m1-4" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=taebaek'">태백산<br>(소도)</button>
-				<button href="" id="m1-3" class="btn" 
+				<button id="m1-3" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=jeeri'">지리산<br>(백무동)</button>
-				<button href="" id="m1-2" class="btn" 
+				<button id="m1-2" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=bukhan'">북한산<br>(사기막)</button>
-				<button href="" id="m1-1" class="btn" 
+				<button id="m1-1" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=seolak'">설악산<br>(설악동)</button>
 			</div>
 				<img src="${conPath }/img/campMap1.png" alt="야영장 지도" usemap="#img-map" class="img">
@@ -46,6 +46,9 @@
 			</div>
     	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

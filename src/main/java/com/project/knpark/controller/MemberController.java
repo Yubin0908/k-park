@@ -78,6 +78,8 @@ public class MemberController {
 	@RequestMapping(value="pwConfirm", method=RequestMethod.POST)
 	public String pwConfirm(String id, String pw, Model model) {
 		String oldPw = memberService.pwConfirm(id);
+		
+		
 		if(oldPw != null && oldPw.equals(pw)) {
 			return "redirect:modify.do";
 		} else {

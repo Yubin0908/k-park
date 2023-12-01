@@ -111,7 +111,7 @@
   		<form action="">
   			<input type="hidden" name="parkname" value="${param.parkname }">
   			<input type="date" name="search" placeholder="2023-11-30" required/>
-  			<input type="submit" value="검색"/>
+  			<input type="submit" value="조회"/>
   		</form>
   	</div>
   	<form action="${conPath }/reservation/addDate.do" method="get" id="addForm">
@@ -156,7 +156,8 @@
 			      <form action="${conPath }/reservation/adminRemControl.do" method="post">
 			      	<input type="hidden" name="resno" value="${list.resno }" />
 			      	<input type="hidden" name="resdate" value="${list.resdate }" />
-			        <input type="text" name="rem" id="rem" placeholder="변경값" required/>
+			      	<input type="hidden" name="parkname" value="${param.parkname }" />
+			        <input type="number" name="rem" id="rem" placeholder="변경값" required min="0"/>
 			        <input type="submit" value="조정" class="adjust-link"/>
 			      </form>
 				   </td>
