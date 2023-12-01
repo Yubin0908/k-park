@@ -23,9 +23,9 @@
 			</div>
 			<div class="map_wrap">
 				<div class="button">
-				<button href="" id="m3-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=moodeungexplore'">무등산</button>
-				<button href="" id="m3-2" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=naejangexplore'">내장산</button>
-				<button href="" id="m3-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekexplore'">소백산</button>
+				<button id="m3-1" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=moodeungexplore'">무등산</button>
+				<button id="m3-2" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=naejangexplore'">내장산</button>
+				<button id="m3-3" class="btn" onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekexplore'">소백산</button>
 			</div>
 				<img src="${conPath }/img/exploreMap.png" alt="생태탐방원 지도" usemap="#img-map" class="img">
 				<map name="img-map">
@@ -39,6 +39,9 @@
 			</div>
     	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

@@ -75,7 +75,6 @@
         			<option value="덕유산">덕유산</option>
         			<option value="소백산">소백산</option>
         			<option value="무등산">무등산</option>
-        			<option value="태백산">태백산</option>
         		</select>
         	</td>
         </tr>
