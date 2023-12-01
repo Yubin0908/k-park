@@ -16,8 +16,9 @@
 			$('.idconfirm').click(function(){
 				$.ajax({
 					url : '${conPath}/member/idConfirm.do',
-					datatype : 'html',
+					type : 'get',
 					data : "id="+$('#id').val(),
+					datatype : 'html',
 					success : function(data, status){
 						$('#idConfirmMsg').html(data);
 					}
@@ -26,21 +27,36 @@
 			$('#id').keyup(function(){
 				var id = $(this).val();
 				var patternId = /^[a-zA-Z0-9_]+$/; // macth함수 사용
-				if(id.length<2){
-					$('#idConfirmMsg').text('아이디는 2글자 이상 입력 하세요.');
+				if(id.length<5 || id.length>20 ){
+					$('#idConfirmMsg').text('아이디는 5글자 이상 , 20글자 이하로 입력 하세요.');
+					$('#idConfirmMsg').css('color','red');
 				}else if(!id.match(patternId)){
 					$('#idConfirmMsg').text('아이디는 영문자와 숫자 _만 들어갈 수 있습니다.');
 				}else {
 					$.ajax({
 						url : '${conPath}/member/idConfirm.do',
-						datatype : 'html',
+						type : 'get',
 						data : "id="+$('#id').val(),
+						datatype : 'html',
 						success : function(data, status){
 							$('#idConfirmMsg').html(data);
 						}
 					});
 				}
 			});
+			$('.pw, .pwChk').keyup(function(){
+				var pw = $('input[name="pw"]').val();
+				var pwChk = $('input[name="pwChk"]').val();
+				if(!pw && !pwChk){
+					$('#pwChkResult').text(' &nbsp; ');
+				}else if(pw == pwChk){
+					$('#pwChkResult').text('비밀번호가 일치합니다');
+					$('#pwChkResult').css('color','blue');
+				}else{
+					$('#pwChkResult').html('<b>비밀번호가 일치하지 않습니다</b>');
+					$('#pwChkResult').css('color','red');
+				}
+			}); // keyup 이벤트 (비밀번호 일치 확인용)
 			$('#mail-Check-Btn').on('click', function() {
 				const email = $('#email').val(); // 이메일 주소값 얻어오기!
 				console.log('전송된 이메일 : ' + email); // 이메일 오는지 확인
@@ -113,12 +129,26 @@
         		<tr>
           			<td>아이디</td>
           			<td>
-			            <input type="text" name="id" id="id" class="input">
-			            <input type="button" class="idconfirm" value="중복확인"><br>
-			            <span id="idConfirmMsg"></span>
-					</td>
+			            <input type="text" name="id" id="id" class="input"><br>
+			            <span style="font-size: 0.9em;" id="idConfirmMsg"></span>
+					</td>&nbsp; &nbsp; &nbsp; 
 				</tr>
-		        <tr><td>비밀번호</td><td><input type="password" name="pw" class="input"></td></tr>
+		        <tr>
+		        	<td>비밀번호<br><br>확인입력</td>
+		        	<td>
+		        		<input type="password" name="pw" id="pw" class="pw input">
+		        		<input type="password" name="pwChk" id="pwChk" class="pwChk input"><br>
+		        		<span style="font-size: 0.9em;" id="pwChkResult"></span>
+	        		</td>
+		        </tr>
+		       <!-- <tr>
+		        	<td>비번확인</td>
+		        	<td>
+		        		<input type="password" name="pwChk" id="pwChk" class="pwChk input"><br>
+		        		<span style="font-size: 0.9em;" id="pwChkResult"></span>
+		        	</td>
+		        </tr> -->
+		        
 		        <tr><td>이름</td><td><input type="text" name="name"  class="input"></td></tr>
 		        <tr>
 		          	<td>우편번호</td>
@@ -139,7 +169,7 @@
 		        <tr><td>메일</td>
 		        	<td>
 		        		<input type="text" name="email" required="required" class="input" id="email">
-		        		<input type="number" name="checkNum" class="checkinput" disabled maxlength="6"/><input type="button" value="인증번호 발송" id="mail-Check-Btn"/>
+		        		<input type="number" name="checkNum" class="checkinput" disabled maxlength="6"/>&nbsp;<input type="button" value="인증번호 발송" id="mail-Check-Btn"/>
 		        		<span id="mail-check-warn"></span>
 		        	</td>
 		        </tr>

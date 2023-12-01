@@ -56,7 +56,6 @@
 		          	<td class="gender_radio">
 			        	<label for="male">
 			              <input type="radio" id="male" name="gender" value="m" required="required">남
-			            </label>
 			            <label for="female">
 			              <input type="radio" id="female" name="gender" value="f">여
 			            </label>

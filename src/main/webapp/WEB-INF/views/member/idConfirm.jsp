@@ -11,7 +11,7 @@
 		<b style="color:red">중복된 ID입니다. 사용 하실수 없습니다.</b>
 	</c:if>
 	<c:if test="${idConfirmResult eq 0 }">
-		사용가능한 ID입니다.
+		<span style="color: blue;">사용가능한 ID입니다.</span>
 	</c:if>
 </body>
 </html>
