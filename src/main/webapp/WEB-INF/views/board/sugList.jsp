@@ -17,9 +17,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${suggestWriteResult eq 1 }">
+	<c:if test="${not empty suggestWriteResult}">
 		<script>
-			alert('건의사항이 등록 되었습니다.');
+			alert('${suggestWriteResult}');
 		</script>
 	</c:if>
 	<c:if test="${suggestDeleteResult eq 1 }">
@@ -27,9 +27,9 @@
 			alert('작성하신 글이 삭제 되었습니다.');
 		</script>
 	</c:if>
-	<c:if test="${suggestReplyResult eq 1 }">
+	<c:if test="${not empty suggestReplyResult}">
 		<script>
-			alert('답변글이 작성 되었습니다.');
+			alert('${suggestReplyResult}');
 		</script>
 	</c:if>
 	<div id="bbs_wrap">

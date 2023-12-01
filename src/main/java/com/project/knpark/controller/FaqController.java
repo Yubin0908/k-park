@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.FaqService;
 import com.project.knpark.util.Paging;
@@ -34,9 +35,10 @@ public class FaqController {
 		return "board/faqWrite";
 	}
 	@RequestMapping(value = "board/faqWrite", method=RequestMethod.POST)
-	public String faqInsert(Faq faq, Model model) {
+	public String faqInsert(Faq faq, Model model, RedirectAttributes redirectAttributes) {
 		model.addAttribute("faqWriteResult", faqService.faqInsert(faq));
-		return "forward:faqList.do";
+		redirectAttributes.addFlashAttribute("faqWriteResult", " 자주찾는 질문이 등록 되었습니다.");
+		return "redirect:faqList.do";
 	}
 	@RequestMapping(value = "board/faqModify", method=RequestMethod.GET)
 	public String faqModify(int fno, Model model, String after) {
@@ -44,9 +46,12 @@ public class FaqController {
 		return "board/faqModify";
 	}
 	@RequestMapping(value = "board/faqModify", method=RequestMethod.POST)
-	public String faqModify(Faq faq, Model model, String pageNum) {
+	public String faqModify(Faq faq, Model model, String pageNum, 
+			RedirectAttributes redirectAttributes) {
 		model.addAttribute("modifyResult", faqService.faqModify(faq));
-		return "forward:faqDetail.do";
+		int fno = faq.getFno();
+		redirectAttributes.addFlashAttribute("modifyResult", "자주하는 질문이 수정 되었습니다.");
+		return "redirect:faqDetail.do?fno=" + fno + "&pageNum=" + pageNum;
 	}
 	@RequestMapping(value = "board/faqDelete", method=RequestMethod.GET)
 	public String faqDelete(int fno, Model model) {
