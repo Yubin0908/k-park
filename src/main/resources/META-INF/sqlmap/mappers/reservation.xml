@@ -145,9 +145,9 @@
 		
 	</select>
 	<!-- 관리자 예약조정 -->
-	<select id="reservedRemControl" parameterType="Reservation">
+	<update id="reservedRemControl" parameterType="Reservation">
 		UPDATE RESERVED SET REM = #{rem} WHERE RESNO = #{resno} AND RESDATE = #{resdate}
-	</select>
+	</update>
 	<!-- 관리자 예약일자 등록(당일) -->
 	<insert id="todayDateAdd" parameterType="Reservation">
 		<if test="type == 'camp'">

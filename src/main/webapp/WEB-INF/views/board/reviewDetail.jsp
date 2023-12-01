@@ -113,7 +113,7 @@
 			                    <input type="hidden" name="cgroup" value="${cmtList.cgroup}"/>
 			                    <input type="hidden" name="cstep" value="${cmtList.cstep}"/>
 			                    <input type="hidden" name="cindent" value="${cmtList.cindent}"/>
-			                    <input type="text" name="cmemo" required>
+			                    <input type="text" name="cmemo" required <c:if test="${empty member && empty admin }">disabled placeholder="로그인 하셔야 댓글 달기가 가능합니다."</c:if>>
 			                    <input type="submit" value="댓글달기">
 				                </div>
 						            </form>

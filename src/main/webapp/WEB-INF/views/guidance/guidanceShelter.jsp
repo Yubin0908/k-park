@@ -23,13 +23,13 @@
 			</div>
 			<div class="map_wrap">
 				<div class="button">
-				<button href="" id="m2-4" class="btn" 
+				<button id="m2-4" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=jeerishelter'">지리산<br>(세석)</button>
-				<button href="" id="m2-3" class="btn" 
+				<button id="m2-3" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=dukyoushelter'">덕유산<br>(삿갓재)</button>
-				<button href="" id="m2-2" class="btn" 
+				<button id="m2-2" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=sobaekshelter'">소백산<br>(제2연화봉)</button>
-				<button href="" id="m2-1" class="btn" 
+				<button id="m2-1" class="btn" 
 					onclick="location.href='${conPath}/guidance/guidance.do?park=seolakshelter'">설악산<br>(소청)</button>
 			</div>
 				<img src="${conPath }/img/shelterMap.png" alt="대피소 지도" usemap="#img-map" class="img">
@@ -46,6 +46,9 @@
 			</div>
     	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
