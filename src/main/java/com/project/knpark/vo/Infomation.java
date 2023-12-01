@@ -7,7 +7,7 @@ import lombok.Data;
 public class Infomation {
 	private int ino;
 	private String aid;
-	private String iparkname;
+	private String parkname;
 	private String itype;
 	private String ititle;
 	private String itext;

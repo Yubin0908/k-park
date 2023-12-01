@@ -41,7 +41,7 @@
 					<td>글제목</td>
 					<td>
 						<input type="text" name="qtitle" 
-							required="required" value="[답변]${qna.qtitle }">
+							required="required" value="[답변]${qna.qtitle }" id="qtitle">
 					</td>
 			    </tr>
 			    <tr class="RH_writer">
@@ -63,7 +63,7 @@
 					<tr class="RH_text">
 						<td>내용</td>
 						<td>
-				          	<input type="hidden" name="qtext" id="qtext" value="${qna.qtext }"/>
+				          	<input type="hidden" name="qtext" id="qtext"/>
 								<div id="editor">
 							
 								</div>
@@ -71,7 +71,8 @@
 					</tr>
 					<tr>
 						<td class="submit_btn" colspan="3">
-							<input type="submit" value="답변쓰기" class="btn" style="cursor:pointer">
+							<input type="button" value="답변쓰기" class="btn" style="cursor:pointer"
+								onclick="submitForm()">
 							<input type="reset" value="초기화" class="btn" style="cursor:pointer">
 							<input type="button" value="목록" class="btn" style="cursor:pointer"
 										onclick="location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum }'">
@@ -91,11 +92,11 @@
   	</script>
   	<script>
 		function submitForm() {
-  	  	const qtitle = document.getElementById("qtitle").value.trim();
-      	const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-      	document.getElementById("qtext").value = markdown;
-      	if(qtitle !== "" && markdown !== ""){
-      	document.getElementById("qnaForm").submit();
+		  	const qtitle = document.getElementById("qtitle").value.trim();
+		   	const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+		   	document.getElementById("qtext").value = markdown;
+		   	if(qtitle !== "" && markdown !== ""){
+		   	document.getElementById("qnaForm").submit();
       	}else{
     	  	alert('빈칸이 존재합니다.');
 			e.preventDefault(); 

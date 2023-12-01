@@ -62,7 +62,7 @@ nav a, .user a { text-decoration: none; font-size: 1.2em; color: #1e1e1e;}
 }
 
 .menu > li:hover .submenu {
- 	height: 200px; /*서브메뉴 li한개의 높이 50*5*/
+ 	height: auto; /*서브메뉴 li한개의 높이 50*5*/
 	transition-duration: 1s;
 	display: block;
 }

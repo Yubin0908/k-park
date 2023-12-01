@@ -18,7 +18,7 @@ SELECT COUNT(*) FROM ADMIN WHERE AID = 'admin';
 INSERT INTO ADMIN VALUES ('sulak23', '111', '설악산관리자', '설악산', SYSDATE);
 
 -- 관리자 정보수정 ID = modifyAdmin
-UPDATE ADMIN SET APW = '1', ANAME = '메인관리', AGROUP = '태백산' WHERE AID = 'admin';
+UPDATE ADMIN SET APW = '1', ANAME = '메인관리자', AGROUP = '태백산' WHERE AID = 'admin';
 
 
 
