@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${modifyResult eq 1 }">
+	<c:if test="${not empty modifyResult}">
 		<script>
-			alert('글 수정이 완료되었습니다.');
+			alert('${modifyResult}');
 		</script>
 	</c:if>
 	<div id="bbs_wrap">

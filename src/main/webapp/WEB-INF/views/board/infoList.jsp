@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${infoWriteResult eq 1 }">
+	<c:if test="${not empty infoWriteResult }">
 		<script>
-			alert('예약안내글이 등록되었습니다.');
+			alert('${infoWriteResult}');
 		</script>
 	</c:if>
 	<c:if test="${deleteResult eq 1 }">

@@ -23,7 +23,7 @@
 	<select id="qnaList" parameterType="Qna" resultMap="QnaResult">
 		<if test="option==null or option==''">
 			SELECT M.RN, M.QNO, RPAD(SUBSTR(M.ID,0,1),LENGTH(M.ID)-1, '*') || SUBSTR(M.ID,LENGTH(M.ID)) AS ID
-		     , M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP, M.QYN
+		     	, M.AID, M.PARKNAME, M.QTYPE, M.QTITLE, M.QTEXT, M.QRDATE, QSTATUS, M.QGROUP, M.QIP, M.QYN
 			  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM QNA WHERE QSTEP=0 ORDER BY QNO DESC) A) M
 			 WHERE RN BETWEEN #{startRow} AND #{endRow}
 		</if>
