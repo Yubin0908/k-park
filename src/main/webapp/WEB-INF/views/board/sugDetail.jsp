@@ -55,7 +55,7 @@
     	<%-- <c:if test="${suggest.id eq member.id || suggest.aid eq admin.aid}" >
     		<button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }'">글수정</button>
     	</c:if> --%>
-    	<c:if test="${suggest.id eq member.id}" >
+    	<c:if test="${suggest.id eq member.id and not empty member}" >
     		<button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'">글 삭제</button>
     	</c:if>
     	<c:if test="${not empty admin}" >

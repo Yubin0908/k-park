@@ -81,7 +81,7 @@
 	    		<li><a><img src="${conPath }/img/admin.png" alt="adminImg" > ${admin.aname }님 환영합니다.</a></li>
 	    	</c:if>
 	    	<c:if test="${empty admin.aid }">
-	    		<li><a href="${conPath }/member/modify.do"><img src="${conPath }/img/memberModify.png" alt="modifyImg" >정보수정</a></li>	
+	    		<li><a href="${conPath }/member/pwConfirm.do"><img src="${conPath }/img/memberModify.png" alt="modifyImg" >정보수정</a></li>	
 	    		<li><a><img src="${conPath }/img/member.png" alt="memberImg" > ${member.name }님 환영합니다.</a></li>
 	    	</c:if>
 	    </c:if>

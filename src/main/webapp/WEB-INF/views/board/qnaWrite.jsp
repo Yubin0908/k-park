@@ -17,7 +17,7 @@
 		 	border-radius: 5px;
 		  	outline: none !important;
 		}
-		select[name="qtype"] {
+		select[name="qtype"], select[name="parkname"] {
 		  	width: 15%;
 		  	padding: 5px;
 		  	border-radius: 5px;
@@ -49,7 +49,18 @@
 	     			</tr>
 	     			<tr>
 				     	<td>공원명</td>
-				     	<td><input type="text" name="parkname" id="parkname" ></td>
+				     	<td>
+				     		<select name="parkname">
+				     			<option value="설악산">설악산</option>
+				     			<option value="북한산">북한산</option>
+				     			<option value="지리산">지리산</option>
+				     			<option value="태백산">태백산</option>
+				     			<option value="덕유산">덕유산</option>
+				     			<option value="소백산">소백산</option>
+				     			<option value="무등산">무등산</option>
+				     			<option value="내장산">내장산</option>
+				     		</select>
+				     	</td>
 					</tr>
 					<tr>
 						<td>공개</td>
@@ -106,10 +117,9 @@
 <script>
 	function submitForm() {
 	    const qtitle = document.getElementById("qtitle").value.trim();
-	    const parkname = document.getElementById("parkname").value.trim();
 	    const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
       	document.getElementById("qtext").value = markdown;
-	    if(qtitle !== "" && parkname !== "" && markdown !== "") {
+	    if(qtitle !== "" && markdown !== "") {
 	      	document.getElementById("qnaForm").submit();
 	    } else {
 	       	alert('빈칸이 존재합니다.');

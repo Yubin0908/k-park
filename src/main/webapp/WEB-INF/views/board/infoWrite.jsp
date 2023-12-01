@@ -17,7 +17,7 @@
 		 	border-radius: 5px;
 		  	outline: none !important;
 		}
-		select[name="itype"], input[name="iparkname"] {
+		select[name="itype"], input[name="parkname"] {
 		  	width: 15%;
 		  	padding: 5px;
 		  	border-radius: 5px;
@@ -47,7 +47,7 @@
 	        </tr>
 	        <tr>
 	        	<td>공원명</td>
-	        	<td><input type="text" name="iparkname" id="iparkname" value="${admin.agroup }" readonly="readonly">
+	        	<td><input type="text" name="parkname" id="parkname" value="${admin.agroup }" readonly="readonly">
 	        </tr>
 	        <tr>
 				<td>문의유형</td>
@@ -88,10 +88,9 @@
 	<script>
 		function submitForm() {
 		    const ititle = document.getElementById("ititle").value.trim();
-		    const iparkname = document.getElementById("iparkname").value.trim();
 		    const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
 	      	document.getElementById("itext").value = markdown;
-		    if(ititle !== "" && iparkname !== "" && markdown !== "") {
+		    if(ititle !== "" && markdown !== "") {
 		      	document.getElementById("infoForm").submit();
 		    } else {
 		       	alert('빈칸이 존재합니다.');
