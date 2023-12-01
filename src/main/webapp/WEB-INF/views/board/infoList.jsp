@@ -62,7 +62,7 @@
         	<c:forEach items="${infoList }" var="list">
 	        	<tr class="bbs_content_list">
 		          	<td>${list.ino }</td>
-		          	<td>${list.iparkname }</td>
+		          	<td>${list.parkname }</td>
 		          	<td>${list.itype }</td>
 		          	<td><a class="detail_a" href="${conPath }/board/infoDetail.do?ino=${list.ino}&pageNum=${paging.currentPage}&option=${param.option}&search=${param.search}">${list.ititle }</a></td>
 		          	<td>${list.irdate }</td>

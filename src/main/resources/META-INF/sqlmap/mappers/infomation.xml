@@ -6,7 +6,7 @@
 	<resultMap type="Infomation" id="InfomationResult">
 		<result property="ino" column="ino"/>
 		<result property="aid" column="aid"/>
-		<result property="iparkname" column="iparkname"/>
+		<result property="parkname" column="parkname"/>
 		<result property="itype" column="itype"/>
 		<result property="ititle" column="ititle"/>
 		<result property="itext" column="itext"/>
@@ -53,12 +53,12 @@
 		SELECT * FROM INFOMATION WHERE INO = #{ino}
 	</select>
 	<insert id="infoInsert" parameterType="Infomation">
-		INSERT INTO INFOMATION (INO, AID, IPARKNAME, ITYPE, ITITLE, ITEXT)
-    		VALUES (INFOMATION_SQ.NEXTVAL, #{aid}, #{iparkname}, #{itype}, #{ititle}, #{itext})
+		INSERT INTO INFOMATION (INO, AID, PARKNAME, ITYPE, ITITLE, ITEXT)
+    		VALUES (INFOMATION_SQ.NEXTVAL, #{aid}, #{parkname}, #{itype}, #{ititle}, #{itext})
 	</insert>
 	<update id="infoModify" parameterType="Infomation">
 		UPDATE INFOMATION
-		    SET IPARKNAME = #{iparkname},
+		    SET PARKNAME = #{parkname},
 		        ITYPE = #{itype},
 		        ITITLE = #{ititle},
 		        ITEXT = #{itext}
