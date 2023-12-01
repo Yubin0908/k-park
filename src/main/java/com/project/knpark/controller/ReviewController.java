@@ -65,19 +65,19 @@ public class ReviewController {
 	}
 	
 	// 댓글 관련 호출
-	@RequestMapping(value="board/ReviewCmtInsert", method=RequestMethod.GET)
+	@RequestMapping(value="board/ReviewCmtInsert", method=RequestMethod.POST)
 	public String reviewCmtInsert(Review review, HttpServletRequest request, Model model, String after) {
 		model.addAttribute("cmtResult", reviewService.insertReviewCmt(review, request));
 		return "forward:reviewDetail.do";
 	}
 	
-	@RequestMapping(value="board/ReviewCmtModify", method=RequestMethod.GET)
+	@RequestMapping(value="board/ReviewCmtModify", method=RequestMethod.POST)
 	public String reviewCmtModify(Review review, HttpServletRequest request, Model model, String after) {
 		model.addAttribute("cmtModifyResult", reviewService.modifyReviewCmt(review, request));
 		return "forward:reviewDetail.do";
 	}
 	
-	@RequestMapping(value="board/ReviewCmtMoreInsert", method=RequestMethod.GET)
+	@RequestMapping(value="board/ReviewCmtMoreInsert", method=RequestMethod.POST)
 	public String reviewCmtMoreInsert(Review review, HttpServletRequest request, Model model, String after) {
 		model.addAttribute("cmtResult", reviewService.insertReviewMoreCmt(review, request));
 		return "forward:reviewDetail.do";

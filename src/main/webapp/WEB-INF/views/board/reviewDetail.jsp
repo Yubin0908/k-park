@@ -55,7 +55,7 @@
         <br />
       	<div class="cmt">
 		      <div class="cmt_write">
-						<form action="${conPath }/board/ReviewCmtInsert.do?after=u" method="get">
+						<form action="${conPath }/board/ReviewCmtInsert.do?after=u" method="post">
 							<input type="hidden" name="pageNum" value="${param.pageNum }"/>
 							<input type="hidden" name="rno" value="${param.rno }"/>
 							<input type="hidden" name="cname" value="${member.id }"/>
@@ -92,10 +92,10 @@
 					            		</c:if>
 			            			</c:forEach>
 			            			<span>${cmtList.cname} (${cmtList.crdate})&nbsp;</span>
-			            			<c:if test="${cmtList.cname ne member.id }">
+			            			<c:if test="${cmtList.cname ne member.id && cmtList.cname ne admin.aid }">
 			            				<a class="reply_a" href="">답글쓰기</a>
 			            			</c:if>
-			            			<c:if test="${cmtList.cname eq member.id }">
+			            			<c:if test="${cmtList.cname eq member.id || cmtList.cname eq admin.aid  }">
 			            				<a class="reply_b" href="">댓글수정</a>&nbsp;<a class="reply_c" href="${conPath }/board/ReviewCmtDelete.do?cno=${cmtList.cno}&rno=${param.rno}&pageNum=${param.pageNum}">댓글삭제</a>
 			            			</c:if>
 			            			<h5>
@@ -104,11 +104,11 @@
 				            			</c:forEach>
 				            			${cmtList.cmemo}
 				            		</h5>
-			            			<form action="${conPath }/board/ReviewCmtMoreInsert.do?after=u" method="get" style="display: none;">
+			            			<form action="${conPath }/board/ReviewCmtMoreInsert.do?after=u" method="post" style="display: none;">
 				                <div class="answer_form">
 				                	<input type="hidden" name="pageNum" value="${param.pageNum}"/>
 				                	<input type="hidden" name="cpageNum" value="${param.cpageNum == null ? 1:param.cpageNum }"/>
-				                	<input type="hidden" name="cname" value="${member.id }" />
+				                	<input type="hidden" name="cname" value="${member.id }${admin.aid}" />
 			                    <input type="hidden" name="rno" value="${cmtList.rno}" />
 			                    <input type="hidden" name="cgroup" value="${cmtList.cgroup}"/>
 			                    <input type="hidden" name="cstep" value="${cmtList.cstep}"/>
@@ -117,7 +117,7 @@
 			                    <input type="submit" value="댓글달기">
 				                </div>
 						            </form>
-						            <form action="${conPath }/board/ReviewCmtModify.do?after=u" method="get" style="display: none;">
+						            <form action="${conPath }/board/ReviewCmtModify.do?after=u" method="post" style="display: none;">
 					                <div class="answer_form">
 					                	<input type="hidden" name="pageNum" value="${param.pageNum }"/>
 				                    <input type="hidden" name="rno" value="${cmtList.rno}" />
