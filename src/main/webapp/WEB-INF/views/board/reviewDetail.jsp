@@ -12,19 +12,19 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${reviewModifyResult eq 1 }">
+	<c:if test="${not empty reviewModifyResult}">
 		<script>
-			alert('탐방후기가 수정되었습니다.');
+			alert('${reviewModifyResult}');
 		</script>
 	</c:if>
-	<c:if test="${cmtResult eq 1 }">
+	<c:if test="${not empty cmtResult}">
 		<script>
-			alert('댓글이 등록되었습니다.');
+			alert('${cmtResult}');
 		</script>
 	</c:if>
-	<c:if test="${cmtModifyResult eq 1 }">
+	<c:if test="${not empty cmtModifyResult}">
 		<script>
-			alert('댓글이 수정되었습니다.');
+			alert('${cmtModifyResult}');
 		</script>
 	</c:if>
 	<c:if test="${cmtDeleteResult eq 1 }">

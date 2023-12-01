@@ -10,9 +10,9 @@
 	<link rel="stylesheet" href="${conPath }/css/board.css" />
 </head>
 <body>
-	<c:if test="${reviewWriteResult eq 1 }">
+	<c:if test="${not empty reviewWriteResult}">
 		<script>
-			alert('리뷰 작성 감사합니다!');
+			alert('${reviewWriteResult}');
 		</script>
 	</c:if>
 	<c:if test="${reviewDeleteResult eq 1 }">

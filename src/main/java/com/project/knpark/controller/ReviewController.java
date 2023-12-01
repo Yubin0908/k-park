@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.ReviewService;
 import com.project.knpark.util.Paging;
@@ -41,10 +42,10 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="board/reviewWrite", method=RequestMethod.POST)
-	public String reviewWrite(HttpServletRequest request, Review review, Model model) {
-		System.out.println("전달받은 review: " + review);
+	public String reviewWrite(HttpServletRequest request, Review review, Model model, RedirectAttributes redirectAttributes) {
 		model.addAttribute("reviewWriteResult", reviewService.insertReview(review, request));
-		return "forward:reviewList.do";
+		redirectAttributes.addFlashAttribute("reviewWriteResult", "탐방 후기 등록 감사합니다!");
+		return "redirect:reviewList.do";
 	}
 	
 	@RequestMapping(value="board/reviewModify", method=RequestMethod.GET)
@@ -54,9 +55,11 @@ public class ReviewController {
 	}
 	
 	@RequestMapping(value="board/reviewModify", method=RequestMethod.POST)
-	public String reviewModify(HttpServletRequest request, Review review, Model model, String pageNum) {
+	public String reviewModify(HttpServletRequest request, Review review, Model model, String pageNum, RedirectAttributes redirectAttributes) {
+		int rno = review.getRno();
 		model.addAttribute("reviewModifyResult", reviewService.modifyReview(review, request));
-		return "forward:reviewDetail.do";
+		redirectAttributes.addFlashAttribute("reviewModifyResult", "탐방 후기가 수정되었습니다.");
+		return "redirect:reviewDetail.do?rno="+rno+"&pageNum="+pageNum;
 	}
 	@RequestMapping(value="board/reviewDelete", method=RequestMethod.GET)
 	public String reviewDelete(int rno, Model model) {
@@ -66,21 +69,27 @@ public class ReviewController {
 	
 	// 댓글 관련 호출
 	@RequestMapping(value="board/ReviewCmtInsert", method=RequestMethod.POST)
-	public String reviewCmtInsert(Review review, HttpServletRequest request, Model model, String after) {
+	public String reviewCmtInsert(Review review, HttpServletRequest request, Model model, String after, RedirectAttributes redirectAttributes, String pageNum) {
+		int rno = review.getRno();
 		model.addAttribute("cmtResult", reviewService.insertReviewCmt(review, request));
-		return "forward:reviewDetail.do";
+		redirectAttributes.addFlashAttribute("cmtResult", "댓글이 등록되었습니다.");
+		return "redirect:reviewDetail.do?rno="+rno+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping(value="board/ReviewCmtModify", method=RequestMethod.POST)
-	public String reviewCmtModify(Review review, HttpServletRequest request, Model model, String after) {
+	public String reviewCmtModify(Review review, HttpServletRequest request, Model model, String after, RedirectAttributes redirectAttributes, String pageNum) {
+		int rno = review.getRno();
 		model.addAttribute("cmtModifyResult", reviewService.modifyReviewCmt(review, request));
-		return "forward:reviewDetail.do";
+		redirectAttributes.addFlashAttribute("cmtModifyResult", "댓글이 수정되었습니다.");
+		return "redirect:reviewDetail.do?rno="+rno+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping(value="board/ReviewCmtMoreInsert", method=RequestMethod.POST)
-	public String reviewCmtMoreInsert(Review review, HttpServletRequest request, Model model, String after) {
+	public String reviewCmtMoreInsert(Review review, HttpServletRequest request, Model model, String after, RedirectAttributes redirectAttributes, String pageNum) {
+		int rno = review.getRno();
 		model.addAttribute("cmtResult", reviewService.insertReviewMoreCmt(review, request));
-		return "forward:reviewDetail.do";
+		redirectAttributes.addFlashAttribute("cmtResult", "댓글이 등록되었습니다.");
+		return "redirect:reviewDetail.do?rno="+rno+"&pageNum="+pageNum;
 	}
 	
 	@RequestMapping(value="board/ReviewCmtDelete", method=RequestMethod.GET)

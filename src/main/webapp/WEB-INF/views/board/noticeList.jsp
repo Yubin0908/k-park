@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${noticeWriteResult eq 1 }">
+	<c:if test="${not empty successMessage}">
 		<script>
-			alert('공지사항이 등록되었습니다.');
+			alert('${successMessage}');
 		</script>
 	</c:if>
 	<c:if test="${deleteResult eq 1 }">
