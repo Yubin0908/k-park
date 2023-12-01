@@ -183,6 +183,9 @@
     </div>
  	</div>
 	</div>
+	<br />
+	<br />
+	<br />
 	<jsp:include page="../main/footer.jsp"/>
 	<script>
 	 	$(document).ready(function() {

@@ -22,9 +22,8 @@
 		</script>
 	</c:if>
 	<div id="bbs_wrap">
-    <br>
     <div class="sub_title">
-      <span>홈 > 알림마당 > 공지사항</span>
+      <span><a href="${conPath }/" style="text-decoration: none; color: #000; font-weight: 400;">홈</a> > 알림마당 > <span style="font-weight: 600; display: inline-block;">공지사항</span></span>
       <br>
       <h2>공지사항</h2>
       <br>

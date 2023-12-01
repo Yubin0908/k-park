@@ -95,8 +95,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	@Override
 	public String pwConfirm(String id) {
-	    String oldPw = memberRepository.pwConfirm(id);
-	    return (oldPw != null) ? "1" : "0";
+	    return memberRepository.pwConfirm(id);
 	}
 	
 	@Override

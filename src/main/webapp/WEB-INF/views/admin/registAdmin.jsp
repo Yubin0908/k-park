@@ -41,7 +41,6 @@
 			});
 		});
 	</script>
-
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
@@ -76,14 +75,13 @@
         			<option value="덕유산">덕유산</option>
         			<option value="소백산">소백산</option>
         			<option value="무등산">무등산</option>
-        			<option value="태백산">태백산</option>
         		</select>
         	</td>
         </tr>
         <tr><td colspan="2">
           <p style="text-align:center;">
-            <input type="submit" value="회원가입">
-            <input type="button" value="로그인" onclick="location='${conPath}/login.do'">
+            <input type="submit" value="등록하기">
+            <input type="button" value="로그인" onclick="location='${conPath}/admin/adminLogin.do'">
           </p>
         </td></tr>
       </table>

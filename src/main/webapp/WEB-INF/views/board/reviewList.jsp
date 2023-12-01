@@ -23,9 +23,8 @@
 	<jsp:include page="../main/header.jsp"/>
 
 	<div id="bbs_wrap">
-    <br>
     <div class="sub_title">
-      <span>홈 > 고객마당 > 탐방후기</span>
+      <span><a href="${conPath }/" style="text-decoration: none; color: #000; font-weight: 400;">홈</a> > 고객마당 > <span style="font-weight: 600; display: inline-block;">탐방후기</span></span>
       <br>
       <h2>탐방 후기</h2>
       <br>

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.knpark.service.ReservationService;
+import com.project.knpark.vo.Admin;
 import com.project.knpark.vo.Reservation;
 
 @Controller
@@ -78,7 +79,7 @@ public class ReservationController {
 		model.addAttribute("adminReservedList", reservationService.getAdminReservation(parkname));
 		return "admin/reservedList";
 	}
-	@RequestMapping(value="adminService", method=RequestMethod.GET)
+	@RequestMapping(value="adminService", method= {RequestMethod.GET, RequestMethod.POST})
 	public String adminService(Reservation reservation, Model model) {
 		model.addAttribute("reservedList", reservationService.getReservedList(reservation));
 		return "admin/adminService";
@@ -87,7 +88,7 @@ public class ReservationController {
 	public String adminRemControl(Reservation reservation, Model model) {
 	    System.out.println(reservation);
 	    model.addAttribute("ControlResult", reservationService.reservedRemControl(reservation));
-	    return "admin/adminService";
+	    return "forward:adminService.do";
 	}
 	@RequestMapping(value="addDate", method=RequestMethod.GET)
 	public String addDate(Model model, String parkname, String type, Reservation reservation) {
