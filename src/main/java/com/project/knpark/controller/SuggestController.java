@@ -5,8 +5,10 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.SuggestService;
 import com.project.knpark.util.Paging;
@@ -36,10 +38,11 @@ public class SuggestController {
 		return "board/suggestWrite";
 	}
 	@RequestMapping(value = "board/suggestWrite", method=RequestMethod.POST)
-	public String suggestInsert(HttpServletRequest request, Model model, Suggest suggest) {
-		System.out.println("전달받은 suggest:" + suggest);
+	public String suggestInsert(HttpServletRequest request, Model model, 
+			Suggest suggest, RedirectAttributes redirectAttributes) {
 		model.addAttribute("suggestWriteResult", suggestService.suggestInsert(suggest, request));
-		return "forward:sugList.do";
+		redirectAttributes.addFlashAttribute("suggestWriteResult", "건의합니다 글이 등록 되었습니다.");
+		return "redirect:sugList.do";
 	}
 	@RequestMapping(value = "board/suggestModify", method=RequestMethod.GET)
 	public String suggestModify(int sno, Model model, String after) {
@@ -64,9 +67,11 @@ public class SuggestController {
 		return "board/suggestReplyWrite";
 	}
 	@RequestMapping(value = "board/suggestReplyWrite", method=RequestMethod.POST)
-	public String suggestReply(Suggest suggest, Model model, HttpServletRequest request ) {
+	public String suggestReply(Suggest suggest, Model model, HttpServletRequest request,
+			RedirectAttributes redirectAttributes) {
 		model.addAttribute("suggestReplyResult", suggestService.suggestReplyWrite(suggest, request));
-		return "forward:sugList.do";
+		redirectAttributes.addFlashAttribute("suggestReplyResult", "답변글이 등록 되었습니다.");
+		return "redirect:sugList.do";
 	}
 	@RequestMapping(value = "board/suggestReplyModify", method=RequestMethod.GET)
 	public String suggestReplyModify(int sno, Model model, String after) {
@@ -75,10 +80,11 @@ public class SuggestController {
 	}
 	@RequestMapping(value = "board/suggestReplyModify", method=RequestMethod.POST)
 	public String suggestReplyModify(HttpServletRequest request, Suggest suggest, 
-									Model model, String pageNum) {
-		System.out.println(suggest);
+									Model model, String pageNum, RedirectAttributes redirectAttributes) {
+		int sno = suggest.getSno();
 		model.addAttribute("suggestReplyModifyResult", suggestService.suggestModify(suggest, request));
-		return "forward:sugDetail.do";
+		redirectAttributes.addFlashAttribute("suggestReplyModifyResult", "답변글이 수정 되었습니다.");
+		return "redirect:sugDetail.do?sno=" + sno + "&pageNum=" + pageNum;
 	}
 }
 

@@ -11,9 +11,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${faqWriteResult eq 1 }">
+	<c:if test="${not empty faqWriteResult}">
 		<script>
-			alert('자주하는 질문이 등록되었습니다.');
+			alert('${faqWriteResult}');
 		</script>
 	</c:if>
 	<c:if test="${faqDeleteResult eq 1 }">

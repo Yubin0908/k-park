@@ -16,9 +16,9 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
-	<c:if test="${suggestReplyModifyResult eq 1 }">
+	<c:if test="${not empty suggestReplyModifyResult}">
 		<script>
-			alert('답변글이 수정 되었습니다.');
+			alert('${suggestReplyModifyResult}');
 		</script>
 	</c:if>
 	<c:if test="${modifyResult eq 1 }">
@@ -52,10 +52,10 @@
       </div>
     </div>
     <div class="button">
-    	<%-- <c:if test="${suggest.id eq member.id || suggest.aid eq admin.aid}" >
+    	<c:if test="${not empty admin}" >
     		<button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }'">글수정</button>
-    	</c:if> --%>
-    	<c:if test="${suggest.id eq member.id and not empty member}" >
+    	</c:if>
+    	<c:if test="${not empty admin}" >
     		<button onclick="location.href='${conPath}/board/suggestDelete.do?sno=${param.sno }'">글 삭제</button>
     	</c:if>
     	<c:if test="${not empty admin}" >
