@@ -17,23 +17,31 @@
 	    font-style: normal;
 	}
 	*{margin: 0; padding: 0;}
+	.footer_body {
+		position: relative;
+	  margin: 0;
+	  padding-bottom: 60px;
+	}
+	
 	footer {
 		font-family: 'GangwonEduHyeonokT_OTFMediumA';
 		width: 100%;
-		height:60px; background-color: white;
-		margin:0 auto;
+		height:100px; background-color: white;
+		margin:0 auto;	
+		bottom: 0;
+		position: absolute;
+		border-top: 2px solid lightgray;
  	}
 	footer #content {
 		color: black;
-		font-weight: blod;
+		font-weight: bold;
 		height: 60px;		
 		font-size:25px;
-		text-align: center; 
-		border-top: 2px solid gray;
+		text-align: center;
 		margin-top: 20px;
 		padding:10px 50px 0;
 </style>
-<body>
+<body class="footer_body">
 	<footer>
 	    <div id="content">
 	    	(국립공원공단) 서울특별시 서대문로 189 (우)24456&nbsp;&nbsp;/ 

@@ -5,6 +5,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -12,9 +13,10 @@
   font-family: 'GangwonEduHyeonokT_OTFMediumA';
 }
 
+
 #bbs_wrap {
   width: 1400px;
-  margin: 20px auto;
+  margin: 50px auto;
   font-size: 25px;
 }
 
@@ -86,7 +88,6 @@
 .bbs_content {
   width: 100%;
   text-align: center;
-  height: auto;
 }
 
 .bbs_content h5 {
@@ -115,14 +116,17 @@
 
 .table {
   width: 100%;
-  height: 650px;
   border-collapse: collapse;
+  table-layout: fixed;
+  height: calc(650px - 50px);
+  
 }
 
 .bbs_content_title {
   border-top: 1px solid #555;
   border-bottom: 1px solid #eee;
   background-color: #eee;
+  max-height: 50px;
 }
 
 .bbs_content_list {
@@ -137,7 +141,7 @@
 
 .paging {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .paging a {
