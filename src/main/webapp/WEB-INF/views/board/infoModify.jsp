@@ -8,6 +8,8 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="${conPath}/css/board.css" rel="stylesheet"/>
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 	<style>
   		input[name="ititle"] {
 			width: 95%;
@@ -32,7 +34,7 @@
 	   	<br>
 	   	<hr>
 		<br>
-		<form action="${conPath }/board/infoModify.do?after=u" method="post">
+		<form action="${conPath }/board/infoModify.do?after=u" method="post" id="infoForm">
 			<input type="hidden" name="ino" value="${param.ino }"/>
 			<input type="hidden" name="search" value="${param.search }"/>
 			<input type="hidden" name="option" value="${param.option }" />
@@ -40,7 +42,7 @@
 			<table class="writeTable">
 	  			<tr class="RH_title">
 	    			<td>제목</td>
-	    			<td><input type="text" name="ititle" value="${infomation.ititle }"></td>
+	    			<td><input type="text" name="ititle" value="${infomation.ititle }" id="ititle"></td>
 				</tr>
 				<tr class="RH_writer">
 	  				<td>작성자</td>
@@ -48,7 +50,7 @@
 				</tr>
 				<tr>
 					<td >공원명</td>
-					<td><input type="text" name="iparkname" value="${infomation.iparkname }"></td>
+					<td><input type="text" name="parkname" value="${infomation.parkname }" readonly="readonly"></td>
 				</tr>
 				<tr>
 					<td>문의유형</td>
@@ -62,16 +64,43 @@
 				</tr>
 				<tr class="RH_text">
 	  				<td>내용</td>
-	  				<td><textarea name="itext" id="" cols="30" rows="10">${infomation.itext }</textarea></td>
+	  				<td>
+	  					<input type="hidden" name="itext" id="itext">
+	  					<div id="editor">
+	  						
+	  					</div>
+	  				</td>
 				</tr>
 	      		<tr>
 	        		<td class="submit_btn" colspan="2">
-	          			<input type="submit" value="글수정" style="cursor:pointer">
+	          			<input type="button" value="글수정" style="cursor:pointer" onclick="submitForm()">
 	        		</td>
 	      		</tr>
 	    	</table>
 		</form>
 	</div>
+	<script>
+	    const Editor = toastui.Editor;
+	    const editor = new Editor({
+	      el: document.querySelector('#editor'),
+	      height: '500px',
+	      initialEditType: 'wysiwyg',
+	      language: 'ko',
+	    });
+  	</script>
+	<script>
+		function submitForm() {
+		    const ititle = document.getElementById("ititle").value.trim();
+		    const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
+	      	document.getElementById("itext").value = markdown;
+		    if(ititle !== "" && markdown !== "") {
+		      	document.getElementById("infoForm").submit();
+		    } else {
+		       	alert('빈칸이 존재합니다.');
+		       	e.preventDefault();
+		    }
+		}
+	</script>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

@@ -155,6 +155,4 @@ select * from qna;
 
 
 
-
-
  

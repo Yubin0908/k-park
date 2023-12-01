@@ -13,6 +13,9 @@
 			padding: 40px 30px;
 			background-color: #f5f8fb; 
 		}
+		.reply_none {
+			padding: 60px 580px !important;
+		}
 	</style>
 </head>
 <body>
@@ -33,12 +36,12 @@
 		</script>
 	</c:if>
 	<c:if test="${qna.qyn eq 'n' and empty admin }">
-		<c:if test="${member.id ne qna.id }">
-			<script>
-				alert('작성자만 열람가능한 글입니다');
-				location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum}';
-			</script>
-		</c:if>
+	<c:if test="${member.id ne qna.id }">
+		<script>
+			alert('작성자만 열람가능한 글입니다');
+			location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum}';
+		</script>
+	</c:if>
 	</c:if>
 	<div id="bbs_wrap">
 	    <div class="sub_title">
@@ -63,25 +66,16 @@
 				<c:choose>
 					<c:when test="${qna.qstatus eq 1}">
 			       		<tr>
-			                <td>
-			                  <span> 관리자 답변 대기중... </span>
+			                <td class="reply_qna reply_none">
+			                  <span> &nbsp;&nbsp;&nbsp;관리자가 답변을 준비중입니다. <br>&nbsp;&nbsp;&nbsp;잠시만 기다려 주십시오.</span>
 			                </td>
 		            	</tr>
 		       		</c:when>
 		       		<c:otherwise>
 						<div class="reply_qna">
-				        	<span>Q. ${qna.qtitle }(${qna.qrdate})&nbsp;</span>
-				        		<br>
-					          	<br>
 				        		&nbsp; &nbsp; &nbsp; <img src="${conPath }/img/enter.png" alt="enter" width="15"/>
-				        	<span class="bold">A</span>
-					        <span class="normal"><a href="">${qna.qtitle }</a></span>
+				        	<span class="bold">A. ${reply.qtext}</span>
 				        	<br>
-				        	<h5>
-				       			&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
-				       			${reply.qtext}
-				       		</h5>
-					        <br>
 					       	<br>
 			       			<span>${qna.parkname} | ${reply.qrdate }</span>
 				       	</div>
@@ -90,17 +84,28 @@
 		       	</table>
 	      	</div>
 	    </div>
+	    <br>
 	    <div class="button">
-	    	<c:if test="${qna.id eq member.id }">
-	    		<button onclick="location.href='${conPath}/board/qnaModify.do?qno=${param.qno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'">글수정</button>
-	    		<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'">글 삭제</button>
+	    	<c:if test="${qna.qstatus eq 1 && member.id eq qna.id}">
+	    		<button onclick="location.href='${conPath}/board/qnaModify.do?qno=${param.qno }&pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" 
+	    			style="cursor:pointer">글수정
+	    		</button>
 	    	</c:if>
+    		<c:if test="${not empty admin }">
+    			<button onclick="location.href='${conPath}/board/qnaDelete.do?qno=${param.qno }'" 
+    				style="cursor:pointer">글 삭제
+    			</button>
+    		</c:if>
 	    	<c:if test="${not empty admin }">
 	    		<c:if test="${qna.qstatus eq 1 }">
-	    			<button onclick="location.href='${conPath}/board/qnaReplyWrite.do?qno=${param.qno }&pageNum=${param.pageNum }'">답변</button>
+	    			<button onclick="location.href='${conPath}/board/qnaReplyWrite.do?qno=${param.qno }&pageNum=${param.pageNum }'" 
+	    				style="cursor:pointer">답변
+	    			</button>
 	    		</c:if>
 	    	</c:if>
-			<button onclick="location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" style="cursor:pointer">목록</button>
+			<button onclick="location.href='${conPath}/board/qnaList.do?pageNum=${param.pageNum }&option=${param.option }&search=${param.search }'" 
+				style="cursor:pointer">목록
+			</button>
 	    </div>
 	</div>
 	<jsp:include page="../main/footer.jsp"/>

@@ -22,6 +22,7 @@
 		  	padding: 5px;
 		  	border-radius: 5px;
 		  	outline: none !important;
+		  	font-size: 20px;
 		}
   	</style>
 </head>
@@ -84,14 +85,6 @@
 	      language: 'ko',
 	    });
   	</script>
-	<script>
-	  	function submitForm() {
-	      const markdown = editor.getMarkdown().replace(/\n/g, "<br>");
-	      document.getElementById("itext").value = markdown;
-	      document.getElementById("reviewForm").submit();
-	      console.log(markdown);
-	    }
-	</script>
 	<script>
 		function submitForm() {
 		    const ititle = document.getElementById("ititle").value.trim();

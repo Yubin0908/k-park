@@ -13,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.project.knpark.repository.MemberRepository;
 import com.project.knpark.util.Paging;
@@ -105,28 +106,27 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public String findPWAccount(final Member member, HttpSession httpSession) {
-		String returnPw = memberRepository.findPWAccount(member);
-			httpSession.setAttribute("id", member.getId());
-			MimeMessagePreparator message = new MimeMessagePreparator() {
-				String content = 
-						"<div style=\"width:500px; margin: 0 auto;\">\n " +
-								"<h1>" + member.getName() + "님의 비밀번호는 " + member.getPw() + "입니다.</h1>\n" +
-						"</div>";
-				@Override
-				public void prepare(MimeMessage mimeMessage) throws Exception {
-					// 받을 메일
-					mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getEmail()));
-					// 보낼 메일
-					mimeMessage.setFrom(new InternetAddress("k.n.park23@gmail.com"));
-					// 메일 제목
-					mimeMessage.setSubject(member.getName() + "님의 가입하신 아이디의 비밀번호입니다.");
-					// 메일 본문
-					mimeMessage.setText(content, "utf-8", "html");
-				}
-			};
-			mailSender.send(message);
-		
+	public String findPWAccount(final @ModelAttribute("mDto") Member member, HttpSession httpSession) {
+		final String returnPw = memberRepository.findPWAccount(member);
+		System.out.println("비밀번호 : " + returnPw + "이메일 : " + member.getEmail() );
+		MimeMessagePreparator message = new MimeMessagePreparator() {
+			String content = 
+					"<div style=\"width:500px; margin: 0 auto;\">\n " +
+							"<h1>" + member.getName() + "님의 비밀번호는 " + returnPw + "입니다.</h1>\n" +
+					"</div>";
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				// 받을 메일
+				mimeMessage.setRecipient(Message.RecipientType.TO, new InternetAddress(member.getEmail()));
+				// 보낼 메일
+				mimeMessage.setFrom(new InternetAddress("k.n.park23@gmail.com"));
+				// 메일 제목
+				mimeMessage.setSubject("[K-공원] " + member.getName() + "님의 가입하신 아이디의 비밀번호입니다.");
+				// 메일 본문
+				mimeMessage.setText(content, "utf-8", "html");
+			}
+		};
+		mailSender.send(message);
 		return returnPw;
 	}
 	
