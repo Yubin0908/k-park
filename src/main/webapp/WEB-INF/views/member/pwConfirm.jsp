@@ -44,7 +44,7 @@
 	    margin-bottom: 20px;
 		}
 		
-		.pwinfo input[type="text"],
+		.pwinfo input[type="password"],
 		.pwinfo input[type="submit"] {
 	    width: calc(100% - 16px);
 	    margin-bottom: 10px;
