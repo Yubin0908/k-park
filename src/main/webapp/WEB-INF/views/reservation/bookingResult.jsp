@@ -27,7 +27,7 @@
 	<jsp:include page="../main/header.jsp"/>
 
   <div id="result_wrap">
-    <h2>예약이 완료되었습니다.</h2>
+    <h2>${reservationResult }예약이 완료되었습니다.</h2>
 	  <h4>자세한 예약내역을 확인 하시려면 아래 버튼을 누르세요.</h4>
 	  <br />
 	  <a href="${conPath }/reservation/reservationList.do?id=${member.id}">예약내역확인</a>

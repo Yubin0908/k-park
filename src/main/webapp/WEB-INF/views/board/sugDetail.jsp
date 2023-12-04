@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="button">
-    	<c:if test="${not empty admin}" >
+    	<c:if test="${suggest.id eq member.id && suggest.aid eq admin.aid}" >
     		<button onclick="location.href='${conPath}/board/suggestModify.do?sno=${param.sno }&pageNum=${param.pageNum }'">글수정</button>
     	</c:if>
     	<c:if test="${not empty admin}" >

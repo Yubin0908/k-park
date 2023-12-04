@@ -38,4 +38,6 @@ public class Reservation {
 	private String search;
 	private String option;
 	private String type;
+	
+	private String name;
 }

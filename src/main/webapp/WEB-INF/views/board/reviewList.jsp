@@ -61,18 +61,18 @@
     </div>
     <div class="paging">
       <c:if test="${paging.startPage>paging.blockSize}">
-				[ <a href="${conPath }/board/reviewList.do?pageNum=${paging.startPage-1 }">이전</a> ]
+				<a href="${conPath }/board/reviewList.do?pageNum=${paging.startPage-1 }"><img src="${conPath }/img/arrow-left.png" alt="" height="15"/></a>
 			</c:if>	
 			<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage }">
 				<c:if test="${paging.currentPage==i }"> 
-					<b>[ ${i } ]</b> 
+					<b><img src="${conPath }/img/bracket-left-curr.png" alt="" height="15"/> ${i} <img src="${conPath }/img/bracket-right-curr.png" alt="" height="15"/></b>
 				</c:if>
 				<c:if test="${paging.currentPage != i }">
-					[ <a href="${conPath }/board/reviewList.do?pageNum=${i }">${i }</a> ]
+				<a href="${conPath }/board/reviewList.do?pageNum=${i }"><img src="${conPath }/img/bracket-left.png" alt="" height="15"/> ${i } <img src="${conPath }/img/bracket-right.png" alt="" height="15"/></a>
 				</c:if>
 			</c:forEach>
 			<c:if test="${paging.endPage<paging.pageCnt }">
-				[ <a href="${conPath }/board/reviewList.do?pageNum=${paging.endPage+1 }">다음</a> ]
+				&nbsp;<a href="${conPath }/board/reviewList.do?pageNum=${paging.endPage+1 }"><img src="${conPath }/img/arrow-right.png" alt="" height="15"/></a>
 			</c:if>
     </div>
   </div>

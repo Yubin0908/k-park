@@ -11,6 +11,7 @@
 	<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 	<script src="${conPath }/js/address.js"></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<link href="https://unpkg.com/gijgo@1.9.14/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 	<script>
 		$(document).ready(function(){
 			$('.idconfirm').click(function(){
@@ -184,7 +185,7 @@
 			            </label>
           			</td>
 		        </tr>
-		        <tr><td>생일</td><td><input type="date" name="birth" required="required"></td></tr>
+		        <tr><td>생일</td><td><input id="datepicker" name="birth" placeholder="생일을 입력하세요" required="required" width="360px"></td></tr>
 		        <tr><td colspan="2">
           			<p style="text-align:center;">
 						<input type="submit" value="회원가입">
@@ -196,6 +197,16 @@
 			</form>
 		</div>
 	</div>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
+  
+  <script>
+	  $(document).ready(function() {
+		  $('#datepicker').datepicker({
+			  format: 'yyyy-mm-dd'
+		  });
+		});
+  </script>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

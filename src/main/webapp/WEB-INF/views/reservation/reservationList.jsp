@@ -10,6 +10,11 @@
 	<link rel="stylesheet" href="${conPath }/css/reservationList.css">
 </head>
 <body>
+	<c:if test="${reservationCancle eq 1 }">
+		<script>
+			alert('예약이 정상적으로 취소되었습니다.');
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<br />
 	<br />
@@ -55,7 +60,9 @@
         			${list.bdate }
         		</td>
         		<td>
-        			<c:if test="${list.status eq 1 }"><a href="${conPath }/reservation/cancleReservation.do?bno=${list.bno}&resdate=${list.bdate}&id=${member.id}">예약취소하기</a></c:if>
+        			<c:if test="${list.status eq 1 }">
+							  <a href="javascript:void(0)" onclick="cancelReservation('${list.bno}', '${list.campno}', '${list.shelterno}', '${member.id}', '${list.bdate}')">예약취소하기</a>
+							</c:if>
         		</td>
         	</tr>
         </c:forEach>
@@ -64,6 +71,14 @@
   </div>
   <br />
 	<br />
+	<script>
+		function cancelReservation(bno, campno, shelterno, id, bdate) {
+			var result = confirm('정말로 예약을 취소하시겠습니까?');
+			if(result) {
+				location.href = '${conPath}/reservation/cancleReservation.do?bno='+bno+'&campno='+campno+'&shelterno='+shelterno+'&id='+id+'&resdate='+bdate;
+			} 
+		}
+	</script>
   <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

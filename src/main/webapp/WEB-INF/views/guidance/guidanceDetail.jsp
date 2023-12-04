@@ -35,6 +35,9 @@
 		<button onclick="history.back();" 
 					style="cursor:pointer">뒤로가기</button>
     </div>
+    <br />
+    <br />
+    <br />
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

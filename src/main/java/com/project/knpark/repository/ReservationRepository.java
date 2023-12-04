@@ -11,7 +11,7 @@ import com.project.knpark.vo.Reservation;
 public interface ReservationRepository {
 	public List<Reservation> getCampList(String parkname);
 	public Date getCampDateRem(Reservation reservation);
-	public int getCampBookingDate(Reservation reservation);
+	public Date getCampBookingDate(Reservation reservation);
 	public int reservationCamp(Reservation reservation);
 	public int remMinus(Reservation reservation);
 	public List<Reservation> getBookingInfo(String id);
