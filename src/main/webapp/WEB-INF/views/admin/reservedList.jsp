@@ -30,7 +30,7 @@
           <th>구분</th>
           <th>상품명</th>
           <th>예약일자</th>
-          <th>직권취소</th>
+          <th>예약자 성명</th>
         </tr>
         <c:if test="${ adminReservedList.size() eq 0}">
         	<tr>
@@ -55,7 +55,7 @@
         			${list.bdate }
         		</td>
         		<td>
-        			<c:if test="${list.status eq 1 }"><a href="${conPath }/reservation/cancleReservation.do?bno=${list.bno}&resdate=${list.bdate}&id=${member.id}">예약취소하기</a></c:if>
+        			${list.name }
         		</td>
         	</tr>
         </c:forEach>

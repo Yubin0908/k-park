@@ -78,8 +78,7 @@
 	</div>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js" type="text/javascript"></script>
-  <script src="https://unpkg.com/gijgo@1.9.14/js/gijgo.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.14/combined/js/gijgo.min.js"></script>
+  
   <script>
 	  $(document).ready(function() {
 		  $('#datepicker').datepicker({

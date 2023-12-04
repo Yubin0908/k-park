@@ -13,9 +13,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
  	<script>
- 	$(document).ready(function() {
-	  $('#park').change(function() { // 야영장 리스트 반환
-	    const park_value = $(this).val();
+ 		$(document).ready(function() {
+	  	$('#park').change(function() { // 야영장 리스트 반환
+	   	 const park_value = $(this).val();
 	       
 	     $.ajax({
 	       url: '${conPath}/reservation/bookingCampList.do',
@@ -42,13 +42,13 @@
 	             campSelect.append(option);
              }
 	           }
-	       },
-	         error: function(xhr, status, error) {
-           	 console.error('AJAX 요청 오류:', error);
-	         }
-	      });
-	    });
-	 	});
+		       },
+		         error: function(xhr, status, error) {
+	           	 console.error('AJAX 요청 오류:', error);
+		         }
+		      });
+		    });
+		 	});
  	</script>
  	
 </head>
@@ -64,7 +64,7 @@
 		<div id="res_wrap">
     <div class="campSelector">
       <h3>1. 관리공원 선택</h3>
-      <select name="" id="park">
+      <select name="" id="park" required>
       	<option value="">공원</option>
         <option value="설악산">설악산</option>
         <option value="태백산">태백산</option>
@@ -74,7 +74,7 @@
     </div>
     <div class="campSelector">
       <h3>2. 야영장 선택</h3>
-      <select name="" id="camp">
+      <select name="" id="camp" required>
         <option value=""></option>
       </select>
     </div>
@@ -190,31 +190,37 @@
 	
 	<script>
 	 	$(document).ready(function() {
-	 		$('.selDate').text(''); // 초기 값 설정
+ 			$('.selDate').text(''); // 초기 값 설정
 
 	 		$('.btn input[type="button"]').on('click', function() {
-	 		  const sel_date = $('.selDate').text();
-	 		  const campno = $('#camp').val();
-	 		  console.log('sel_date : ' + sel_date);
-	 		  console.log('campno : ' + campno);
+	 			const park = $('#park').val();
+		 		const camp = $('#camp').val();
+	 			if(park != '' && camp != '') {
+	 				const sel_date = $('.selDate').text();
+ 		 		  const campno = $('#camp').val();
 
-	 		  $.get('${conPath}/reservation/bookingCampDate.do', {
-	 		    resdate: sel_date,
-	 		    campno: campno
-	 		  }, function(data) {
-	 		    const parser = new DOMParser();
-	 		    const parsedHtml = parser.parseFromString(data, 'text/html');
-	 		    const bodyContent = parsedHtml.querySelector('body').textContent.trim();
-	 		    if (bodyContent === '1') {
-	 		    	call_confirm();
-	 		    } else if (bodyContent === '0') {
-	 		      alert('예약이 불가합니다. 다른 날짜를 선택하세요.');
-	 		    } else {
-	 		      alert('응답 데이터에 오류가 있습니다.');
-	 		    }
-	 		  }).fail(function(xhr, status, error) {
-	 		    console.error('AJAX 요청 오류:', error);
-	 		  });
+ 		 		  $.get('${conPath}/reservation/bookingCampDate.do', {
+ 		 		    resdate: sel_date,
+ 		 		    campno: campno,
+ 		 		    bdate: sel_date,
+ 		 		  }, function(data) {
+ 		 			  console.log(data);
+ 		 		    const parser = new DOMParser();
+ 		 		    const parsedHtml = parser.parseFromString(data, 'text/html');
+ 		 		    const bodyContent = parsedHtml.querySelector('body').textContent.trim();
+ 		 		    if (bodyContent === '11') {
+ 		 		    	call_confirm();
+ 		 		    } else if (bodyContent === '01') {
+ 		 		      alert('예약이 불가합니다. 다른 날짜를 선택하세요.');
+ 		 		    } else {
+ 		 		      alert('해당날짜에 이미 예약한 내역이 존재합니다.');
+ 		 		    }
+ 		 		  }).fail(function(xhr, status, error) {
+ 		 		    console.error('AJAX 요청 오류:', error);
+ 		 		  });	  
+	 			} else if(park == '') {
+	 				alert('관리공원을 선택해 주십시요.');
+	 			}
 	 		});
 	 	});
  	</script>

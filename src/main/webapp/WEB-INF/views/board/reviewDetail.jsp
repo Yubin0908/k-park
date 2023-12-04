@@ -168,26 +168,25 @@
 		        });
 		      </script>
 		  </div>
-      	<div class="paging">
-		      <c:if test="${paging.startPage>paging.blockSize}">
-						[ <a href="${conPath }/board/reviewDetail.do?cpageNum=${paging.startPage-1 }&pageNum=${param.pageNum}&rno=${param.rno}&after=u">이전</a> ]
-					</c:if>	
-					<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage }">
-						<c:if test="${paging.currentPage==i }"> 
-							<b>[ ${i } ]</b> 
-						</c:if>
-						<c:if test="${paging.currentPage != i }">
-							[ <a href="${conPath }/board/reviewDetail.do?cpageNum=${i }&pageNum=${param.pageNum}&rno=${param.rno}&after=u">${i }</a> ]
-						</c:if>
-					</c:forEach>
-					<c:if test="${paging.endPage<paging.pageCnt }">
-						[ <a href="${conPath }/board/reviewList.do?cpageNum=${paging.endPage+1 }&pageNum=${param.pageNum}&rno=${param.rno}&after=u">다음</a> ]
+		  <div class="paging">
+	      <c:if test="${paging.startPage>paging.blockSize}">
+					<a href="${conPath }/board/reviewDetail.do?cpageNum=${paging.startPage-1 }&pageNum=${param.pageNum}&rno=${review.rno}&after=u"><img src="${conPath }/img/arrow-left.png" alt="" height="15"/></a>
+				</c:if>	
+				<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage }">
+					<c:if test="${paging.currentPage==i }"> 
+						<b><img src="${conPath }/img/bracket-left-curr.png" alt="" height="15"/> ${i} <img src="${conPath }/img/bracket-right-curr.png" alt="" height="15"/></b>
 					</c:if>
-		    </div>
-		    <br />
-		    <hr />
-		    <br />
-      </div>
+					<c:if test="${paging.currentPage != i }">
+					<a href="${conPath }/board/reviewDetail.do?cpageNum=${i }&pageNum=${param.pageNum }&rno=${review.rno }&after=u"><img src="${conPath }/img/bracket-left.png" alt="" height="15"/> ${i } <img src="${conPath }/img/bracket-right.png" alt="" height="15"/></a>
+					</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage<paging.pageCnt }">
+					&nbsp;<a href="${conPath }/board/reviewList.do?cpageNum=${paging.endPage+1 }&pageNum=${param.pageNum}&rno=${review.rno}&after=u"><img src="${conPath }/img/arrow-right.png" alt="" height="15"/></a>
+				</c:if>
+			</div>
+	    <br />
+	    <hr />
+	    <br />
     </div>
     <div class="button">
     	<c:if test="${review.id eq member.id }">

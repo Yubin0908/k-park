@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 </head>
 <body>
-	${DateConfirm }
-	${myReservation }
+	${DateConfirm }${getCampBookingDate }
 </body>
 </html>

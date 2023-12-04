@@ -67,7 +67,7 @@
 	  				<td>
 	  					<input type="hidden" name="itext" id="itext">
 	  					<div id="editor">
-	  						
+	  						${infomation.itext }
 	  					</div>
 	  				</td>
 				</tr>

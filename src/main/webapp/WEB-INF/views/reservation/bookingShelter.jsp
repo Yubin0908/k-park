@@ -192,28 +192,36 @@
 	 		$('.selDate').text(''); // 초기 값 설정
 
 	 		$('.btn input[type="button"]').on('click', function() {
-	 		  const sel_date = $('.selDate').text();
-	 		  const shelterno = $('#shelter').val();
-	 		  console.log('sel_date : ' + sel_date);
-	 		  console.log('shelterno : ' + shelterno);
-
-	 		  $.get('${conPath}/reservation/bookingShelterDate.do', {
-	 		    resdate: sel_date,
-	 		   	shelterno: shelterno
-	 		  }, function(data) {
-	 		    const parser = new DOMParser();
-	 		    const parsedHtml = parser.parseFromString(data, 'text/html');
-	 		    const bodyContent = parsedHtml.querySelector('body').textContent.trim();
-	 		    if (bodyContent === '1') {
-	 		    	call_confirm();
-	 		    } else if (bodyContent === '0') {
-	 		      alert('예약이 불가합니다. 다른 날짜를 선택하세요.');
-	 		    } else {
-	 		      alert('응답 데이터에 오류가 있습니다.');
-	 		    }
-	 		  }).fail(function(xhr, status, error) {
-	 		    console.error('AJAX 요청 오류:', error);
-	 		  });
+	 			const park = $('#park').val();
+		 		const camp = $('#camp').val();
+	 			if(park != '' && camp != '') {
+		 		  const sel_date = $('.selDate').text();
+		 		  const shelterno = $('#shelter').val();
+		 		  console.log('sel_date : ' + sel_date);
+		 		  console.log('shelterno : ' + shelterno);
+	
+		 		  $.get('${conPath}/reservation/bookingShelterDate.do', {
+		 		    resdate: sel_date,
+		 		   	shelterno: shelterno,
+		 		   	bdate: sel_date
+		 		  }, function(data) {
+		 			  console.log(data);
+		 		    const parser = new DOMParser();
+		 		    const parsedHtml = parser.parseFromString(data, 'text/html');
+		 		    const bodyContent = parsedHtml.querySelector('body').textContent.trim();
+		 		   	if (bodyContent === '11') {
+		 		    	call_confirm();
+		 		    } else if (bodyContent === '01') {
+		 		      alert('예약이 불가합니다. 다른 날짜를 선택하세요.');
+		 		    } else {
+		 		      alert('해당날짜에 이미 예약한 내역이 존재합니다.');
+		 		    }
+		 		  }).fail(function(xhr, status, error) {
+		 		    console.error('AJAX 요청 오류:', error);
+		 		  });
+	 			} else if(park == '') {
+	 				alert('관리공원을 선택해 주십시요.');
+	 			}
 	 		});
 	 	});
  	</script>

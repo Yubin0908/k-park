@@ -51,11 +51,11 @@
 	</select>
 	<!-- 예약 가능 여부 확인(해당 날짜에 자리 유무 체크) -->
 	<select id="getCampDateRem" parameterType="Reservation" resultType="java.sql.Date">
-		SELECT RESDATE FROM RESERVED WHERE CAMPNO = #{campno} AND REM > 0 AND RESDATE = #{resdate}
+		SELECT RESDATE FROM RESERVED WHERE CAMPNO = #{campno} AND REM > 0 AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</select>
 	<!-- 본인 예약내역에 중복된 예약 날짜 확인 -->
-	<select id="getCampBookingDate" parameterType="Reservation" resultType="int">
-		SELECT * FROM BOOKING WHERE BDATE = #{bdate} AND ID = #{id}
+	<select id="getCampBookingDate" parameterType="Reservation" resultType="java.sql.Date">
+		SELECT BDATE FROM BOOKING WHERE TO_CHAR(BDATE, 'YYYY-MM-DD') = #{bdate} AND ID = #{id}
 	</select>
 	<!-- 예약 처리 -->
 	<insert id="reservationCamp" parameterType="Reservation">
@@ -63,7 +63,7 @@
 	</insert>
 	<!-- 예약 성공 시, rem(잔여량) 감소 -->
 	<update id="remMinus" parameterType="Reservation">
-		UPDATE RESERVED SET REM = REM - 1 WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
+		UPDATE RESERVED SET REM = REM - 1 WHERE CAMPNO = #{campno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</update>
 	<!-- 예약 내역 출력 -->
 	<select id="getBookingInfo" parameterType="String" resultMap="BookingResult">
@@ -84,7 +84,7 @@
 	</update>
 	
 	<update id="remPlus" parameterType="Reservation">
-		UPDATE RESERVED SET REM = REM + 1 WHERE CAMPNO = #{campno} AND RESDATE = #{resdate}
+		UPDATE RESERVED SET REM = REM + 1 WHERE CAMPNO = #{campno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</update>
 	<!-- 대피로 리스트 출력 -->
 	<select id="getShelterList" parameterType="String" resultMap="ShelterResult">
@@ -92,7 +92,7 @@
 	</select>
 	<!-- 대피소 예약 가능 여부 -->
 	<select id="getShelterDateRem" parameterType="Reservation" resultType="java.sql.Date">
-		SELECT RESDATE FROM RESERVED WHERE SHELTERNO = #{shelterno} AND REM > 0 AND RESDATE = #{resdate}
+		SELECT RESDATE FROM RESERVED WHERE SHELTERNO = #{shelterno} AND REM > 0 AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</select>
 	<!-- 대피소 예약 -->
 	<insert id="reservationShelter" parameterType="Reservation">
@@ -100,7 +100,7 @@
 	</insert>
 	<!-- 대피소 rem 조정 -->
 	<update id="remMinusShelter" parameterType="Reservation">
-		UPDATE RESERVED SET REM = REM - 1 WHERE SHELTERNO = #{shelterno} AND RESDATE = #{resdate}
+		UPDATE RESERVED SET REM = REM - 1 WHERE SHELTERNO = #{shelterno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</update>
 	
 	<!-- 관리자 예약현황 -->
@@ -109,11 +109,13 @@
     A.*, 
     B.PARKNAME AS CAMP_PARKNAME, b.CAMPNAME, 
     C.PARKNAME AS SHELTER_PARKNAME, c.SHELTERNAME,
-    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME
+    D.PARKNAME AS EXPLORE_PARKNAME, d.EXPLORENAME,
+    E.NAME
 		FROM BOOKING A
 		LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
 		LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
 		LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
+    LEFT JOIN MEMBER E ON A.ID = E.ID
 		WHERE B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}
 	</select>
 	<!-- 관리자 예약관리 -->
@@ -128,7 +130,9 @@
 			LEFT JOIN CAMP B ON A.CAMPNO = B.CAMPNO
 			LEFT JOIN SHELTER C ON A.SHELTERNO = C.SHELTERNO
 			LEFT JOIN EXPLORE D ON A.EXPLORENO = D.EXPLORENO
-			WHERE B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname}
+			WHERE 
+	    A.RESDATE >= TRUNC(SYSDATE)
+	    AND (B.PARKNAME = #{parkname} OR C.PARKNAME = #{parkname} OR D.PARKNAME = #{parkname})
 		</if>
 		<if test="search != null">
 			SELECT 
@@ -146,7 +150,7 @@
 	</select>
 	<!-- 관리자 예약조정 -->
 	<update id="reservedRemControl" parameterType="Reservation">
-		UPDATE RESERVED SET REM = #{rem} WHERE RESNO = #{resno} AND RESDATE = #{resdate}
+		UPDATE RESERVED SET REM = #{rem} WHERE RESNO = #{resno} AND TO_CHAR(RESDATE, 'YYYY-MM-DD') = #{resdate}
 	</update>
 	<!-- 관리자 예약일자 등록(당일) -->
 	<insert id="todayDateAdd" parameterType="Reservation">

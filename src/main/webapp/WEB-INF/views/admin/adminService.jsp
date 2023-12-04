@@ -18,6 +18,7 @@
     	width: 1400px;
       margin: 20px auto;
       text-align: center;
+      min-height: 630px;
     }
     table {
       width: 100%;
@@ -113,6 +114,7 @@
   			<input type="date" name="search" placeholder="2023-11-30" required/>
   			<input type="submit" value="조회"/>
   		</form>
+  		<span style="color: red; font-weight: 700;">※ 이전 날짜 확인은 검색을 이용하여 주시기 바랍니다.</span>
   	</div>
   	<form action="${conPath }/reservation/addDate.do" method="get" id="addForm">
   		<input type="hidden" name="parkname" value="${param.parkname }" />

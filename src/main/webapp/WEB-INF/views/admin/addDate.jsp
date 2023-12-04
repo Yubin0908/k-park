@@ -143,7 +143,7 @@
 					</select>
 				</c:if>
 				<input type="hidden" name="type" value="${param.type }" />
-				<input type="date" name="resdate"/>
+				<input type="date" name="resdate" required/>
 				<input type="submit" value="저장" />
 			</form>
 		</div>

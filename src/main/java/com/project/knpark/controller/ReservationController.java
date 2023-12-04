@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.project.knpark.service.ReservationService;
 import com.project.knpark.vo.Admin;
@@ -43,24 +44,34 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="bookingCampDate", method=RequestMethod.GET)
-	public String bookingCampDate(Model model, Reservation reservation) {
+	public String bookingCampDate(Model model, Reservation reservation, HttpSession session) {
+		System.out.println(reservation);
 		model.addAttribute("DateConfirm", reservationService.getCampDateRem(reservation));
+		model.addAttribute("getCampBookingDate", reservationService.getCampBookingDate(reservation, session));
 		return "reservation/bookingDate";
 	}
 	@RequestMapping(value="bookingShelterDate", method=RequestMethod.GET)
-	public String bookingShelterDate(Model model, Reservation reservation) {
+	public String bookingShelterDate(Model model, Reservation reservation, HttpSession session) {
 		model.addAttribute("DateConfirm", reservationService.getShelterDateRem(reservation));
+		model.addAttribute("getCampBookingDate", reservationService.getCampBookingDate(reservation, session));
 		return "reservation/bookingDate";
 	}
 	
 	@RequestMapping(value="reservationCamp", method=RequestMethod.GET) 
-	public String reservationCamp(Model model, Reservation reservation, HttpSession session) {
+	public String reservationCamp(Model model, Reservation reservation, HttpSession session, RedirectAttributes redirectAttributes) {
 		model.addAttribute("bookingResult", reservationService.reservationCamp(reservation, session));
-		return "reservation/bookingResult";
+		redirectAttributes.addFlashAttribute("reservationResult", "야영장");
+		return "redirect:bookingResult.do";
 	}
 	@RequestMapping(value="reservationShelter", method=RequestMethod.GET)
-	public String reservationShelter(Model model, Reservation reservation, HttpSession session) {
+	public String reservationShelter(Model model, Reservation reservation, HttpSession session, RedirectAttributes redirectAttributes) {
 		model.addAttribute("bookingResult", reservationService.reservationShelter(reservation, session));
+		redirectAttributes.addFlashAttribute("reservationResult", "대피소");
+		return "redirect:bookingResult.do";
+	}
+	
+	@RequestMapping(value="bookingResult", method=RequestMethod.GET)
+	public String bookingResult() {
 		return "reservation/bookingResult";
 	}
 	
@@ -71,7 +82,7 @@ public class ReservationController {
 	}
 	@RequestMapping(value="cancleReservation", method=RequestMethod.GET)
 	public String cancleReservation(int bno, Model model, Reservation reservation) {
-		model.addAttribute("reservationCancel", reservationService.cancleReservation(bno, reservation));
+		model.addAttribute("reservationCancle", reservationService.cancleReservation(bno, reservation));
 		return "forward:reservationList.do";
 	}
 	@RequestMapping(value="adminList", method=RequestMethod.GET)

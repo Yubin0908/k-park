@@ -36,8 +36,18 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 	
 	@Override
-	public int getCampBookingDate(Reservation reservation) {
-		int result = reservationRepository.getCampBookingDate(reservation);
+	public int getCampBookingDate(Reservation reservation, HttpSession session) {
+		Member member = (Member)session.getAttribute("member");
+		String id = member.getId();
+		reservation.setId(id);
+		System.out.println("serv : " + reservation);
+		Date bdate = reservationRepository.getCampBookingDate(reservation);
+		int result = 0;
+		if(bdate != null) {
+			result = 0;
+		} else {
+			result = 1;
+		}
 		
 		return result;
 	}
