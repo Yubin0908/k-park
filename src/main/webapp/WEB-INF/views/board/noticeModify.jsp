@@ -51,7 +51,7 @@
           <td>
 						<input type="hidden" name="ntext" id="ntext"/>
 						<div id="editor">
-							${review.ntext }
+							${notice.ntext }
   					</div>
 					</td>
         </tr>

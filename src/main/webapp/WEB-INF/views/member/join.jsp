@@ -189,7 +189,7 @@
 		        <tr><td colspan="2">
           			<p style="text-align:center;">
 						<input type="submit" value="회원가입">
-            			<input type="button" value="로그인" onclick="location='${conPath}/login.do'">
+            			<input type="button" value="로그인" onclick="location='${conPath}/member/login.do'">
           			</p>
         			</td>
         		</tr>
@@ -207,6 +207,7 @@
 		  });
 		});
   </script>
+  <br />
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

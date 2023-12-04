@@ -30,11 +30,17 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp"/>
+	<br />
+	<br />
 	<img alt="" src="${conPath }/img/${park}.jpg" width="55%">
+	<br />
+	<br />
 	<div class="button">
 		<button onclick="history.back();" 
 					style="cursor:pointer">뒤로가기</button>
     </div>
+    <br />
+    <br />
     <br />
     <br />
     <br />

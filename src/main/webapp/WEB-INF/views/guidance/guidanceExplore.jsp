@@ -13,7 +13,7 @@
 	<jsp:include page="../main/header.jsp"/>
   	<div id="camp_wrap">
 	    <div class="page-location">
-	      	<span>홈 > 이용안내 > 생태탐방원 </span>
+	      	<span><a href="${conPath }/" style="text-decoration: none; font-weight: 400; color: #000;">홈</a> > 이용안내 > <span style="font-weight: 600; display: inline-block;">생태탐방원</span></span>
 	    </div>
 	    <div class="infomation">
 	      	<h3 class="title">생태탐방원 이용안내</h3>

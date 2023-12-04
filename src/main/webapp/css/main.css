@@ -110,6 +110,7 @@
 }
 
 .container ul, .container li {
+	width: 420px;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
