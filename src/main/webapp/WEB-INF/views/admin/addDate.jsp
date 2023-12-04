@@ -171,6 +171,8 @@
 	    $('#nextdate').val(nextdayDateString);
 	  });
    </script>
+   <br />
+   <br />
    <jsp:include page="../main/footer.jsp"/>
 </body>
 </html>

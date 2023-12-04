@@ -43,7 +43,7 @@
       <br>
       <h2>${review.rtitle }</h2>
       <br>
-      <span>${review.rrdate } | 조회수 ${review.rhit } | ${review.rip }</span>
+      <span>${review.rrdate } | 조회수 ${review.rhit } | ${review.id }</span>
       <br><br>
       <p class="hr"></p>
       <div class="view">

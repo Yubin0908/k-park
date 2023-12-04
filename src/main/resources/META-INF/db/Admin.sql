@@ -23,8 +23,9 @@ UPDATE ADMIN SET APW = '1', ANAME = '메인관리자', AGROUP = '태백산' WHER
 
 
 
-
 SELECT * FROM ADMIN WHERE AID='admin';
 
 COMMIT;
 SELECT * FROM ADMIN;
+
+

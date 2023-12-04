@@ -40,6 +40,11 @@
 			history.back();
 		</script>
 	</c:if>
+	<c:if test="${not empty adminInsertResult }">
+		<script>
+			alert('${adminInsertResult}');
+		</script>
+	</c:if>
 	<jsp:include page="../main/header.jsp"/>
 	<div id="login_wrap">
 	<form action="${conPath }/admin/adminLogin.do" method="post">

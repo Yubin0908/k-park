@@ -30,7 +30,7 @@
       <br><br>
       <p class="hr"></p>
       <div class="view">
-	       ${notice.ntext }
+	       <pre>${notice.ntext }</pre>
         <p class="hr"></p>
           <span class="bold">관리공원</span>
           <span class="normal"><a href="">${notice.parkname }</a></span>
