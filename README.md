@@ -8,7 +8,7 @@ K - Park (K - 공원)
  - 언어 : Java SE 8 Platform, HTML, CSS, CSS3, JavaScript <br>
  - 프레임워크 : Spring, Mybatis <br>
  - Tool : Spring Tool Suite 3.9.13, Sqldeveloper 19.2, eXERD <br>
- - 오픈소스 : JavaScript jquery-3.7.1,Toast Ui Editor,Bootstrap-Calender-Ui, Kakao Map Api,SwiperAPI <br>
+ - 오픈소스 : JavaScript jquery-3.7.1, Toast Ui Editor, Bootstrap-Calender-Ui, Kakao Map Api, SwiperAPI <br>
 
 # 메인화면
  ![screencapture-localhost-8100-knpark-2023-12-05-14_23_38](https://github.com/Yubin0908/k-park/assets/127021788/6afd042d-18ed-4d0c-9393-77e98d176b5a)<br>
